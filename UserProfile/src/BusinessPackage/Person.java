@@ -13,22 +13,31 @@ import java.util.Date;
  * @author ragha
  */
 public class Person {
-    
+
     private String firstName;
     private String lastName;
     private String emailID;
-    private BufferedImage picture; 
+    private BufferedImage picture;
     private Date date;
     private String phoneNum;
     private String genderValue;
     private String maritalStatus;
 
-
-    
     Address address;
     LicenseData licenseData;
-CreditCard creditCard;
-FinancialAccounts finAccounts;
+    CreditCard creditCard;
+    FinancialAccounts finAccounts;
+     public Person() {
+
+    }
+
+    public Person(Address address, LicenseData licenseData, CreditCard creditCard, FinancialAccounts finAccounts) {
+        this.address = address;
+        this.licenseData = licenseData;
+        this.creditCard = creditCard;
+        this.finAccounts = finAccounts;
+    }
+
 
     public FinancialAccounts getFinAccounts() {
         return finAccounts;
@@ -41,6 +50,7 @@ FinancialAccounts finAccounts;
     public void setPhoneNum(String phoneNum) {
         this.phoneNum = phoneNum;
     }
+
     public String getMaritalStatus() {
         return maritalStatus;
     }
@@ -48,6 +58,7 @@ FinancialAccounts finAccounts;
     public void setMaritalStatus(String maritalStatus) {
         this.maritalStatus = maritalStatus;
     }
+
     public String getGenderValue() {
         return genderValue;
     }
@@ -67,6 +78,7 @@ FinancialAccounts finAccounts;
     public void setCreditCard(CreditCard creditCard) {
         this.creditCard = creditCard;
     }
+
     public LicenseData getLicenseData() {
         return licenseData;
     }
@@ -82,18 +94,8 @@ FinancialAccounts finAccounts;
     public void setAddress(Address address) {
         this.address = address;
     }
-    
-    public Person(){
-        
-    }
-    
-    public Person(Address address, LicenseData licenseData, CreditCard creditCard,FinancialAccounts finAccounts)
-    {
-        this.address = address;
-        this.licenseData = licenseData;
-        this.creditCard= creditCard;
-        this.finAccounts = finAccounts;
-    }
+
+   
     public String getFirstName() {
         return firstName;
     }

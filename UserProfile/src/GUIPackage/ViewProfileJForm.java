@@ -74,6 +74,8 @@ public class ViewProfileJForm extends javax.swing.JPanel {
                 Image.SCALE_SMOOTH);
         photoLabel.setIcon(new ImageIcon(resizedImg));
         }
+        if(spouse.getFirstName()!=null)
+        {
                 if(spouse.getPicture()!=null)
                 {
          Image resizedImgForSpouse = spouse.getPicture().getScaledInstance(210, 200,
@@ -91,7 +93,20 @@ public class ViewProfileJForm extends javax.swing.JPanel {
         spouseBankTextField.setText(spouse.getCreditCard().getCreditBank());
        spouseCreditCardNumText.setText(spouse.getCreditCard().getCreditNum());
         spouseCreExpText.setText(spouse.getCreditCard().getCreditExpiry().toString());
-        
+        }
+        else
+        {
+             spouse.setFirstName("");
+                spouse.setLastName("");
+                spouse.setEmailID("");
+ spouseLicenseNum.setText("");
+       spouseExpDateText.setText("");
+        spouseDOIText.setText(null);
+        spouseBankTextField.setText("");
+       spouseCreditCardNumText.setText("");
+        spouseCreExpText.setText("");
+                
+        }
     }
 
     /**

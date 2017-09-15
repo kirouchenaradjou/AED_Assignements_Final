@@ -25,8 +25,8 @@ public class MainProfileJFrame extends javax.swing.JFrame {
     
     Person person,spouse;
     Address address;
-    LicenseData licenseData;
-    CreditCard creditCard;
+    LicenseData licenseData,spouseLicense;
+    CreditCard creditCard,spouseCredit;
     FinancialAccounts finAccounts;
     SavingsAccount savingsAccount;
     CheckingAccount checkingAccount;
@@ -40,6 +40,8 @@ public class MainProfileJFrame extends javax.swing.JFrame {
         finAccounts = new FinancialAccounts(savingsAccount,checkingAccount);
         person = new Person(address, licenseData,creditCard,finAccounts);
         spouse = new Person(address, licenseData, creditCard, finAccounts);
+        spouseCredit=new CreditCard();
+        spouseLicense=new LicenseData();
     }
 
     /**
@@ -125,7 +127,7 @@ public class MainProfileJFrame extends javax.swing.JFrame {
 
     private void createJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createJButtonActionPerformed
         // Toggle to the create profile form
-        CreateProfileJForm createProfile = new CreateProfileJForm(person,address,licenseData,creditCard,finAccounts,spouse);
+        CreateProfileJForm createProfile = new CreateProfileJForm(person,address,licenseData,creditCard,finAccounts,spouse,spouseCredit,spouseLicense);
         splitPane.setRightComponent(createProfile);
     }//GEN-LAST:event_createJButtonActionPerformed
 

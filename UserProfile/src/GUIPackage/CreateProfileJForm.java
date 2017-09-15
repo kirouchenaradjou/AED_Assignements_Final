@@ -38,23 +38,26 @@ public class CreateProfileJForm extends javax.swing.JPanel {
     /**
      * Creates new form CreateProfileJForm
      */
-    private Person person,spouse;
+    private Person person, spouse;
     private Address address;
-    private LicenseData licenseData;
-    private CreditCard creditCard;
+    private LicenseData licenseData,spouseLicence;
+    private CreditCard creditCard,spouseCreditCard;
     private FinancialAccounts finAccounts;
-    public CreateProfileJForm(Person person, Address address,LicenseData licenseData, CreditCard creditCard, FinancialAccounts financialAccounts,Person spouse) {
+
+    public CreateProfileJForm(Person person, Address address, LicenseData licenseData, CreditCard creditCard, FinancialAccounts financialAccounts, Person spouse,CreditCard spouseCredit,LicenseData spouseLicense) {
         initComponents();
         buttonGroupForMaritalStatus.add(singleStatus);
         buttonGroupForMaritalStatus.add(Married1);
         buttonGroupForGender.add(maleRadio);
         buttonGroupForGender.add(femaleRadioButton2);
         this.person = person;
-                this.spouse = spouse;
+        this.spouse = spouse;
         this.address = address;
         this.licenseData = licenseData;
         this.creditCard = creditCard;
         this.finAccounts = financialAccounts;
+        this.spouseCreditCard=spouseCredit;
+        this.spouseLicence=spouseLicense;
     }
 
     /**
@@ -831,11 +834,11 @@ public class CreateProfileJForm extends javax.swing.JPanel {
         try {
             image = ImageIO.read(file);
             Image resizedImg = image.getScaledInstance(photoLabel.getWidth(), photoLabel.getHeight(),
-                Image.SCALE_SMOOTH);
+                    Image.SCALE_SMOOTH);
             photoLabel.setIcon(new ImageIcon(resizedImg));
             person.setPicture(image);
         } catch (IOException ex) {
-                        JOptionPane.showMessageDialog(null, "Attach the image properly");
+            JOptionPane.showMessageDialog(null, "Attach the image properly");
 
             Logger.getLogger(CreateProfileJForm.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -881,8 +884,7 @@ public class CreateProfileJForm extends javax.swing.JPanel {
     private void savingsRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_savingsRadioButtonActionPerformed
 
         // TODO add your handling code here:
-        if(savingsRadioButton.isEnabled())
-        {
+        if (savingsRadioButton.isEnabled()) {
             sAccSecHolderTxtField1.setEnabled(true);
             sAccCreationDateAccountTxt1.setEnabled(true);
             sAccountStatusCombo.setEnabled(true);
@@ -892,13 +894,12 @@ public class CreateProfileJForm extends javax.swing.JPanel {
     }//GEN-LAST:event_savingsRadioButtonActionPerformed
 
     private void savingsRadioButtonStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_savingsRadioButtonStateChanged
-        
+
     }//GEN-LAST:event_savingsRadioButtonStateChanged
 
     private void checkingRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkingRadioButtonActionPerformed
         // Enable only when the radio is selected
-             if(checkingRadioButton.isEnabled())
-        {
+        if (checkingRadioButton.isEnabled()) {
             secHolderTxtField.setEnabled(true);
             accountStatusCombo.setEnabled(true);
             debtAmtTextField1.setEnabled(true);
@@ -957,20 +958,19 @@ public class CreateProfileJForm extends javax.swing.JPanel {
 
     private void Married1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Married1ActionPerformed
         // TODO add your handling code here:
-       if(Married1.isEnabled())
-        {
-     spouseNameTextField.setEnabled(true);
-       spouseLastNameTextField.setEnabled(true);
-         spouseEmailTextField.setEnabled(true);
-        spouseLicenseNum.setEnabled(true);
-         spouseExpDateText.setEnabled(true);
-        spouseDOIText.setEnabled(true);
-        spouseBankTextField.setEnabled(true);
-       spouseCreditCardNumText.setEnabled(true);
-        spouseCreExpText.setEnabled(true);
-        attachButtonSpouse.setEnabled(true);
-        pathTextFieldSpouse.setEnabled(true);
-        photoLabelSpouse.setEnabled(true);
+        if (Married1.isEnabled()) {
+            spouseNameTextField.setEnabled(true);
+            spouseLastNameTextField.setEnabled(true);
+            spouseEmailTextField.setEnabled(true);
+            spouseLicenseNum.setEnabled(true);
+            spouseExpDateText.setEnabled(true);
+            spouseDOIText.setEnabled(true);
+            spouseBankTextField.setEnabled(true);
+            spouseCreditCardNumText.setEnabled(true);
+            spouseCreExpText.setEnabled(true);
+            attachButtonSpouse.setEnabled(true);
+            pathTextFieldSpouse.setEnabled(true);
+            photoLabelSpouse.setEnabled(true);
     }//GEN-LAST:event_Married1ActionPerformed
     }
     private void spouseNameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_spouseNameTextFieldActionPerformed
@@ -1003,7 +1003,7 @@ public class CreateProfileJForm extends javax.swing.JPanel {
 
     private void attachButtonSpouseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_attachButtonSpouseActionPerformed
         // TODO add your handling code here:
-         JFileChooser chooser = new JFileChooser();
+        JFileChooser chooser = new JFileChooser();
         chooser.showOpenDialog(null);
         File file = chooser.getSelectedFile();
         String filename = file.getAbsolutePath();
@@ -1012,7 +1012,7 @@ public class CreateProfileJForm extends javax.swing.JPanel {
         try {
             image = ImageIO.read(file);
             Image resizedImg = image.getScaledInstance(photoLabelSpouse.getWidth(), photoLabelSpouse.getHeight(),
-                Image.SCALE_SMOOTH);
+                    Image.SCALE_SMOOTH);
             photoLabelSpouse.setIcon(new ImageIcon(resizedImg));
             spouse.setPicture(image);
         } catch (IOException ex) {
@@ -1026,7 +1026,7 @@ public class CreateProfileJForm extends javax.swing.JPanel {
         person.setLastName(lastNameTextField.getText());
         person.setEmailID(emailIDTextField.getText());
         DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
-       // Date date = df.parse(dobTextField2);
+        // Date date = df.parse(dobTextField2);
 //         Date date = new Date();
 //   System.out.println(df.format(date));
 //   dobTextField2.setText(df.format(date));
@@ -1034,69 +1034,100 @@ public class CreateProfileJForm extends javax.swing.JPanel {
 //person.setDate(date);
         try {
             person.setDate(df.parse(dobTextField.getText()));
-              person.setPhoneNum(phoneNumberTextField1.getText());
-        if(maleRadio.isEnabled())
-        {
-            person.setGenderValue("Male");
-        }
-        else
-        {
-            person.setGenderValue("Female");
-        }
-        address.setCityName(cityTextField2.getText());
-        address.setStreetName(streetNameTextField3.getText());
-        address.setStateName(stateTextField.getText());
-        address.setPinCode(pincodeTextField.getText());
-        address.setCountryName(countryTextField.getText());
-        person.setAddress(address);
-        licenseData.setDateOfIssuance(df.parse(licenseDOITextField.getText()));
-        licenseData.setTypeOfClass(licenseClassTextField.getText());
-        licenseData.setLicenseExpDate(df.parse(ExpiryDateTextField.getText()));
-        licenseData.setPlaceOfIssuance(licensePlaceTextField.getText());
-        licenseData.setLicenseNum(licenseNumTextField.getText());
-        person.setLicenseData(licenseData);
-        creditCard.setCreditBank(bankTxtField.getText());
-        creditCard.setCreditExpiry(df.parse(creditDOETxtField1.getText()));
-        creditCard.setCreditIssueDate(df.parse(creditDOITxtField.getText()));
-        creditCard.setCreditIssuePlace(creditPlaceTxtField.getText());
-        creditCard.setCreditNum(creditNumTxtField1.getText());
-        person.setCreditCard(creditCard);
-        finAccounts.getCheckingAccount().setAccountStatus(accountStatusCombo.getSelectedItem().toString());
-        // finAccounts.getCheckingAccount().
-        finAccounts.getCheckingAccount().setAccountDate(creationDateAccountTxt.getText());
-        finAccounts.getCheckingAccount().setAccountSecHolderName(secHolderTxtField.getText());
+            person.setPhoneNum(phoneNumberTextField1.getText());
+            if (maleRadio.isEnabled()) {
+                person.setGenderValue("Male");
+            } else {
+                person.setGenderValue("Female");
+            }
+            address.setCityName(cityTextField2.getText());
+            address.setStreetName(streetNameTextField3.getText());
+            address.setStateName(stateTextField.getText());
+            address.setPinCode(pincodeTextField.getText());
+            address.setCountryName(countryTextField.getText());
+            person.setAddress(address);
+            licenseData.setDateOfIssuance(df.parse(licenseDOITextField.getText()));
+            licenseData.setTypeOfClass(licenseClassTextField.getText());
+            licenseData.setLicenseExpDate(df.parse(ExpiryDateTextField.getText()));
+            licenseData.setPlaceOfIssuance(licensePlaceTextField.getText());
+            licenseData.setLicenseNum(licenseNumTextField.getText());
+            person.setLicenseData(licenseData);
+            creditCard.setCreditBank(bankTxtField.getText());
+            creditCard.setCreditExpiry(df.parse(creditDOETxtField1.getText()));
+            creditCard.setCreditIssueDate(df.parse(creditDOITxtField.getText()));
+            creditCard.setCreditIssuePlace(creditPlaceTxtField.getText());
+            creditCard.setCreditNum(creditNumTxtField1.getText());
+            person.setCreditCard(creditCard);
+            finAccounts.getCheckingAccount().setAccountStatus(accountStatusCombo.getSelectedItem().toString());
+            // finAccounts.getCheckingAccount().
+            finAccounts.getCheckingAccount().setAccountDate(creationDateAccountTxt.getText());
+            finAccounts.getCheckingAccount().setAccountSecHolderName(secHolderTxtField.getText());
 
-        finAccounts.getCheckingAccount().setAccountCredit(cCreditAmtTextField1.getText());
-        finAccounts.getCheckingAccount().setAccountDebt(debtAmtTextField1.getText());
+            finAccounts.getCheckingAccount().setAccountCredit(cCreditAmtTextField1.getText());
+            finAccounts.getCheckingAccount().setAccountDebt(debtAmtTextField1.getText());
 
-        finAccounts.getSavingsAccount().setAccountDebt(sDebtAmtTextField1.getText());
-        finAccounts.getSavingsAccount().setAccountDate(sAccCreationDateAccountTxt1.getText());
-        finAccounts.getSavingsAccount().setAccountSecHolderName(sAccSecHolderTxtField1.getText());
-        finAccounts.getSavingsAccount().setAccountCredit(sCreditAmtTextField.getText());
-        finAccounts.getSavingsAccount().setAccountStatus(sAccountStatusCombo.getSelectedItem().toString());
-        person.setFinAccounts(finAccounts);
-        if(Married1.isEnabled() && Married1.isSelected())
-       {
-           spouse.setFirstName(spouseNameTextField.getText());
-         spouse.setLastName(spouseLastNameTextField.getText());
-         spouse.setEmailID(spouseEmailTextField.getText());
+            finAccounts.getSavingsAccount().setAccountDebt(sDebtAmtTextField1.getText());
+            finAccounts.getSavingsAccount().setAccountDate(sAccCreationDateAccountTxt1.getText());
+            finAccounts.getSavingsAccount().setAccountSecHolderName(sAccSecHolderTxtField1.getText());
+            finAccounts.getSavingsAccount().setAccountCredit(sCreditAmtTextField.getText());
+            finAccounts.getSavingsAccount().setAccountStatus(sAccountStatusCombo.getSelectedItem().toString());
+            person.setFinAccounts(finAccounts);
+            if (Married1.isEnabled() && Married1.isSelected()) {
+                spouse.setFirstName(spouseNameTextField.getText());
+                spouse.setLastName(spouseLastNameTextField.getText());
+                spouse.setEmailID(spouseEmailTextField.getText());
 //        
-        spouse.getLicenseData().setLicenseNum(spouseLicenseNum.getText());
-         spouse.getLicenseData().setLicenseExpDate(df.parse(spouseExpDateText.getText()));
-         spouse.getLicenseData().setDateOfIssuance(df.parse(spouseDOIText.getText()));
+                spouseCreditCard.setCreditBank(spouseBankTextField.getText());
+                spouseCreditCard.setCreditNum(spouseCreditCardNumText.getText());
+                spouseCreditCard.setCreditExpiry(df.parse(spouseCreExpText.getText()));
+                
+                spouseLicence.setLicenseNum(spouseLicenseNum.getText());
+                
+               spouseLicence.setLicenseExpDate(df.parse(spouseExpDateText.getText()));
+               spouseLicence.setDateOfIssuance(df.parse(spouseDOIText.getText()));
 //        
-         spouse.getCreditCard().setCreditBank(spouseBankTextField.getText());
-         spouse.getCreditCard().setCreditNum(spouseCreditCardNumText.getText());
-         spouse.getCreditCard().setCreditExpiry(df.parse(spouseCreExpText.getText()));
-//        
-        }
-      JOptionPane.showMessageDialog(null, "User Profile is successfully recorded");
+                
+//                
+//                spouse.getLicenseData().setLicenseNum(spouseLicenseNum.getText());
+//                spouse.getLicenseData().setLicenseExpDate(df.parse(spouseExpDateText.getText()));
+//                spouse.getLicenseData().setDateOfIssuance(df.parse(spouseDOIText.getText()));
+////        
+//                spouse.getCreditCard().setCreditBank(spouseBankTextField.getText());
+//                spouse.getCreditCard().setCreditNum(spouseCreditCardNumText.getText());
+//                spouse.getCreditCard().setCreditExpiry(df.parse(spouseCreExpText.getText()));
+
+// 
+
+spouse.setCreditCard(spouseCreditCard);
+spouse.setLicenseData(spouseLicence);
+
+            }
+            
+//            else if(singleStatus.isSelected()){
+//                spouse.setFirstName("");
+//                spouse.setLastName("");
+//                spouse.setEmailID("");
+////        
+//                spouseCreditCard.setCreditBank("");
+//                spouseCreditCard.setCreditNum("");
+//                spouseCreditCard.setCreditExpiry(null);
+//                
+//                spouseLicence.setLicenseNum("");
+//                
+//               spouseLicence.setLicenseExpDate(null);
+//               spouseLicence.setDateOfIssuance(null);
+//               
+//                
+//                 
+//                
+//            }
+            JOptionPane.showMessageDialog(null, "User Profile is successfully recorded");
         } catch (ParseException ex) {
-          JOptionPane.showMessageDialog(null, "Error in date format - Date it should be of type MM/DD/YYYY");
+            JOptionPane.showMessageDialog(null, "Error in date format - Date it should be of type MM/DD/YYYY");
             Logger.getLogger(CreateProfileJForm.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
+
+
     }//GEN-LAST:event_submitButton1ActionPerformed
 
     private void spouseBankTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_spouseBankTextFieldActionPerformed
@@ -1105,20 +1136,19 @@ public class CreateProfileJForm extends javax.swing.JPanel {
 
     private void singleStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_singleStatusActionPerformed
         // TODO add your handling code here:
-                if(singleStatus.isEnabled())
-        {
-       spouseNameTextField.setEnabled(false);
-       spouseLastNameTextField.setEnabled(false);
-         spouseEmailTextField.setEnabled(false);
-        spouseLicenseNum.setEnabled(false);
-         spouseExpDateText.setEnabled(false);
-        spouseDOIText.setEnabled(false);
-        spouseBankTextField.setEnabled(false);
-       spouseCreditCardNumText.setEnabled(false);
-        spouseCreExpText.setEnabled(false);
-        attachButtonSpouse.setEnabled(false);
-        pathTextFieldSpouse.setEnabled(false);
-        photoLabelSpouse.setEnabled(false);
+        if (singleStatus.isEnabled() && singleStatus.isSelected()) {
+            spouseNameTextField.setEnabled(false);
+            spouseLastNameTextField.setEnabled(false);
+            spouseEmailTextField.setEnabled(false);
+            spouseLicenseNum.setEnabled(false);
+            spouseExpDateText.setEnabled(false);
+            spouseDOIText.setEnabled(false);
+            spouseBankTextField.setEnabled(false);
+            spouseCreditCardNumText.setEnabled(false);
+            spouseCreExpText.setEnabled(false);
+            attachButtonSpouse.setEnabled(false);
+            pathTextFieldSpouse.setEnabled(false);
+            photoLabelSpouse.setEnabled(false);
     }//GEN-LAST:event_singleStatusActionPerformed
     }
 
