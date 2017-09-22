@@ -7,7 +7,10 @@ package InterfacePackage;
 
 import BusinessPackage.Airplane;
 import BusinessPackage.Fleet;
+import javax.swing.JOptionPane;
+import javax.swing.JSlider;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 
 /**
  *
@@ -19,8 +22,10 @@ public class Search extends javax.swing.JPanel {
      * Creates new form Search
      */
     private Fleet fleet;
+
     public Search(Fleet fleet) {
         initComponents();
+        setVisibleFalse();
         this.fleet = fleet;
     }
 
@@ -36,8 +41,35 @@ public class Search extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         serialNumberButton = new javax.swing.JButton();
         serialNumbersearchText = new javax.swing.JTextField();
-        jScrollPane2 = new javax.swing.JScrollPane();
+        jScrollPane1 = new javax.swing.JScrollPane();
         airplaneTableForSearch = new javax.swing.JTable();
+        labelForManufacturer = new javax.swing.JLabel();
+        seatsLabel = new javax.swing.JLabel();
+        serialNumLabel = new javax.swing.JLabel();
+        modelNumLabel = new javax.swing.JLabel();
+        manuDateLabel = new javax.swing.JLabel();
+        manufacturerTextField = new javax.swing.JTextField();
+        seatsTextField = new javax.swing.JTextField();
+        serialNumTextField = new javax.swing.JTextField();
+        modelTextField = new javax.swing.JTextField();
+        manufactureDateTxt = new javax.swing.JTextField();
+        avaiStatusLabel = new javax.swing.JLabel();
+        isAvailableTextField = new javax.swing.JTextField();
+        certiLabel = new javax.swing.JLabel();
+        certificateStatusText = new javax.swing.JTextField();
+        nameLabel = new javax.swing.JLabel();
+        nameTextField = new javax.swing.JTextField();
+        certificateSearchButton = new javax.swing.JButton();
+        boeingSearchButton = new javax.swing.JButton();
+        modelNumbersearchText = new javax.swing.JTextField();
+        modelNumberSearchButton = new javax.swing.JButton();
+        avaiStatusButton = new javax.swing.JButton();
+        countLabel = new javax.swing.JLabel();
+        timeStampButton = new javax.swing.JButton();
+        labelForTimeStamp = new javax.swing.JLabel();
+        seatsearchLabel = new javax.swing.JLabel();
+        sliderForSeatRange = new javax.swing.JSlider();
+        statusLabel = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -52,54 +84,363 @@ public class Search extends javax.swing.JPanel {
                 serialNumberButtonActionPerformed(evt);
             }
         });
-        add(serialNumberButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 230, -1));
+        add(serialNumberButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 80, 230, -1));
 
         serialNumbersearchText.setToolTipText("Give the serial number of the airplane");
-        add(serialNumbersearchText, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 80, 180, -1));
+        add(serialNumbersearchText, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 180, -1));
 
         airplaneTableForSearch.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Model Number", "Serial Number", "Manufacturer"
+                "Airplane Name", "Model Number", "Serial Number", "Manufacturer"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(airplaneTableForSearch);
+        airplaneTableForSearch.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                airplaneTableForSearchMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(airplaneTableForSearch);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 20, -1, -1));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 30, 520, -1));
+
+        labelForManufacturer.setText("Manufacturer");
+        add(labelForManufacturer, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 610, -1, -1));
+
+        seatsLabel.setText("No of seats");
+        add(seatsLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 670, -1, -1));
+
+        serialNumLabel.setText("Serial Number");
+        add(serialNumLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 730, -1, -1));
+
+        modelNumLabel.setText("Model Number");
+        add(modelNumLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 790, -1, -1));
+
+        manuDateLabel.setText("Manufacture Date");
+        add(manuDateLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 850, -1, -1));
+
+        manufacturerTextField.setEditable(false);
+        manufacturerTextField.setEnabled(false);
+        add(manufacturerTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 600, 280, -1));
+
+        seatsTextField.setEnabled(false);
+        add(seatsTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 660, 280, -1));
+
+        serialNumTextField.setEnabled(false);
+        add(serialNumTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 720, 280, -1));
+
+        modelTextField.setEnabled(false);
+        add(modelTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 780, 280, -1));
+
+        manufactureDateTxt.setEnabled(false);
+        add(manufactureDateTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 850, 280, -1));
+
+        avaiStatusLabel.setText("Availability Status");
+        add(avaiStatusLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 920, -1, -1));
+
+        isAvailableTextField.setEnabled(false);
+        add(isAvailableTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 920, 280, -1));
+
+        certiLabel.setText("Maintenance Certificate");
+        add(certiLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 980, -1, -1));
+
+        certificateStatusText.setEnabled(false);
+        add(certificateStatusText, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 980, 280, -1));
+
+        nameLabel.setText("Name");
+        add(nameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 540, -1, -1));
+
+        nameTextField.setEditable(false);
+        nameTextField.setEnabled(false);
+        add(nameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 530, 280, -1));
+
+        certificateSearchButton.setText("Search Via Certificate");
+        certificateSearchButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                certificateSearchButtonActionPerformed(evt);
+            }
+        });
+        add(certificateSearchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 130, 230, -1));
+
+        boeingSearchButton.setText("Search via Boeing");
+        boeingSearchButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boeingSearchButtonActionPerformed(evt);
+            }
+        });
+        add(boeingSearchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 180, 230, -1));
+
+        modelNumbersearchText.setToolTipText("Give the serial number of the airplane");
+        add(modelNumbersearchText, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 230, 180, -1));
+
+        modelNumberSearchButton.setText("Search via Model Number");
+        modelNumberSearchButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modelNumberSearchButtonActionPerformed(evt);
+            }
+        });
+        add(modelNumberSearchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 230, 230, -1));
+
+        avaiStatusButton.setText("Availabitlity Status");
+        avaiStatusButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                avaiStatusButtonActionPerformed(evt);
+            }
+        });
+        add(avaiStatusButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 280, 230, -1));
+        add(countLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 480, 290, -1));
+
+        timeStampButton.setText("Time Stamp for last updation of Fleet Catalog");
+        timeStampButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                timeStampButtonActionPerformed(evt);
+            }
+        });
+        add(timeStampButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, 430, -1));
+        add(labelForTimeStamp, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 480, 490, 30));
+
+        seatsearchLabel.setText("Search via Seat Number ");
+        add(seatsearchLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 380, -1, -1));
+
+        sliderForSeatRange.setMajorTickSpacing(10);
+        sliderForSeatRange.setPaintLabels(true);
+        sliderForSeatRange.setPaintTicks(true);
+        sliderForSeatRange.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                sliderForSeatRangeStateChanged(evt);
+            }
+        });
+        add(sliderForSeatRange, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 380, 340, -1));
+
+        statusLabel.setText(" ");
+        add(statusLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 440, 180, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void serialNumberButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_serialNumberButtonActionPerformed
-         DefaultTableModel defaultModel = (DefaultTableModel) airplaneTableForSearch.getModel();
+        countLabel.setVisible(false);
+        labelForTimeStamp.setVisible(false);
+        DefaultTableModel defaultModel = (DefaultTableModel) airplaneTableForSearch.getModel();
         defaultModel.setRowCount(0);
         String toBeSearched = serialNumbersearchText.getText();
         for (Airplane airplane : fleet.getFleet()) {
-            if(airplane.getAirplaneSerialNum().equalsIgnoreCase(toBeSearched))
-            {
- Object row[] = new Object[3];
-             row[0] = airplane;
-            row[1]=airplane.getAirplaneSerialNum();
-            row[2] = airplane.getAirplaneManufacturer();
-            defaultModel.addRow(row);
+            if (airplane.getAirplaneSerialNum().equalsIgnoreCase(toBeSearched)) {
+                Object row[] = new Object[4];
+                row[0] = airplane;
+                row[1] = airplane.getAirplaneModelNum();
+                row[2] = airplane.getAirplaneSerialNum();
+                row[3] = airplane.getAirplaneManufacturer();
+
+                defaultModel.addRow(row);
             }
         }
     }//GEN-LAST:event_serialNumberButtonActionPerformed
 
+    private void airplaneTableForSearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_airplaneTableForSearchMouseClicked
+        countLabel.setVisible(false);
+        labelForTimeStamp.setVisible(false);
+        int selectedRow = airplaneTableForSearch.getSelectedRow();
+        if (selectedRow >= 0) {
+            setVisibleTrue();
+            Airplane airplane = (Airplane) airplaneTableForSearch.getValueAt((Integer) selectedRow, 0);
+            nameTextField.setText(airplane.getAirplaneName());
+            manufactureDateTxt.setText(String.valueOf(airplane.getAirplaneManufactureDate()));
+            manufacturerTextField.setText(airplane.getAirplaneManufacturer());
+            seatsTextField.setText(Integer.toString(airplane.getAirplaneSeats()));
+            serialNumTextField.setText(airplane.getAirplaneSerialNum());
+            modelTextField.setText(airplane.getAirplaneModelNum());
+            isAvailableTextField.setText(airplane.getIsAvailable().toString());
+            if ((airplane.getIsExpired().toString()).equalsIgnoreCase("true")) {
+                certificateStatusText.setText("Expired");
+            } else {
+                certificateStatusText.setText("Valid");
+            }
 
+        }
+    }//GEN-LAST:event_airplaneTableForSearchMouseClicked
+
+    private void certificateSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_certificateSearchButtonActionPerformed
+        countLabel.setVisible(false);
+        labelForTimeStamp.setVisible(false);
+        DefaultTableModel defaultModel = (DefaultTableModel) airplaneTableForSearch.getModel();
+        defaultModel.setRowCount(0);
+        for (Airplane airplane : fleet.getFleet()) {
+            if (airplane.getIsExpired().toString().equalsIgnoreCase("true")) {
+                Object row[] = new Object[4];
+                row[0] = airplane;
+                row[1] = airplane.getAirplaneModelNum();
+                row[2] = airplane.getAirplaneSerialNum();
+                row[3] = airplane.getAirplaneManufacturer();
+
+                defaultModel.addRow(row);
+            }
+        }
+    }//GEN-LAST:event_certificateSearchButtonActionPerformed
+
+    private void boeingSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boeingSearchButtonActionPerformed
+        countLabel.setVisible(false);
+        labelForTimeStamp.setVisible(false);
+        DefaultTableModel defaultModel = (DefaultTableModel) airplaneTableForSearch.getModel();
+        defaultModel.setRowCount(0);
+        for (Airplane airplane : fleet.getFleet()) {
+            if (airplane.getAirplaneManufacturer().equalsIgnoreCase("Boeing")) {
+                Object row[] = new Object[4];
+                row[0] = airplane;
+                row[1] = airplane.getAirplaneModelNum();
+                row[2] = airplane.getAirplaneSerialNum();
+                row[3] = airplane.getAirplaneManufacturer();
+
+                defaultModel.addRow(row);
+            }
+        }
+    }//GEN-LAST:event_boeingSearchButtonActionPerformed
+
+    private void modelNumberSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modelNumberSearchButtonActionPerformed
+        countLabel.setVisible(false);
+        labelForTimeStamp.setVisible(false);
+        DefaultTableModel defaultModel = (DefaultTableModel) airplaneTableForSearch.getModel();
+        defaultModel.setRowCount(0);
+        String toBeSearched = modelNumbersearchText.getText();
+        for (Airplane airplane : fleet.getFleet()) {
+            if (airplane.getAirplaneModelNum().equalsIgnoreCase(toBeSearched)) {
+                Object row[] = new Object[4];
+                row[0] = airplane;
+                row[1] = airplane.getAirplaneModelNum();
+                row[2] = airplane.getAirplaneSerialNum();
+                row[3] = airplane.getAirplaneManufacturer();
+
+                defaultModel.addRow(row);
+            }
+        }
+    }//GEN-LAST:event_modelNumberSearchButtonActionPerformed
+
+    private void avaiStatusButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_avaiStatusButtonActionPerformed
+      labelForTimeStamp.setVisible(false);
+        int count = 0;
+        //Hide the other columns other than airplane name
+        DefaultTableModel defaultModel = (DefaultTableModel) airplaneTableForSearch.getModel();
+
+        TableColumn manufacturerColumn = airplaneTableForSearch.getColumnModel().getColumn(3);
+        airplaneTableForSearch.getColumnModel().removeColumn(manufacturerColumn);
+        TableColumn modelNumColumn = airplaneTableForSearch.getColumnModel().getColumn(2);
+        airplaneTableForSearch.getColumnModel().removeColumn(modelNumColumn);
+
+        TableColumn serialNumColumn = airplaneTableForSearch.getColumnModel().getColumn(1);
+        airplaneTableForSearch.getColumnModel().removeColumn(serialNumColumn);
+        defaultModel.setRowCount(0);
+        for (Airplane airplane : fleet.getFleet()) {
+
+            if (airplane.getIsAvailable().toString().equalsIgnoreCase("true")) {
+                count++;
+                Object row[] = new Object[1];
+                row[0] = airplane;
+
+                defaultModel.addRow(row);
+                countLabel.setVisible(true);
+                countLabel.setText("Airplanes Available : " + count);
+            }
+        }
+    }//GEN-LAST:event_avaiStatusButtonActionPerformed
+
+    private void timeStampButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_timeStampButtonActionPerformed
+        setVisibleFalse();
+        for (Airplane airplane : fleet.getFleet()){
+           labelForTimeStamp.setText("Catalog Last updated on : "+airplane.getTimestamp().toString());
+            break;
+        }
+      
+    }//GEN-LAST:event_timeStampButtonActionPerformed
+
+    private void sliderForSeatRangeStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderForSeatRangeStateChanged
+        // TODO add your handling code here:
+        statusLabel.setText("Value of the slider is: " + ((JSlider)evt.getSource()).getValue());
+    }//GEN-LAST:event_sliderForSeatRangeStateChanged
+
+    private void setVisibleFalse() {
+        //set the Text fields false
+        nameTextField.setVisible(false);
+        manufacturerTextField.setVisible(false);
+        manufactureDateTxt.setVisible(false);
+        manufacturerTextField.setVisible(false);
+        seatsTextField.setVisible(false);
+        serialNumTextField.setVisible(false);
+        modelTextField.setVisible(false);
+        isAvailableTextField.setVisible(false);
+        certificateStatusText.setVisible(false);
+        // set the label feilds as false
+        nameLabel.setVisible(false);
+        labelForManufacturer.setVisible(false);
+        seatsLabel.setVisible(false);
+        serialNumLabel.setVisible(false);
+        modelNumLabel.setVisible(false);
+        manuDateLabel.setVisible(false);
+        avaiStatusLabel.setVisible(false);
+        certiLabel.setVisible(false);
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable airplaneTableForSearch;
+    private javax.swing.JButton avaiStatusButton;
+    private javax.swing.JLabel avaiStatusLabel;
+    private javax.swing.JButton boeingSearchButton;
+    private javax.swing.JLabel certiLabel;
+    private javax.swing.JButton certificateSearchButton;
+    private javax.swing.JTextField certificateStatusText;
+    private javax.swing.JLabel countLabel;
+    private javax.swing.JTextField isAvailableTextField;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel labelForManufacturer;
+    private javax.swing.JLabel labelForTimeStamp;
+    private javax.swing.JLabel manuDateLabel;
+    private javax.swing.JTextField manufactureDateTxt;
+    private javax.swing.JTextField manufacturerTextField;
+    private javax.swing.JLabel modelNumLabel;
+    private javax.swing.JButton modelNumberSearchButton;
+    private javax.swing.JTextField modelNumbersearchText;
+    private javax.swing.JTextField modelTextField;
+    private javax.swing.JLabel nameLabel;
+    private javax.swing.JTextField nameTextField;
+    private javax.swing.JLabel seatsLabel;
+    private javax.swing.JTextField seatsTextField;
+    private javax.swing.JLabel seatsearchLabel;
+    private javax.swing.JLabel serialNumLabel;
+    private javax.swing.JTextField serialNumTextField;
     private javax.swing.JButton serialNumberButton;
     private javax.swing.JTextField serialNumbersearchText;
+    private javax.swing.JSlider sliderForSeatRange;
+    private javax.swing.JLabel statusLabel;
+    private javax.swing.JButton timeStampButton;
     // End of variables declaration//GEN-END:variables
+
+    private void setVisibleTrue() {
+        //set the Text fields true
+        nameTextField.setVisible(true);
+        manufacturerTextField.setVisible(true);
+        manufactureDateTxt.setVisible(true);
+        manufacturerTextField.setVisible(true);
+        seatsTextField.setVisible(true);
+        serialNumTextField.setVisible(true);
+        modelTextField.setVisible(true);
+        isAvailableTextField.setVisible(true);
+        certificateStatusText.setVisible(true);
+        // set the label feilds as true
+        nameLabel.setVisible(true);
+        labelForManufacturer.setVisible(true);
+        seatsLabel.setVisible(true);
+        serialNumLabel.setVisible(true);
+        modelNumLabel.setVisible(true);
+        manuDateLabel.setVisible(true);
+        avaiStatusLabel.setVisible(true);
+        certiLabel.setVisible(true);
+    }
+
 }

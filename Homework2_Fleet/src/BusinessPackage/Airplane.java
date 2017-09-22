@@ -5,6 +5,7 @@
  */
 package BusinessPackage;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 /**
@@ -13,6 +14,7 @@ import java.util.Date;
  */
 public class Airplane {
     
+    private String airplaneName;
     private String airplaneManufacturer;
     private Date airplaneManufactureDate;
     private Integer airplaneSeats;
@@ -20,7 +22,24 @@ public class Airplane {
     private String airplaneModelNum;
     private Boolean isAvailable;
     private Boolean isExpired;
+    private Timestamp timestamp;
 
+    public Timestamp getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(Timestamp timestamp) {
+        this.timestamp = timestamp;
+    }
+
+     public String getAirplaneName() {
+        return airplaneName;
+    }
+
+    public void setAirplaneName(String airplaneName) {
+        this.airplaneName = airplaneName;
+    }
+    
     public Boolean getIsAvailable() {
         return isAvailable;
     }
@@ -78,7 +97,7 @@ public class Airplane {
     }
     @Override
     public String toString(){
-        return this.airplaneModelNum;
+        return this.airplaneName;
     }
     
     

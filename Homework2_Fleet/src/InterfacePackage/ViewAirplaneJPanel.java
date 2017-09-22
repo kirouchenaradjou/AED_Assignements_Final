@@ -7,6 +7,12 @@ package InterfacePackage;
 
 import BusinessPackage.Airplane;
 import BusinessPackage.Fleet;
+import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -20,12 +26,21 @@ public class ViewAirplaneJPanel extends javax.swing.JPanel {
      * Creates new form ViewAirplaneJPanel
      */
     private Fleet fleet;
+    Timestamp timestamp;
+    ViewAirplaneJPanel viewAirplaneJPanel;
     public ViewAirplaneJPanel(Fleet fleet) {
         initComponents();
-        this.fleet=fleet;
+        this.fleet = fleet;
         populateTable();
     }
 
+    public Timestamp getTimestamp() {
+        return timestamp;
+    }
+    public void setTimestamp(Timestamp timestamp)
+    {
+        this.timestamp = timestamp;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -54,37 +69,53 @@ public class ViewAirplaneJPanel extends javax.swing.JPanel {
         isAvailableTextField = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         certificateStatusText = new javax.swing.JTextField();
+        nameLabel = new javax.swing.JLabel();
+        nameTextField = new javax.swing.JTextField();
+        submitUpdateButton = new javax.swing.JButton();
+        labelForTimestamp = new javax.swing.JLabel();
+
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setText("Manufacturer");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(244, 542, -1, -1));
 
         jLabel2.setText("No of seats");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(244, 602, -1, -1));
 
         jLabel3.setText("Serial Number");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(244, 662, -1, -1));
 
         jLabel4.setText("Model Number");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(244, 722, -1, -1));
 
         jLabel5.setText("Manufacture Date");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(244, 782, -1, -1));
 
         manufacturerTextField.setEnabled(false);
+        add(manufacturerTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(524, 532, 280, -1));
 
         seatsTextField.setEnabled(false);
+        add(seatsTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(524, 592, 280, -1));
 
         serialNumTextField.setEnabled(false);
+        add(serialNumTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(524, 652, 280, -1));
 
         modelTextField.setEnabled(false);
+        add(modelTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(524, 712, 280, -1));
 
         manufactureDateTxt.setEnabled(false);
+        add(manufactureDateTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(524, 779, 280, -1));
 
         airplaneTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Model Number", "Serial Number", "Manufacturer"
+                "Airplane Name", "Model Number", "Serial Number", "Manufacturer"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -93,12 +124,15 @@ public class ViewAirplaneJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(airplaneTable1);
 
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(177, 0, 704, 421));
+
         viewAirplaneDetailsButton.setText("View");
         viewAirplaneDetailsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 viewAirplaneDetailsButtonActionPerformed(evt);
             }
         });
+        add(viewAirplaneDetailsButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(969, 101, 83, -1));
 
         updateAirplaneButton.setText("Update");
         updateAirplaneButton.addActionListener(new java.awt.event.ActionListener() {
@@ -106,133 +140,68 @@ public class ViewAirplaneJPanel extends javax.swing.JPanel {
                 updateAirplaneButtonActionPerformed(evt);
             }
         });
+        add(updateAirplaneButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(969, 172, -1, -1));
 
         jLabel6.setText("Availability Status");
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(244, 850, -1, -1));
 
+        isAvailableTextField.setToolTipText("Give the Status as Either \"true\" or \"false\" ");
         isAvailableTextField.setEnabled(false);
+        add(isAvailableTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(524, 847, 280, -1));
 
         jLabel7.setText("Maintenance Certificate");
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(244, 908, -1, -1));
 
+        certificateStatusText.setToolTipText("Give the value as either \"Expired\" or \"Valid\"");
         certificateStatusText.setEnabled(false);
+        add(certificateStatusText, new org.netbeans.lib.awtextra.AbsoluteConstraints(524, 905, 280, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(177, 177, 177)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 704, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(88, 88, 88)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(updateAirplaneButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(viewAirplaneDetailsButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(246, 246, 246)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(188, 188, 188)
-                                .addComponent(manufacturerTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(201, 201, 201)
-                                .addComponent(seatsTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addGap(179, 179, 179)
-                                .addComponent(serialNumTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addGap(176, 176, 176)
-                                .addComponent(modelTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel7))
-                                .addGap(118, 118, 118)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(manufactureDateTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(isAvailableTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(certificateStatusText, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(163, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 421, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(101, 101, 101)
-                        .addComponent(viewAirplaneDetailsButton)
-                        .addGap(42, 42, 42)
-                        .addComponent(updateAirplaneButton)))
-                .addGap(41, 41, 41)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabel1))
-                    .addComponent(manufacturerTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabel2))
-                    .addComponent(seatsTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabel3))
-                    .addComponent(serialNumTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabel4))
-                    .addComponent(modelTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(37, 37, 37)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(manufactureDateTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(42, 42, 42)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(isAvailableTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(certificateStatusText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(100, Short.MAX_VALUE))
-        );
+        nameLabel.setText("Name");
+        add(nameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 490, -1, -1));
+
+        nameTextField.setEnabled(false);
+        add(nameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 480, 280, -1));
+
+        submitUpdateButton.setText("Submit after Update");
+        submitUpdateButton.setEnabled(false);
+        submitUpdateButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                submitUpdateButtonActionPerformed(evt);
+            }
+        });
+        add(submitUpdateButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 640, -1, -1));
+        add(labelForTimestamp, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 560, 360, 30));
     }// </editor-fold>//GEN-END:initComponents
 private void populateTable() {
         DefaultTableModel defaultModel = (DefaultTableModel) airplaneTable1.getModel();
         defaultModel.setRowCount(0);
         for (Airplane airplane : fleet.getFleet()) {
-            Object row[] = new Object[3];
+            Object row[] = new Object[4];
             row[0] = airplane;
-            row[1]=airplane.getAirplaneSerialNum();
-            row[2] = airplane.getAirplaneManufacturer();
+            row[1] = airplane.getAirplaneModelNum();
+            row[2] = airplane.getAirplaneSerialNum();
+            row[3] = airplane.getAirplaneManufacturer();
 
             defaultModel.addRow(row);
         }
     }
     private void viewAirplaneDetailsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewAirplaneDetailsButtonActionPerformed
-           int selectedRow = airplaneTable1.getSelectedRow();
+       labelForTimestamp.setVisible(false);
+        int selectedRow = airplaneTable1.getSelectedRow();
         if (selectedRow >= 0) {
-            Airplane airplane = (Airplane) airplaneTable1.getValueAt((Integer)selectedRow,0);
-           manufactureDateTxt.setText(String.valueOf(airplane.getAirplaneManufactureDate()));
-           manufacturerTextField.setText(airplane.getAirplaneManufacturer());
-           seatsTextField.setText(Integer.toString(airplane.getAirplaneSeats()));
-           serialNumTextField.setText(airplane.getAirplaneSerialNum());
-           modelTextField.setText(airplane.getAirplaneModelNum());
-           isAvailableTextField.setText(airplane.getIsAvailable().toString());
-           certificateStatusText.setText(airplane.getIsExpired().toString());
-           
+            Airplane airplane = (Airplane) airplaneTable1.getValueAt((Integer) selectedRow, 0);
+            nameTextField.setText(airplane.getAirplaneName());
+            manufactureDateTxt.setText(String.valueOf(airplane.getAirplaneManufactureDate()));
+            manufacturerTextField.setText(airplane.getAirplaneManufacturer());
+            seatsTextField.setText(Integer.toString(airplane.getAirplaneSeats()));
+            serialNumTextField.setText(airplane.getAirplaneSerialNum());
+            modelTextField.setText(airplane.getAirplaneModelNum());
+            isAvailableTextField.setText(airplane.getIsAvailable().toString());
+            if ((airplane.getIsExpired().toString()).equalsIgnoreCase("true")) {
+                certificateStatusText.setText("Expired");
+            } else {
+                certificateStatusText.setText("Valid");
+            }
 
         } else {
             JOptionPane.showMessageDialog(null, "Please select any row");
@@ -240,10 +209,68 @@ private void populateTable() {
     }//GEN-LAST:event_viewAirplaneDetailsButtonActionPerformed
 
     private void updateAirplaneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateAirplaneButtonActionPerformed
-        
+               labelForTimestamp.setVisible(true);
+
+        enableAlltheTextFields();
+
+
     }//GEN-LAST:event_updateAirplaneButtonActionPerformed
 
+    private void submitUpdateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitUpdateButtonActionPerformed
+       labelForTimestamp.setVisible(true);
 
+        int selectedRow = airplaneTable1.getSelectedRow();
+        if (selectedRow >= 0) {
+            Airplane airplane = (Airplane) airplaneTable1.getValueAt(selectedRow, 0);
+            DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
+            try {
+                airplane.setAirplaneManufactureDate(df.parse(manufactureDateTxt.getText()));
+            } catch (ParseException ex) {
+                Logger.getLogger(CreateAirplaneJPanel.class.getName()).log(Level.SEVERE, null, ex);
+
+            }
+            airplane.setAirplaneName(nameTextField.getText());
+            airplane.setAirplaneManufacturer(manufacturerTextField.getText());
+            airplane.setAirplaneModelNum(modelTextField.getText());
+            airplane.setAirplaneSeats(Integer.parseInt(seatsTextField.getText()));
+            airplane.setAirplaneSerialNum(serialNumTextField.getText());
+            airplane.setIsAvailable(Boolean.getBoolean(isAvailableTextField.getText()));
+            airplane.setIsExpired(Boolean.valueOf(certificateStatusText.getText()));
+            populateTable();
+
+            nameTextField.setText("");
+            manufacturerTextField.setText("");
+            modelTextField.setText("");
+            seatsTextField.setText("");
+            serialNumTextField.setText("");
+            manufactureDateTxt.setText("");
+            isAvailableTextField.setText("");
+            certificateStatusText.setText("");
+ viewAirplaneJPanel= new ViewAirplaneJPanel(fleet);
+        viewAirplaneJPanel.setTimestamp(new Timestamp(System.currentTimeMillis()));
+        airplane.setTimestamp(viewAirplaneJPanel.getTimestamp());
+        labelForTimestamp.setText("Catalog Last Updated on: " + viewAirplaneJPanel.getTimestamp().toString());
+        } else {
+            JOptionPane.showMessageDialog(null, "Please select any row");
+        }
+      
+        JOptionPane.showMessageDialog(null, "Airplane Entry Updated");
+    }//GEN-LAST:event_submitUpdateButtonActionPerformed
+
+    private void enableAlltheTextFields() {
+        nameTextField.setEnabled(true);
+
+        manufacturerTextField.setEnabled(true);
+        manufactureDateTxt.setEnabled(true);
+        manufacturerTextField.setEnabled(true);
+        seatsTextField.setEnabled(true);
+        serialNumTextField.setEnabled(true);
+        modelTextField.setEnabled(true);
+        isAvailableTextField.setEnabled(true);
+        certificateStatusText.setEnabled(true);
+        submitUpdateButton.setEnabled(true);
+
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable airplaneTable1;
     private javax.swing.JTextField certificateStatusText;
@@ -256,12 +283,17 @@ private void populateTable() {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel labelForTimestamp;
     private javax.swing.JTextField manufactureDateTxt;
     private javax.swing.JTextField manufacturerTextField;
     private javax.swing.JTextField modelTextField;
+    private javax.swing.JLabel nameLabel;
+    private javax.swing.JTextField nameTextField;
     private javax.swing.JTextField seatsTextField;
     private javax.swing.JTextField serialNumTextField;
+    private javax.swing.JButton submitUpdateButton;
     private javax.swing.JButton updateAirplaneButton;
     private javax.swing.JButton viewAirplaneDetailsButton;
     // End of variables declaration//GEN-END:variables
+
 }
