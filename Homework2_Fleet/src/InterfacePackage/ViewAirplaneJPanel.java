@@ -28,17 +28,18 @@ public class ViewAirplaneJPanel extends javax.swing.JPanel {
     private Fleet fleet;
     Timestamp timestamp;
     ViewAirplaneJPanel viewAirplaneJPanel;
+
     public ViewAirplaneJPanel(Fleet fleet) {
         initComponents();
         this.fleet = fleet;
         populateTable();
     }
-
+    
     public Timestamp getTimestamp() {
         return timestamp;
     }
-    public void setTimestamp(Timestamp timestamp)
-    {
+
+    public void setTimestamp(Timestamp timestamp) {
         this.timestamp = timestamp;
     }
 
@@ -73,6 +74,10 @@ public class ViewAirplaneJPanel extends javax.swing.JPanel {
         nameTextField = new javax.swing.JTextField();
         submitUpdateButton = new javax.swing.JButton();
         labelForTimestamp = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        airportTextField = new javax.swing.JTextField();
+        avaiLabel = new javax.swing.JLabel();
+        avaiDateTextField = new javax.swing.JTextField();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -154,7 +159,7 @@ public class ViewAirplaneJPanel extends javax.swing.JPanel {
 
         certificateStatusText.setToolTipText("Give the value as either \"Expired\" or \"Valid\"");
         certificateStatusText.setEnabled(false);
-        add(certificateStatusText, new org.netbeans.lib.awtextra.AbsoluteConstraints(524, 905, 280, -1));
+        add(certificateStatusText, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 910, 280, -1));
 
         nameLabel.setText("Name");
         add(nameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 490, -1, -1));
@@ -171,6 +176,20 @@ public class ViewAirplaneJPanel extends javax.swing.JPanel {
         });
         add(submitUpdateButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 640, -1, -1));
         add(labelForTimestamp, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 560, 360, 30));
+
+        jLabel8.setText("Airport");
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 960, -1, -1));
+
+        airportTextField.setToolTipText("Give the value as either \"Expired\" or \"Valid\"");
+        airportTextField.setEnabled(false);
+        add(airportTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 950, 280, -1));
+
+        avaiLabel.setText("Availablity Date");
+        add(avaiLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 790, -1, -1));
+
+        avaiDateTextField.setToolTipText("Give the value as either \"Expired\" or \"Valid\"");
+        avaiDateTextField.setEnabled(false);
+        add(avaiDateTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 850, 280, -1));
     }// </editor-fold>//GEN-END:initComponents
 private void populateTable() {
         DefaultTableModel defaultModel = (DefaultTableModel) airplaneTable1.getModel();
@@ -181,12 +200,12 @@ private void populateTable() {
             row[1] = airplane.getAirplaneModelNum();
             row[2] = airplane.getAirplaneSerialNum();
             row[3] = airplane.getAirplaneManufacturer();
-
+            
             defaultModel.addRow(row);
         }
     }
     private void viewAirplaneDetailsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewAirplaneDetailsButtonActionPerformed
-       labelForTimestamp.setVisible(false);
+        labelForTimestamp.setVisible(false);
         int selectedRow = airplaneTable1.getSelectedRow();
         if (selectedRow >= 0) {
             Airplane airplane = (Airplane) airplaneTable1.getValueAt((Integer) selectedRow, 0);
@@ -202,32 +221,35 @@ private void populateTable() {
             } else {
                 certificateStatusText.setText("Valid");
             }
-
+            airportTextField.setText(airplane.getAirportName());
+            avaiDateTextField.setText(airplane.getAvailabityDate().toString());
         } else {
             JOptionPane.showMessageDialog(null, "Please select any row");
         }
     }//GEN-LAST:event_viewAirplaneDetailsButtonActionPerformed
 
     private void updateAirplaneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateAirplaneButtonActionPerformed
-               labelForTimestamp.setVisible(true);
-
+        labelForTimestamp.setVisible(true);
+        
         enableAlltheTextFields();
-
+        
 
     }//GEN-LAST:event_updateAirplaneButtonActionPerformed
 
     private void submitUpdateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitUpdateButtonActionPerformed
-       labelForTimestamp.setVisible(true);
-
+        labelForTimestamp.setVisible(true);
+        
         int selectedRow = airplaneTable1.getSelectedRow();
         if (selectedRow >= 0) {
             Airplane airplane = (Airplane) airplaneTable1.getValueAt(selectedRow, 0);
             DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
             try {
                 airplane.setAirplaneManufactureDate(df.parse(manufactureDateTxt.getText()));
+                airplane.setAvailabityDate(df.parse(avaiDateTextField.getText()));
+
             } catch (ParseException ex) {
                 Logger.getLogger(CreateAirplaneJPanel.class.getName()).log(Level.SEVERE, null, ex);
-
+                
             }
             airplane.setAirplaneName(nameTextField.getText());
             airplane.setAirplaneManufacturer(manufacturerTextField.getText());
@@ -236,8 +258,10 @@ private void populateTable() {
             airplane.setAirplaneSerialNum(serialNumTextField.getText());
             airplane.setIsAvailable(Boolean.getBoolean(isAvailableTextField.getText()));
             airplane.setIsExpired(Boolean.valueOf(certificateStatusText.getText()));
+            airplane.setAirportName(airportTextField.getText());
+            airplane.setTimestamp(new Timestamp(System.currentTimeMillis()));
             populateTable();
-
+            
             nameTextField.setText("");
             manufacturerTextField.setText("");
             modelTextField.setText("");
@@ -246,20 +270,23 @@ private void populateTable() {
             manufactureDateTxt.setText("");
             isAvailableTextField.setText("");
             certificateStatusText.setText("");
- viewAirplaneJPanel= new ViewAirplaneJPanel(fleet);
-        viewAirplaneJPanel.setTimestamp(new Timestamp(System.currentTimeMillis()));
-        airplane.setTimestamp(viewAirplaneJPanel.getTimestamp());
-        labelForTimestamp.setText("Catalog Last Updated on: " + viewAirplaneJPanel.getTimestamp().toString());
+            airportTextField.setText("");
+            avaiDateTextField.setText("");
+            ViewAirplaneJPanel viewAirplaneJPanel = new ViewAirplaneJPanel(fleet);
+            viewAirplaneJPanel.setTimestamp(airplane.getTimestamp());
+            labelForTimestamp.setText("Catalog Last Updated on: " + airplane.getTimestamp().toString());
+
+
         } else {
             JOptionPane.showMessageDialog(null, "Please select any row");
         }
-      
+        
         JOptionPane.showMessageDialog(null, "Airplane Entry Updated");
     }//GEN-LAST:event_submitUpdateButtonActionPerformed
-
+    
     private void enableAlltheTextFields() {
         nameTextField.setEnabled(true);
-
+        
         manufacturerTextField.setEnabled(true);
         manufactureDateTxt.setEnabled(true);
         manufacturerTextField.setEnabled(true);
@@ -269,10 +296,15 @@ private void populateTable() {
         isAvailableTextField.setEnabled(true);
         certificateStatusText.setEnabled(true);
         submitUpdateButton.setEnabled(true);
-
+        airportTextField.setEnabled(true);
+        avaiDateTextField.setEnabled(true);
+        
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable airplaneTable1;
+    private javax.swing.JTextField airportTextField;
+    private javax.swing.JTextField avaiDateTextField;
+    private javax.swing.JLabel avaiLabel;
     private javax.swing.JTextField certificateStatusText;
     private javax.swing.JTextField isAvailableTextField;
     private javax.swing.JLabel jLabel1;
@@ -282,6 +314,7 @@ private void populateTable() {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelForTimestamp;
     private javax.swing.JTextField manufactureDateTxt;

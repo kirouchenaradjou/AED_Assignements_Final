@@ -7,6 +7,13 @@ package InterfacePackage;
 
 import BusinessPackage.Airplane;
 import BusinessPackage.Fleet;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.util.Date;
+import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.text.SimpleDateFormat;
 
 /**
  *
@@ -18,9 +25,66 @@ public class MainJFrame extends javax.swing.JFrame {
      * Creates new form MainJFrame
      */
     private Fleet fleet;
+
     public MainJFrame() {
         initComponents();
         fleet = new Fleet();
+        populateFleetCatalogFromCSV();
+    }
+
+    public void populateFleetCatalogFromCSV() {
+        String fileToParse = "C:\\Users\\ragha\\Documents\\NetBeansProjects\\Homework2_Fleet\\src\\InterfacePackage\\Book1.csv";
+        BufferedReader fileReader = null;
+        final String DELIMITER = ",";
+        try {
+            String line = "";
+            //Create the file reader
+            fileReader = new BufferedReader(new FileReader(fileToParse));
+
+            //Read the file line by line
+            while ((line = fileReader.readLine()) != null) {
+                //Get all tokens available in line
+
+                String[] tokens = line.split(DELIMITER);
+                // for (String token : tokens) {
+                //  String a= tokens[0];
+                //Print all tokens
+                //   System.out.println(token);
+                Airplane airplane = fleet.addAirplane();
+
+                airplane.setAirplaneName(tokens[0]);
+                airplane.setAirplaneManufacturer(tokens[1]);
+                airplane.setAirplaneSeats(Integer.parseInt(tokens[2]));
+                airplane.setAirplaneSerialNum(tokens[3]);
+
+                airplane.setAirplaneModelNum(tokens[4]);
+                String date = tokens[5];
+                Date date1=(Date) new SimpleDateFormat("dd/MM/yyyy").parse(date);
+                  airplane.setAirplaneManufactureDate(date1);
+                //  System.out.println(tokens[7]);
+                if (tokens[6].equalsIgnoreCase("true")) {
+                    airplane.setIsAvailable(Boolean.TRUE);
+                } else {
+                    airplane.setIsAvailable(Boolean.FALSE);
+
+                }
+                if (tokens[7].equalsIgnoreCase("Valid")) {
+                    airplane.setIsExpired(Boolean.FALSE);
+                } else {
+                    airplane.setIsExpired(Boolean.TRUE);
+
+                }
+                airplane.setAirportName(tokens[8]);
+                 String date2 = tokens[5];
+                Date date_2=(Date) new SimpleDateFormat("MM/dd/yyyy").parse(date2);
+               
+                airplane.setAvailabityDate(date_2);
+
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
     /**
@@ -110,7 +174,7 @@ public class MainJFrame extends javax.swing.JFrame {
         // CreateAirplane JForm should appear at the right component
         CreateAirplaneJPanel createAirplaneJPanel = new CreateAirplaneJPanel(fleet);
         splitPane.setRightComponent(createAirplaneJPanel);
-        
+
     }//GEN-LAST:event_createAirplaneButtonActionPerformed
 
     private void viewAirplaneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewAirplaneButtonActionPerformed

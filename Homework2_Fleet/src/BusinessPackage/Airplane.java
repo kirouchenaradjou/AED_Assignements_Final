@@ -23,6 +23,24 @@ public class Airplane {
     private Boolean isAvailable;
     private Boolean isExpired;
     private Timestamp timestamp;
+    private String airportName;
+    private Date availabityDate;
+
+    public Date getAvailabityDate() {
+        return availabityDate;
+    }
+
+    public void setAvailabityDate(Date availabityDate) {
+        this.availabityDate = availabityDate;
+    }
+
+    public String getAirportName() {
+        return airportName;
+    }
+
+    public void setAirportName(String airportName) {
+        this.airportName = airportName;
+    }
 
     public Timestamp getTimestamp() {
         return timestamp;
