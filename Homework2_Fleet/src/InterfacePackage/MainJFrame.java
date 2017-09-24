@@ -75,7 +75,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
                 }
                 airplane.setAirportName(tokens[8]);
-                 String date2 = tokens[5];
+                 String date2 = tokens[9];
                 Date date_2=(Date) new SimpleDateFormat("MM/dd/yyyy").parse(date2);
                
                 airplane.setAvailabityDate(date_2);
