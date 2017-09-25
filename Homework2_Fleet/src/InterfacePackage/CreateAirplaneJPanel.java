@@ -14,6 +14,7 @@ import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -25,8 +26,9 @@ public class CreateAirplaneJPanel extends javax.swing.JPanel {
      * Creates new form CreateAirplaneJPanel
      */
     private Fleet fleet;
+
     public CreateAirplaneJPanel(Fleet fleet) {
-        
+
         initComponents();
         //Button Group for Availability Status
         buttonGroupForAvailability.add(availableRadioButton);
@@ -34,10 +36,8 @@ public class CreateAirplaneJPanel extends javax.swing.JPanel {
         //Button Group for Maintanance Certficate Expiry Status
         buttonGroupForCertificate.add(expiredRadioButton);
         buttonGroupForCertificate.add(validRadioButton);
-        this.fleet=fleet;
+        this.fleet = fleet;
     }
-
-   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -96,6 +96,12 @@ public class CreateAirplaneJPanel extends javax.swing.JPanel {
 
         jLabel5.setText("Manufacture Date");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 430, -1, -1));
+
+        manufacturerTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                manufacturerTextFieldActionPerformed(evt);
+            }
+        });
         add(manufacturerTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 190, 280, -1));
         add(seatsTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 250, 280, -1));
         add(serialNumTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 310, 280, -1));
@@ -110,6 +116,11 @@ public class CreateAirplaneJPanel extends javax.swing.JPanel {
         add(submitButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 760, -1, -1));
 
         availableRadioButton.setText("Yes");
+        availableRadioButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                availableRadioButtonMouseClicked(evt);
+            }
+        });
         availableRadioButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 availableRadioButtonActionPerformed(evt);
@@ -118,6 +129,16 @@ public class CreateAirplaneJPanel extends javax.swing.JPanel {
         add(availableRadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 480, -1, -1));
 
         notAvailableRadioButton.setText("No");
+        notAvailableRadioButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                notAvailableRadioButtonMouseClicked(evt);
+            }
+        });
+        notAvailableRadioButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                notAvailableRadioButtonActionPerformed(evt);
+            }
+        });
         add(notAvailableRadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 480, -1, -1));
 
         jLabel6.setText("Availability");
@@ -149,55 +170,74 @@ public class CreateAirplaneJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
+        Boolean valid = false;
+        valid = validateBeforeSave();
         // Save it in the ArrayList of type Airplane
-         DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
-        Airplane airplane = fleet.addAirplane();
-        airplane.setAirplaneManufactureDate(dateForManufactur.getDate());
-        airplane.setAirplaneName(airplaneName.getText());
-        airplane.setAirplaneManufacturer(manufacturerTextField.getText());
-        airplane.setAirplaneModelNum(modelTextField.getText());
-        airplane.setAirplaneSeats(Integer.parseInt(seatsTextField.getText()));
-        airplane.setAirplaneSerialNum(serialNumTextField.getText());
-       // airplane.setAvailabityDate(jDateChooser.getDate());
-          //     System.out.println(jDateChooser.getDate());
+        if (valid.equals(Boolean.TRUE)) {
+            DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
+            Airplane airplane = fleet.addAirplane();
+            airplane.setAirplaneManufactureDate(dateForManufactur.getDate());
+            airplane.setAirplaneName(airplaneName.getText());
+            airplane.setAirplaneManufacturer(manufacturerTextField.getText());
+            airplane.setAirplaneModelNum(modelTextField.getText());
+            airplane.setAirplaneSeats(Integer.parseInt(seatsTextField.getText()));
+            airplane.setAirplaneSerialNum(serialNumTextField.getText());
+            // airplane.setAvailabityDate(jDateChooser.getDate());
+            //     System.out.println(jDateChooser.getDate());
 
-        if(availableRadioButton.isSelected())
-        {
-                    airplane.setIsAvailable(Boolean.TRUE);
+            if (availableRadioButton.isSelected()) {
+                airplane.setIsAvailable(Boolean.TRUE);
 
-        }
-        else
-        {
-            airplane.setIsAvailable(Boolean.FALSE);
-        }
-        if(expiredRadioButton.isSelected())
-        {
-        airplane.setIsExpired(Boolean.TRUE);
-        }
-        else{
-                    airplane.setIsExpired(Boolean.FALSE);
+            } else {
+                airplane.setIsAvailable(Boolean.FALSE);
+            }
+            if (expiredRadioButton.isSelected()) {
+                airplane.setIsExpired(Boolean.TRUE);
+            } else {
+                airplane.setIsExpired(Boolean.FALSE);
 
+            }
+            airplane.setAirportName(airportComboBox.getSelectedItem().toString());
+            airplane.setAvailabityDate(jDateChooser.getDate());
+            System.out.println(airplane.getAvailabityDate());
+            JOptionPane.showMessageDialog(null, "Airplane Entry Added");
+
+            airplaneName.setText("");
+            manufacturerTextField.setText("");
+            modelTextField.setText("");
+            seatsTextField.setText("");
+            serialNumTextField.setText("");
+            dateForManufactur.setDate(null);
+            buttonGroupForAvailability.clearSelection();
+            buttonGroupForCertificate.clearSelection();
+            airportComboBox.setSelectedIndex(0);
+            jDateChooser.setDate(null);
+        } else {
+            JOptionPane.showMessageDialog(null, "Enter all the required Fields");
         }
-        airplane.setAirportName(airportComboBox.getSelectedItem().toString());
-        airplane.setAvailabityDate(jDateChooser.getDate());
-        System.out.println(airplane.getAvailabityDate());
-        JOptionPane.showMessageDialog(null, "Airplane Entry Added");
-         
-        airplaneName.setText("");
-        manufacturerTextField.setText("");
-        modelTextField.setText("");
-        seatsTextField.setText("");
-        serialNumTextField.setText("");
-        dateForManufactur.setDate(null);
-        buttonGroupForAvailability.clearSelection();
-        buttonGroupForCertificate.clearSelection();
-        airportComboBox.setSelectedIndex(0);
-     jDateChooser.setDate(null);
     }//GEN-LAST:event_submitButtonActionPerformed
 
     private void availableRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_availableRadioButtonActionPerformed
         // TODO add your handling code here:
+        jDateChooser.setEnabled(true);
+
     }//GEN-LAST:event_availableRadioButtonActionPerformed
+
+    private void notAvailableRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_notAvailableRadioButtonActionPerformed
+        jDateChooser.setEnabled(false);
+    }//GEN-LAST:event_notAvailableRadioButtonActionPerformed
+
+    private void notAvailableRadioButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_notAvailableRadioButtonMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_notAvailableRadioButtonMouseClicked
+
+    private void availableRadioButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_availableRadioButtonMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_availableRadioButtonMouseClicked
+
+    private void manufacturerTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manufacturerTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_manufacturerTextFieldActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -228,4 +268,23 @@ public class CreateAirplaneJPanel extends javax.swing.JPanel {
     private javax.swing.JButton submitButton;
     private javax.swing.JRadioButton validRadioButton;
     // End of variables declaration//GEN-END:variables
+
+    private Boolean validateBeforeSave() {
+
+        if (airplaneName.getText().isEmpty() || manufacturerTextField.getText().isEmpty() || modelTextField.getText().isEmpty() || seatsTextField.getText().isEmpty() || serialNumTextField.getText().isEmpty()
+                || ((JTextField) dateForManufactur.getDateEditor().getUiComponent()).getText().isEmpty())
+        {
+            return false;
+
+        } else if (availableRadioButton.isSelected() && ((JTextField) jDateChooser.getDateEditor().getUiComponent()).getText().isEmpty()) {
+            return false;
+        } else if ((availableRadioButton.isSelected() == false) && (notAvailableRadioButton.isSelected() == false)) {
+            return false;
+        } else if ((expiredRadioButton.isSelected() == false) && (validRadioButton.isSelected() == false)) {
+            return false;
+        } else {
+            return true;
+        }
+
+    }
 }

@@ -217,6 +217,7 @@ private void populateTable() {
             defaultModel.addRow(row);
         }
     }
+
     private void viewAirplaneDetailsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewAirplaneDetailsButtonActionPerformed
         labelForTimestamp.setVisible(false);
         int selectedRow = airplaneTable1.getSelectedRow();
@@ -230,8 +231,12 @@ private void populateTable() {
             modelTextField.setText(airplane.getAirplaneModelNum());
             if (airplane.getIsAvailable()) {
                 availableRadioButton.setSelected(true);
+                            jDateChooser.setDate(airplane.getAvailabityDate());
+
             } else {
                 notAvailableRadioButton.setSelected(true);
+                            jDateChooser.setDate(null);
+
             }
             if (airplane.getIsExpired()) {
                 expiredRadioButton.setSelected(true);
@@ -239,7 +244,6 @@ private void populateTable() {
                 validRadioButton.setSelected(true);
             }
             airportTextField.setText(airplane.getAirportName());
-            jDateChooser.setDate(airplane.getAvailabityDate());
         } else {
             JOptionPane.showMessageDialog(null, "Please select any row");
         }
@@ -269,12 +273,12 @@ private void populateTable() {
             airplane.setAirplaneModelNum(modelTextField.getText());
             airplane.setAirplaneSeats(Integer.parseInt(seatsTextField.getText()));
             airplane.setAirplaneSerialNum(serialNumTextField.getText());
-            if (airplane.getIsAvailable()) {
+            if (availableRadioButton.isSelected()) {
                 airplane.setIsAvailable(true);
             } else {
                 airplane.setIsAvailable(false);
             }
-            if (airplane.getIsExpired()) {
+            if (expiredRadioButton.isSelected()) {
                 airplane.setIsExpired(true);
             } else {
                 airplane.setIsExpired(false);

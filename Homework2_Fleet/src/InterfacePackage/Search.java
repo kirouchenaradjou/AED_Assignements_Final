@@ -34,7 +34,7 @@ public class Search extends javax.swing.JPanel {
      * Creates new form Search
      */
     private Fleet fleet;
-
+    
     public Search(Fleet fleet) {
         initComponents();
         setVisibleFalse();
@@ -80,24 +80,37 @@ public class Search extends javax.swing.JPanel {
         seatSearch = new javax.swing.JButton();
         airportLabel = new javax.swing.JLabel();
         airportTextField = new javax.swing.JTextField();
-        avaiStatusButton1 = new javax.swing.JButton();
+        airportName = new javax.swing.JButton();
         airportComboBox = new javax.swing.JComboBox<>();
         avaiLabel = new javax.swing.JLabel();
         avaiDateTextField = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         listForOneColumn = new javax.swing.JList<>();
-        jTextField1 = new javax.swing.JTextField();
+        secondaryFilterText = new javax.swing.JTextField();
         searchComboBox = new javax.swing.JComboBox<>();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        secondSearchCombo = new javax.swing.JComboBox<>();
+        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
+        jSeparator3 = new javax.swing.JSeparator();
+        jSeparator4 = new javax.swing.JSeparator();
+        jSeparator5 = new javax.swing.JSeparator();
+        jSeparator6 = new javax.swing.JSeparator();
+        jSeparator7 = new javax.swing.JSeparator();
+        jSeparator8 = new javax.swing.JSeparator();
 
+        setForeground(new java.awt.Color(0, 51, 204));
+        setToolTipText("");
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setText("Search ");
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 20, 180, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 10, 180, -1));
 
         searchText.setToolTipText("Give the serial number of the airplane");
-        add(searchText, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 180, -1));
+        add(searchText, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, 180, -1));
 
         airplaneTableForSearch.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -125,55 +138,55 @@ public class Search extends javax.swing.JPanel {
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 30, 630, 330));
 
         labelForManufacturer.setText("Manufacturer");
-        add(labelForManufacturer, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 680, -1, -1));
+        add(labelForManufacturer, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 580, -1, -1));
 
         seatsLabel.setText("No of seats");
-        add(seatsLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 740, -1, -1));
+        add(seatsLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 640, -1, -1));
 
         serialNumLabel.setText("Serial Number");
-        add(serialNumLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 790, -1, -1));
+        add(serialNumLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 690, -1, -1));
 
         modelNumLabel.setText("Model Number");
-        add(modelNumLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 840, -1, -1));
+        add(modelNumLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 740, -1, -1));
 
         manuDateLabel.setText("Manufacture Date");
-        add(manuDateLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 690, -1, -1));
+        add(manuDateLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 590, -1, -1));
 
         manufacturerTextField.setEditable(false);
         manufacturerTextField.setEnabled(false);
-        add(manufacturerTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 680, 280, -1));
+        add(manufacturerTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 580, 280, -1));
 
         seatsTextField.setEnabled(false);
-        add(seatsTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 730, 280, -1));
+        add(seatsTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 630, 280, -1));
 
         serialNumTextField.setEnabled(false);
-        add(serialNumTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 780, 280, -1));
+        add(serialNumTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 680, 280, -1));
 
         modelTextField.setEnabled(false);
-        add(modelTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 840, 280, -1));
+        add(modelTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 740, 280, -1));
 
         manufactureDateTxt.setEnabled(false);
-        add(manufactureDateTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 680, 280, -1));
+        add(manufactureDateTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 580, 280, -1));
 
         avaiStatusLabel.setText("Availability Status");
-        add(avaiStatusLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 740, -1, -1));
+        add(avaiStatusLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 640, -1, -1));
 
         isAvailableTextField.setEnabled(false);
-        add(isAvailableTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 730, 280, -1));
+        add(isAvailableTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 630, 280, -1));
 
         certiLabel.setText("Maintenance Certificate");
-        add(certiLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 790, -1, -1));
+        add(certiLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 690, -1, -1));
 
         certificateStatusText.setEnabled(false);
-        add(certificateStatusText, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 780, 280, -1));
+        add(certificateStatusText, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 680, 280, -1));
 
         nameLabel.setText("Name");
-        add(nameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 630, -1, -1));
+        add(nameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 530, -1, -1));
 
         nameTextField.setEditable(false);
         nameTextField.setEnabled(false);
-        add(nameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 630, 280, -1));
-        add(countLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 480, 290, -1));
+        add(nameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 530, 280, -1));
+        add(countLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 580, 310, 20));
 
         timeStampButton.setText("Time Stamp for last updation of Fleet Catalog");
         timeStampButton.addActionListener(new java.awt.event.ActionListener() {
@@ -182,7 +195,7 @@ public class Search extends javax.swing.JPanel {
             }
         });
         add(timeStampButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, 430, -1));
-        add(labelForTimeStamp, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 550, 490, 30));
+        add(labelForTimeStamp, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 400, 490, 30));
 
         seatsearchLabel.setText("Search via Seat Number ");
         add(seatsearchLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, -1, -1));
@@ -205,31 +218,33 @@ public class Search extends javax.swing.JPanel {
         add(seatSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 120, -1, -1));
 
         airportLabel.setText("Airport");
-        add(airportLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 840, -1, -1));
+        add(airportLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 740, -1, -1));
 
         airportTextField.setToolTipText("Give the value as either \"Expired\" or \"Valid\"");
         airportTextField.setEnabled(false);
-        add(airportTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 830, 280, -1));
+        add(airportTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 730, 280, -1));
 
-        avaiStatusButton1.setText("Airport Name");
-        avaiStatusButton1.addActionListener(new java.awt.event.ActionListener() {
+        airportName.setText("Airport Name");
+        airportName.setToolTipText("You can perform a Secondary Filter, if needed");
+        airportName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                avaiStatusButton1ActionPerformed(evt);
+                airportNameActionPerformed(evt);
             }
         });
-        add(avaiStatusButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 180, 180, -1));
+        add(airportName, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 180, 180, -1));
 
         airportComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Dallas/Fort Worth International Airport", "Logan International Airport", "LaGuardia Airport", "Washington Dulles International Airport", "San Francisco International Airport", "John F. Kennedy International Airport", "Los Angeles International Airport", " " }));
         add(airportComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 250, -1));
 
         avaiLabel.setText("Availablity Date");
-        add(avaiLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 630, -1, -1));
+        add(avaiLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 530, -1, -1));
 
         avaiDateTextField.setToolTipText("Give the value as either \"Expired\" or \"Valid\"");
         avaiDateTextField.setEnabled(false);
-        add(avaiDateTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 630, 280, -1));
+        add(avaiDateTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 530, 280, -1));
 
         listForOneColumn.setEnabled(false);
+        listForOneColumn.setOpaque(false);
         listForOneColumn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 listForOneColumnMouseClicked(evt);
@@ -242,22 +257,52 @@ public class Search extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(listForOneColumn);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 630, 230, -1));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 570, 230, -1));
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        secondaryFilterText.setEnabled(false);
+        secondaryFilterText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                secondaryFilterTextActionPerformed(evt);
             }
         });
-        add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1200, 130, 150, -1));
+        add(secondaryFilterText, new org.netbeans.lib.awtextra.AbsoluteConstraints(1200, 160, 100, -1));
 
-        searchComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Serial Number", "Manufacture Year", "Model Number", "Expired Maintenance Certificate", "Boeing Manufacturer", "Airplane Availability", "First Available Airplane", "Manufacturers of the Airline" }));
+        searchComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Serial Number", "Manufacture Year", "Model Number", " " }));
         searchComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchComboBoxActionPerformed(evt);
             }
         });
-        add(searchComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 80, 150, -1));
+        add(searchComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 70, 150, -1));
+
+        jLabel2.setText("Secondary Filter");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1200, 120, 140, -1));
+
+        jLabel3.setText("Choose from the drop down for furthur search operations");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 310, 420, 20));
+
+        secondSearchCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Expired Maintenance Certificate", "Boeing Manufacturer", "Airplane Availability", "First Available Airplane", "Manufacturers of the Airline" }));
+        secondSearchCombo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                secondSearchComboActionPerformed(evt);
+            }
+        });
+        add(secondSearchCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 340, -1, -1));
+        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 490, 20));
+
+        jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 10, 360));
+        add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 490, 20));
+
+        jSeparator4.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 40, 10, 360));
+        add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 490, 20));
+
+        jSeparator6.setForeground(new java.awt.Color(0, 0, 0));
+        jSeparator6.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 400, 490, 20));
+        add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 490, 20));
+        add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 490, 20));
     }// </editor-fold>//GEN-END:initComponents
 
     private void airplaneTableForSearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_airplaneTableForSearchMouseClicked
@@ -289,6 +334,7 @@ public class Search extends javax.swing.JPanel {
 
     private void timeStampButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_timeStampButtonActionPerformed
         setVisibleFalse();
+        labelForTimeStamp.setVisible(true);
         listForOneColumn.setVisible(false);
         countLabel.setVisible(false);
         for (Airplane airplane : fleet.getFleet()) {
@@ -302,7 +348,7 @@ public class Search extends javax.swing.JPanel {
         countLabel.setVisible(false);
         labelForTimeStamp.setVisible(false);
         listForOneColumn.setVisible(false);
-
+        
         DefaultTableModel defaultModel = (DefaultTableModel) airplaneTableForSearch.getModel();
         defaultModel.setRowCount(0);
         int minSeats = Integer.parseInt(minSeatTextBox.getText());
@@ -314,17 +360,19 @@ public class Search extends javax.swing.JPanel {
                 row[1] = airplane.getAirplaneModelNum();
                 row[2] = airplane.getAirplaneSerialNum();
                 row[3] = airplane.getAirplaneManufacturer();
-
+                
                 defaultModel.addRow(row);
             }
         }
+        minSeatTextBox.setText("");
+        maxSeatTextField.setText("");
     }//GEN-LAST:event_seatSearchActionPerformed
 
-    private void avaiStatusButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_avaiStatusButton1ActionPerformed
+    private void airportNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_airportNameActionPerformed
         countLabel.setVisible(false);
         labelForTimeStamp.setVisible(false);
         listForOneColumn.setVisible(false);
-
+        secondaryFilterText.setEnabled(true);
         DefaultTableModel defaultModel = (DefaultTableModel) airplaneTableForSearch.getModel();
         defaultModel.setRowCount(0);
         String tobeSearched = airportComboBox.getSelectedItem().toString();
@@ -335,11 +383,11 @@ public class Search extends javax.swing.JPanel {
                 row[1] = airplane.getAirplaneModelNum();
                 row[2] = airplane.getAirplaneSerialNum();
                 row[3] = airplane.getAirplaneManufacturer();
-
+                
                 defaultModel.addRow(row);
             }
         }
-    }//GEN-LAST:event_avaiStatusButton1ActionPerformed
+    }//GEN-LAST:event_airportNameActionPerformed
 
     private void listForOneColumnValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listForOneColumnValueChanged
         // TODO add your handling code here:
@@ -366,28 +414,28 @@ public class Search extends javax.swing.JPanel {
                     certificateStatusText.setText("Valid");
                 }
                 avaiDateTextField.setText(String.valueOf(airplane.getAvailabityDate()));
-
+                
             }
         }
 
     }//GEN-LAST:event_listForOneColumnMouseClicked
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void secondaryFilterTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_secondaryFilterTextActionPerformed
         // TODO add your handling code here:
         TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(((DefaultTableModel) airplaneTableForSearch.getModel()));
-        sorter.setRowFilter(RowFilter.regexFilter(jTextField1.getText()));
-
+        sorter.setRowFilter(RowFilter.regexFilter(secondaryFilterText.getText()));
+        
         airplaneTableForSearch.setRowSorter(sorter);
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_secondaryFilterTextActionPerformed
 
     private void searchComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchComboBoxActionPerformed
         if (searchComboBox.getSelectedItem().toString().equals("Serial Number")) {
             countLabel.setVisible(false);
             labelForTimeStamp.setVisible(false);
             listForOneColumn.setVisible(false);
-                        searchText.setEditable(true);
-
-
+            listForOneColumn.clearSelection();;
+            searchText.setEditable(true);
+            
             DefaultTableModel defaultModel = (DefaultTableModel) airplaneTableForSearch.getModel();
             defaultModel.setRowCount(0);
             String toBeSearched = searchText.getText();
@@ -398,7 +446,7 @@ public class Search extends javax.swing.JPanel {
                     row[1] = airplane.getAirplaneModelNum();
                     row[2] = airplane.getAirplaneSerialNum();
                     row[3] = airplane.getAirplaneManufacturer();
-
+                    
                     defaultModel.addRow(row);
                 }
             }
@@ -407,9 +455,8 @@ public class Search extends javax.swing.JPanel {
             countLabel.setVisible(false);
             labelForTimeStamp.setVisible(false);
             listForOneColumn.setVisible(false);
-                        searchText.setEditable(true);
-
-
+            searchText.setEditable(true);
+            
             DefaultTableModel defaultModel = (DefaultTableModel) airplaneTableForSearch.getModel();
             defaultModel.setRowCount(0);
             String toBeSearched = searchText.getText();
@@ -421,7 +468,7 @@ public class Search extends javax.swing.JPanel {
                     row[1] = airplane.getAirplaneModelNum();
                     row[2] = airplane.getAirplaneSerialNum();
                     row[3] = airplane.getAirplaneManufacturer();
-
+                    
                     defaultModel.addRow(row);
                 }
             }
@@ -430,9 +477,8 @@ public class Search extends javax.swing.JPanel {
             countLabel.setVisible(false);
             labelForTimeStamp.setVisible(false);
             listForOneColumn.setVisible(false);
-                        searchText.setEditable(true);
-
-
+            searchText.setEditable(true);
+            
             DefaultTableModel defaultModel = (DefaultTableModel) airplaneTableForSearch.getModel();
             defaultModel.setRowCount(0);
             String toBeSearched = searchText.getText();
@@ -443,18 +489,21 @@ public class Search extends javax.swing.JPanel {
                     row[1] = airplane.getAirplaneModelNum();
                     row[2] = airplane.getAirplaneSerialNum();
                     row[3] = airplane.getAirplaneManufacturer();
-
+                    
                     defaultModel.addRow(row);
                 }
             }
 
     }//GEN-LAST:event_searchComboBoxActionPerformed
-        if (searchComboBox.getSelectedItem().toString().equals("Expired Maintenance Certificate")) {
+    }
+    private void secondSearchComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_secondSearchComboActionPerformed
+        // TODO add your handling code here:
+         if (secondSearchCombo.getSelectedItem().toString().equals("Expired Maintenance Certificate")) {
             countLabel.setVisible(false);
             labelForTimeStamp.setVisible(false);
             listForOneColumn.setVisible(false);
             searchText.setEditable(false);
-
+            
             DefaultTableModel defaultModel = (DefaultTableModel) airplaneTableForSearch.getModel();
             defaultModel.setRowCount(0);
             for (Airplane airplane : fleet.getFleet()) {
@@ -464,40 +513,36 @@ public class Search extends javax.swing.JPanel {
                     row[1] = airplane.getAirplaneModelNum();
                     row[2] = airplane.getAirplaneSerialNum();
                     row[3] = airplane.getAirplaneManufacturer();
-
+                    
                     defaultModel.addRow(row);
                 }
             }
         }
-        if(searchComboBox.getSelectedItem().toString().equals("Boeing Manufacturer"))
-        {
-                    countLabel.setVisible(false);
-        labelForTimeStamp.setVisible(false);
-        listForOneColumn.setVisible(false);
-                    searchText.setEditable(false);
-
-
-        DefaultTableModel defaultModel = (DefaultTableModel) airplaneTableForSearch.getModel();
-        defaultModel.setRowCount(0);
-        for (Airplane airplane : fleet.getFleet()) {
-            if (airplane.getAirplaneManufacturer().equalsIgnoreCase("Boeing")) {
-                Object row[] = new Object[4];
-                row[0] = airplane;
-                row[1] = airplane.getAirplaneModelNum();
-                row[2] = airplane.getAirplaneSerialNum();
-                row[3] = airplane.getAirplaneManufacturer();
-
-                defaultModel.addRow(row);
+        if (secondSearchCombo.getSelectedItem().toString().equals("Boeing Manufacturer")) {
+            countLabel.setVisible(false);
+            labelForTimeStamp.setVisible(false);
+            listForOneColumn.setVisible(false);
+            
+            DefaultTableModel defaultModel = (DefaultTableModel) airplaneTableForSearch.getModel();
+            defaultModel.setRowCount(0);
+            for (Airplane airplane : fleet.getFleet()) {
+                if (airplane.getAirplaneManufacturer().equalsIgnoreCase("Boeing")) {
+                    Object row[] = new Object[4];
+                    row[0] = airplane;
+                    row[1] = airplane.getAirplaneModelNum();
+                    row[2] = airplane.getAirplaneSerialNum();
+                    row[3] = airplane.getAirplaneManufacturer();
+                    
+                    defaultModel.addRow(row);
+                }
             }
         }
-        }
-        if(searchComboBox.getSelectedItem().toString().equals("Airplane Availability"))
-        {
-             labelForTimeStamp.setVisible(false);
-        listForOneColumn.setVisible(true);
-        listForOneColumn.setEnabled(true);
-        /* int count = 0;
-        //Hide the other columns other than airplane name
+        if (secondSearchCombo.getSelectedItem().toString().equals("Airplane Availability")) {
+            labelForTimeStamp.setVisible(false);
+            listForOneColumn.setVisible(true);
+            listForOneColumn.setEnabled(true);
+            int count = 0;
+            /*//Hide the other columns other than airplane name
         DefaultTableModel defaultModel = (DefaultTableModel) airplaneTableForSearch.getModel();
 
         TableColumn manufacturerColumn = airplaneTableForSearch.getColumnModel().getColumn(3);
@@ -516,57 +561,58 @@ public class Search extends javax.swing.JPanel {
                 row[0] = airplane;
 
                 defaultModel.addRow(row);
-                countLabel.setVisible(true);
-                countLabel.setText("Airplanes Available : " + count);
+                
             }
         }*/
-        DefaultListModel<String> dlm = new DefaultListModel<String>();
-        ArrayList<String> airplaneManufacture = new ArrayList<String>();
-        for (Airplane airplane : fleet.getFleet()) {
-            if (airplane.getIsAvailable().toString().equalsIgnoreCase("true")) {
-                airplaneManufacture.add(airplane.getAirplaneName());
+            DefaultListModel<String> dlm = new DefaultListModel<String>();
+            ArrayList<String> airplaneManufacture = new ArrayList<String>();
+            for (Airplane airplane : fleet.getFleet()) {
+                if (airplane.getIsAvailable().toString().equalsIgnoreCase("true")) {
+                    airplaneManufacture.add(airplane.getAirplaneName());
+                }
             }
-        }
-        Set<String> hs = new HashSet<>();
-        hs.addAll(airplaneManufacture);
-        airplaneManufacture.clear();
-        airplaneManufacture.addAll(hs);
-        for (int i = 0; i < airplaneManufacture.size(); i++) {
-            dlm.addElement(airplaneManufacture.get(i));
-        }
-        JList<String> list = new JList<>(dlm);
-        listForOneColumn.setModel(dlm);
-
-        }
-                if(searchComboBox.getSelectedItem().toString().equals("First Available Airplane"))
-                {
-                    listForOneColumn.setVisible(false);
-
-        DateFormat dateFormat = new SimpleDateFormat("MM/dd/YYYY");
-        Date date = new Date();
-        // System.out.println(dateFormat.format(date));
-        countLabel.setVisible(false);
-        labelForTimeStamp.setVisible(false);
-        DefaultTableModel defaultModel = (DefaultTableModel) airplaneTableForSearch.getModel();
-        defaultModel.setRowCount(0);
-        Date[] dates = new Date[40];
-        Integer[] daysBetween = new Integer[20];
-        int i = 0, small = 0, j = 1;
-        long minDiff = -1,
-                currentTime = date.getTime();
-        Date minDate = null;
-        for (Airplane airplane : fleet.getFleet()) {
-
-            dates[i] = airplane.getAvailabityDate();
-            // System.out.println(date);
-            //System.out.println(dates[i]);
-            long diff = Math.abs(currentTime - dates[i].getTime());
-            if ((minDiff == -1) || (diff < minDiff)) {
-                minDiff = diff;
-                minDate = dates[i];
+            Set<String> hs = new HashSet<>();
+            hs.addAll(airplaneManufacture);
+            airplaneManufacture.clear();
+            airplaneManufacture.addAll(hs);
+            for (int i = 0; i < airplaneManufacture.size(); i++) {
+                dlm.addElement(airplaneManufacture.get(i));
+                count++;
             }
+            JList<String> list = new JList<>(dlm);
+            listForOneColumn.setModel(dlm);
+            countLabel.setVisible(true);
+            countLabel.setText("Airplanes Available : " + count);
+            
+        }
+        if (secondSearchCombo.getSelectedItem().toString().equals("First Available Airplane")) {
+            listForOneColumn.setVisible(false);
+            countLabel.setVisible(false);
+           // DateFormat dateFormat = new SimpleDateFormat("MM/dd/YYYY");
+            Date date = new Date();
+            // System.out.println(dateFormat.format(date));
+            countLabel.setVisible(false);
+            labelForTimeStamp.setVisible(false);
+            DefaultTableModel defaultModel = (DefaultTableModel) airplaneTableForSearch.getModel();
+            defaultModel.setRowCount(0);
+            Date[] dates = new Date[40];
+            Integer[] daysBetween = new Integer[20];
+            int i = 0, small = 0, j = 1;
+            long minDiff = -1,
+                    currentTime = date.getTime();
+            Date minDate = null;
+            for (Airplane airplane : fleet.getFleet()) {
+                
+                dates[i] = airplane.getAvailabityDate();
+                // System.out.println(date);
+                // System.out.println(dates[i]);
+                long diff = Math.abs(currentTime - dates[i].getTime());
+                if ((minDiff == -1) || (diff < minDiff)) {
+                    minDiff = diff;
+                    minDate = dates[i];
+                }
 
-            /*if (dateFormat.format(dates[i]).contains("2017")) {
+                /*if (dateFormat.format(dates[i]).contains("2017")) {
                 Calendar day1 = Calendar.getInstance();
                 Calendar day2 = Calendar.getInstance();
                 day1.setTime(dates[i]);
@@ -574,46 +620,47 @@ public class Search extends javax.swing.JPanel {
                 daysBetween[i] = day1.get(Calendar.DAY_OF_YEAR) - day2.get(Calendar.DAY_OF_YEAR);
                 System.out.println(daysBetween[i]+"And the date is" +dates[i]);
                
-             */
-            i++;
+                 */
+                i++;
 
-            // }
-        }
-        // System.out.println("Minimum Date "+minDate);
-        for (Airplane airplane : fleet.getFleet()) {
-            if (airplane.getAvailabityDate().equals(minDate)) {
-                Object row[] = new Object[4];
-                row[0] = airplane;
-                row[1] = airplane.getAirplaneModelNum();
-                row[2] = airplane.getAirplaneSerialNum();
-                row[3] = airplane.getAirplaneManufacturer();
-
-                defaultModel.addRow(row);
+                // }
             }
-        }
+            // System.out.println("Minimum Date "+minDate);
+            for (Airplane airplane : fleet.getFleet()) {
+                if (airplane.getAvailabityDate().equals(minDate)) {
+                    Object row[] = new Object[4];
+                    row[0] = airplane;
+                    row[1] = airplane.getAirplaneModelNum();
+                    row[2] = airplane.getAirplaneSerialNum();
+                    row[3] = airplane.getAirplaneManufacturer();
                     
+                    defaultModel.addRow(row);
                 }
-                if(searchComboBox.getSelectedItem().toString().equals("Manufacturers of the Airline"))
-                {
-                      listForOneColumn.setVisible(true);
-        listForOneColumn.setEnabled(true);
-        DefaultListModel<String> dlm = new DefaultListModel<String>();
-        ArrayList<String> airplaneManufacture = new ArrayList<String>();
-        for (Airplane airplane : fleet.getFleet()) {
-            airplaneManufacture.add(airplane.getAirplaneManufacturer());
+            }
+            
         }
-        Set<String> hs = new HashSet<>();
-        hs.addAll(airplaneManufacture);
-        airplaneManufacture.clear();
-        airplaneManufacture.addAll(hs);
-        for (int i = 0; i < airplaneManufacture.size(); i++) {
-            dlm.addElement(airplaneManufacture.get(i));
+        if (secondSearchCombo.getSelectedItem().toString().equals("Manufacturers of the Airline")) {
+            listForOneColumn.setVisible(true);
+            listForOneColumn.setEnabled(true);
+            DefaultListModel<String> dlm = new DefaultListModel<String>();
+            ArrayList<String> airplaneManufacture = new ArrayList<String>();
+            for (Airplane airplane : fleet.getFleet()) {
+                airplaneManufacture.add(airplane.getAirplaneManufacturer());
+            }
+            Set<String> hs = new HashSet<>();
+            hs.addAll(airplaneManufacture);
+            airplaneManufacture.clear();
+            airplaneManufacture.addAll(hs);
+            for (int i = 0; i < airplaneManufacture.size(); i++) {
+                dlm.addElement(airplaneManufacture.get(i));
+            }
+            JList<String> list = new JList<>(dlm);
+            listForOneColumn.setModel(dlm);
         }
-        JList<String> list = new JList<>(dlm);
-        listForOneColumn.setModel(dlm);
-                }
-    }
-
+    }//GEN-LAST:event_secondSearchComboActionPerformed
+       
+    
+    
     private void setVisibleFalse() {
         //set the Text fields false
         nameTextField.setVisible(false);
@@ -639,25 +686,34 @@ public class Search extends javax.swing.JPanel {
         airportLabel.setVisible(false);
         avaiLabel.setVisible(false);
         listForOneColumn.setVisible(false);
-
+        
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable airplaneTableForSearch;
     private javax.swing.JComboBox<String> airportComboBox;
     private javax.swing.JLabel airportLabel;
+    private javax.swing.JButton airportName;
     private javax.swing.JTextField airportTextField;
     private javax.swing.JTextField avaiDateTextField;
     private javax.swing.JLabel avaiLabel;
-    private javax.swing.JButton avaiStatusButton1;
     private javax.swing.JLabel avaiStatusLabel;
     private javax.swing.JLabel certiLabel;
     private javax.swing.JTextField certificateStatusText;
     private javax.swing.JLabel countLabel;
     private javax.swing.JTextField isAvailableTextField;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JSeparator jSeparator6;
+    private javax.swing.JSeparator jSeparator7;
+    private javax.swing.JSeparator jSeparator8;
     private javax.swing.JLabel labelForManufacturer;
     private javax.swing.JLabel labelForTimeStamp;
     private javax.swing.JList<String> listForOneColumn;
@@ -676,6 +732,8 @@ public class Search extends javax.swing.JPanel {
     private javax.swing.JLabel seatsLabel;
     private javax.swing.JTextField seatsTextField;
     private javax.swing.JLabel seatsearchLabel;
+    private javax.swing.JComboBox<String> secondSearchCombo;
+    private javax.swing.JTextField secondaryFilterText;
     private javax.swing.JLabel serialNumLabel;
     private javax.swing.JTextField serialNumTextField;
     private javax.swing.JLabel statusLabel;
@@ -708,5 +766,5 @@ public class Search extends javax.swing.JPanel {
         airportLabel.setVisible(true);
         avaiLabel.setVisible(true);
     }
-
+    
 }
