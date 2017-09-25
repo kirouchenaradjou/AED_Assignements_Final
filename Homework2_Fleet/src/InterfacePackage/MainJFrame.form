@@ -47,9 +47,9 @@
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="createAirplaneButton" max="32767" attributes="0"/>
                           <Component id="viewAirplaneButton" alignment="0" max="32767" attributes="0"/>
-                          <Component id="searchButton" alignment="0" pref="88" max="32767" attributes="0"/>
+                          <Component id="searchButton" alignment="0" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="75" max="32767" attributes="0"/>
+                      <EmptySpace pref="40" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -71,6 +71,7 @@
             <Component class="javax.swing.JButton" name="createAirplaneButton">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Create"/>
+                <Property name="toolTipText" type="java.lang.String" value="Add Airplane Entry"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="createAirplaneButtonActionPerformed"/>
@@ -78,7 +79,8 @@
             </Component>
             <Component class="javax.swing.JButton" name="viewAirplaneButton">
               <Properties>
-                <Property name="text" type="java.lang.String" value="View"/>
+                <Property name="text" type="java.lang.String" value="View/Update"/>
+                <Property name="toolTipText" type="java.lang.String" value="Update and View Fleet Catalog"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="viewAirplaneButtonActionPerformed"/>
@@ -87,6 +89,7 @@
             <Component class="javax.swing.JButton" name="searchButton">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Search"/>
+                <Property name="toolTipText" type="java.lang.String" value="Search Operation on Fleet Catalog"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="searchButtonActionPerformed"/>

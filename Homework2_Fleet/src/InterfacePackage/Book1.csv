@@ -1,13 +1,24 @@
-Airbus 330-200,Airbus,126,A0123,M678,12/3/1980,TRUE,Valid,Dallas/Fort Worth International Airport,09/30/2017,
-Airbus 330-300,Airbus,12,A0128,M789,09/06/1878,TRUE,Valid,Logan International Airport,10/1/2017,
-ATR 72-500,Airbus,100,A0129,M123,5/5/1956,TRUE,Valid,LaGuardia Airport,11/11/2017,
-ATR 72-600,Airbus,50,A0130,M789,7/5/2000,TRUE,Valid,Washington Dulles International Airport,12/1/2017,
-Boeing 737-700,Boeing,200,A0131,M123,18/09/1980,FALSE,Valid,San Francisco International Airport,12/3/2017,
-Boeing 737-800,Boeing,78,A0132,M980,4/3/1960,FALSE,Valid,John F. Kennedy International Airport,11/1/2017,
-Boeing 737-900,Boeing,189,A0133,M678,11/10/1956,FALSE,Expired,Los Angeles International Airport,10/22/2017,
-Boeing 737-900ER,Boeing,49,A0134,M678,2/28/1990,FALSE,Expired,Los Angeles International Airport,1/1/2018,
-Boeing 737-300ER,Boeing,99,A0135,M123,2/18/1984,FALSE,Expired,John F. Kennedy International Airport,3/2/2018,
-Bombardier 737-900,Bombardier,110,A0136,M980,7/7/2000,FALSE,Expired,San Francisco International Airport,12/25/2017,
-Bombardier 737-902,Bombardier,3,A0137,M678,10/1/1989,TRUE,Expired,Washington Dulles International Airport,12/30/2017,
-Bombardier 737-901,Bombardier,11,A0138,M123,11/11/1956,TRUE,Expired,LaGuardia Airport,10/18/2017,
-Airbus 330-200,Airbus,8,A0139,M980,4/23/1966,TRUE,Valid,Logan International Airport,2/28/2018,
+Airbus 330-200,Airbus,126,A0123,M678,12/3/1980,TRUE,Valid,Dallas/Fort Worth International Airport,9/30/2017
+Airbus 330-300,Airbus,12,A0128,M789,09/06/1878,TRUE,Valid,Logan International Airport,10/1/2017
+ATR 72-500,Airbus,100,A0129,M123,5/5/1956,TRUE,Valid,LaGuardia Airport,11/11/2017
+ATR 72-600,Airbus,50,A0130,M789,7/5/2000,TRUE,Valid,Washington Dulles International Airport,12/1/2017
+Boeing 737-700,Boeing,200,A0131,M123,18/09/1980,FALSE,Valid,San Francisco International Airport,12/3/2017
+Boeing 737-800,Boeing,78,A0132,M980,4/3/1960,FALSE,Valid,John F. Kennedy International Airport,11/1/2017
+Boeing 737-900,Boeing,189,A0133,M678,11/10/1956,FALSE,Expired,Los Angeles International Airport,10/22/2017
+Boeing 737-900ER,Boeing,49,A0134,M678,2/28/1990,FALSE,Expired,Los Angeles International Airport,1/1/2018
+Boeing 737-300ER,Boeing,99,A0135,M123,2/18/1984,FALSE,Expired,John F. Kennedy International Airport,3/2/2018
+Bombardier 737-900,Bombardier,110,A0136,M980,7/7/2000,FALSE,Expired,San Francisco International Airport,12/25/2017
+Bombardier 737-902,Bombardier,3,A0137,M678,10/1/1989,TRUE,Expired,Washington Dulles International Airport,12/30/2017
+Bombardier 737-901,Bombardier,11,A0138,M123,11/11/1956,TRUE,Expired,LaGuardia Airport,10/18/2017
+Airbus 330-200,Airbus,8,A0139,M980,4/23/1966,TRUE,Valid,Logan International Airport,2/28/2018
+Bombardier 789-234,Bombardier,98,A0140,M123,9/7/1978,TRUE,Valid,Dallas/Fort Worth International Airport,9/28/2017
+Bombardier 789-235,Bombardier,34,A0141,M123,2/3/1999,FALSE,Valid,Dallas/Fort Worth International Airport,10/8/2017
+Bombardier 789-236,Bombardier,23,A0142,M789,3/2/1989,FALSE,Expired,Washington Dulles International Airport,12/3/2018
+ATR 72-601,Airbus,9,A0143,M678,11/11/1966,TRUE,Expired,Logan International Airport,12/24/2017
+ATR 72-602,Airbus,88,A0144,M678,12/16/1966,FALSE,Valid,LaGuardia Airport,11/24/2017
+ATR 72-603,Airbus,120,A0145,M980,7/6/1947,TRUE,Expired,San Francisco International Airport,1/17/2018
+Boeing 737-709,Boeing,9,A0146,M123,12/26/1966,TRUE,Valid,Washington Dulles International Airport,3/28/2018
+Boeing 737-710,Boeing,28,A0147,M124,11/16/1966,FALSE,Valid,Washington Dulles International Airport,10/10/2017
+Boeing 737-711,Boeing,90,A0148,M123,8/7/2000,FALSE,Expired,Logan International Airport,10/28/2017
+Boeing 737-712,Boeing,128,A0149,M678,7/17/2000,TRUE,Expired,Logan International Airport,11/1/2017
+Boeing 737-713,Boeing,78,A0150,M678,9/9/1980,TRUE,Expired,Dallas/Fort Worth International Airport,12/2/2017

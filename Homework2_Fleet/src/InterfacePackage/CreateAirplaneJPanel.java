@@ -80,7 +80,7 @@ public class CreateAirplaneJPanel extends javax.swing.JPanel {
         createLabel.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         createLabel.setText("Create Airplane Entry");
         createLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        add(createLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 30, 400, -1));
+        add(createLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 30, 400, -1));
 
         jLabel1.setText("Manufacturer");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 200, -1, -1));
@@ -103,6 +103,8 @@ public class CreateAirplaneJPanel extends javax.swing.JPanel {
             }
         });
         add(manufacturerTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 190, 280, -1));
+
+        seatsTextField.setToolTipText("Enter a numeric value for seat number");
         add(seatsTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 250, 280, -1));
         add(serialNumTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 310, 280, -1));
         add(modelTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 370, 280, -1));
@@ -113,7 +115,7 @@ public class CreateAirplaneJPanel extends javax.swing.JPanel {
                 submitButtonActionPerformed(evt);
             }
         });
-        add(submitButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 760, -1, -1));
+        add(submitButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 730, -1, -1));
 
         availableRadioButton.setText("Yes");
         availableRadioButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -165,12 +167,15 @@ public class CreateAirplaneJPanel extends javax.swing.JPanel {
 
         jLabel10.setText("Date Of Availability");
         add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 640, -1, -1));
+
+        jDateChooser.setToolTipText("Availability Date is disabled since Available STATUS is \"NO\"");
         add(jDateChooser, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 630, 280, -1));
         add(dateForManufactur, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 420, 280, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
         Boolean valid = false;
+        //Validate before saving
         valid = validateBeforeSave();
         // Save it in the ArrayList of type Airplane
         if (valid.equals(Boolean.TRUE)) {

@@ -18,6 +18,7 @@ import java.util.List;
 import java.util.Set;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -138,55 +139,55 @@ public class Search extends javax.swing.JPanel {
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 30, 630, 330));
 
         labelForManufacturer.setText("Manufacturer");
-        add(labelForManufacturer, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 580, -1, -1));
+        add(labelForManufacturer, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 680, -1, -1));
 
         seatsLabel.setText("No of seats");
-        add(seatsLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 640, -1, -1));
+        add(seatsLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 740, -1, -1));
 
         serialNumLabel.setText("Serial Number");
-        add(serialNumLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 690, -1, -1));
+        add(serialNumLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 790, -1, -1));
 
         modelNumLabel.setText("Model Number");
-        add(modelNumLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 740, -1, -1));
+        add(modelNumLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 840, -1, -1));
 
         manuDateLabel.setText("Manufacture Date");
-        add(manuDateLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 590, -1, -1));
+        add(manuDateLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 690, -1, -1));
 
         manufacturerTextField.setEditable(false);
         manufacturerTextField.setEnabled(false);
-        add(manufacturerTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 580, 280, -1));
+        add(manufacturerTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 680, 280, -1));
 
         seatsTextField.setEnabled(false);
-        add(seatsTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 630, 280, -1));
+        add(seatsTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 730, 280, -1));
 
         serialNumTextField.setEnabled(false);
-        add(serialNumTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 680, 280, -1));
+        add(serialNumTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 780, 280, -1));
 
         modelTextField.setEnabled(false);
-        add(modelTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 740, 280, -1));
+        add(modelTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 840, 280, -1));
 
         manufactureDateTxt.setEnabled(false);
-        add(manufactureDateTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 580, 280, -1));
+        add(manufactureDateTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 680, 280, -1));
 
         avaiStatusLabel.setText("Availability Status");
-        add(avaiStatusLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 640, -1, -1));
+        add(avaiStatusLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 740, -1, -1));
 
         isAvailableTextField.setEnabled(false);
-        add(isAvailableTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 630, 280, -1));
+        add(isAvailableTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 730, 280, -1));
 
         certiLabel.setText("Maintenance Certificate");
-        add(certiLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 690, -1, -1));
+        add(certiLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 790, -1, -1));
 
         certificateStatusText.setEnabled(false);
-        add(certificateStatusText, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 680, 280, -1));
+        add(certificateStatusText, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 780, 280, -1));
 
         nameLabel.setText("Name");
-        add(nameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 530, -1, -1));
+        add(nameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 630, -1, -1));
 
         nameTextField.setEditable(false);
         nameTextField.setEnabled(false);
-        add(nameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 530, 280, -1));
-        add(countLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 580, 310, 20));
+        add(nameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 630, 280, -1));
+        add(countLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 560, 310, 20));
 
         timeStampButton.setText("Time Stamp for last updation of Fleet Catalog");
         timeStampButton.addActionListener(new java.awt.event.ActionListener() {
@@ -201,7 +202,7 @@ public class Search extends javax.swing.JPanel {
         add(seatsearchLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, -1, -1));
 
         statusLabel.setText(" ");
-        add(statusLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 540, 180, -1));
+        add(statusLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 580, 180, -1));
 
         minSeatTextBox.setToolTipText("Give the serial number of the airplane");
         add(minSeatTextBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 120, 50, -1));
@@ -218,11 +219,11 @@ public class Search extends javax.swing.JPanel {
         add(seatSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 120, -1, -1));
 
         airportLabel.setText("Airport");
-        add(airportLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 740, -1, -1));
+        add(airportLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 840, -1, -1));
 
         airportTextField.setToolTipText("Give the value as either \"Expired\" or \"Valid\"");
         airportTextField.setEnabled(false);
-        add(airportTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 730, 280, -1));
+        add(airportTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 830, 280, -1));
 
         airportName.setText("Airport Name");
         airportName.setToolTipText("You can perform a Secondary Filter, if needed");
@@ -237,11 +238,11 @@ public class Search extends javax.swing.JPanel {
         add(airportComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 250, -1));
 
         avaiLabel.setText("Availablity Date");
-        add(avaiLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 530, -1, -1));
+        add(avaiLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 630, -1, -1));
 
         avaiDateTextField.setToolTipText("Give the value as either \"Expired\" or \"Valid\"");
         avaiDateTextField.setEnabled(false);
-        add(avaiDateTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 530, 280, -1));
+        add(avaiDateTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 630, 280, -1));
 
         listForOneColumn.setEnabled(false);
         listForOneColumn.setOpaque(false);
@@ -257,7 +258,7 @@ public class Search extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(listForOneColumn);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 570, 230, -1));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 390, 230, -1));
 
         secondaryFilterText.setEnabled(false);
         secondaryFilterText.addActionListener(new java.awt.event.ActionListener() {
@@ -291,16 +292,16 @@ public class Search extends javax.swing.JPanel {
         add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 490, 20));
 
         jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 10, 360));
+        add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 10, 550));
         add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 490, 20));
 
         jSeparator4.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 40, 10, 360));
+        add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 40, 10, 550));
         add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 490, 20));
 
         jSeparator6.setForeground(new java.awt.Color(0, 0, 0));
         jSeparator6.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 400, 490, 20));
+        add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 590, 490, -1));
         add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 490, 20));
         add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 490, 20));
     }// </editor-fold>//GEN-END:initComponents
@@ -351,6 +352,10 @@ public class Search extends javax.swing.JPanel {
         
         DefaultTableModel defaultModel = (DefaultTableModel) airplaneTableForSearch.getModel();
         defaultModel.setRowCount(0);
+        if(minSeatTextBox.getText().isEmpty() || maxSeatTextField.getText().isEmpty())
+        {
+            JOptionPane.showMessageDialog(null, "Enter the Seat number range");
+        }
         int minSeats = Integer.parseInt(minSeatTextBox.getText());
         int maxSeats = Integer.parseInt(maxSeatTextField.getText());
         for (Airplane airplane : fleet.getFleet()) {
@@ -450,6 +455,7 @@ public class Search extends javax.swing.JPanel {
                     defaultModel.addRow(row);
                 }
             }
+            searchText.setText("");
         }
         if (searchComboBox.getSelectedItem().toString().equals("Manufacture Year")) {
             countLabel.setVisible(false);
@@ -472,6 +478,8 @@ public class Search extends javax.swing.JPanel {
                     defaultModel.addRow(row);
                 }
             }
+                        searchText.setText("");
+
         }
         if (searchComboBox.getSelectedItem().toString().equals("Model Number")) {
             countLabel.setVisible(false);
@@ -493,6 +501,7 @@ public class Search extends javax.swing.JPanel {
                     defaultModel.addRow(row);
                 }
             }
+            searchText.setText("");
 
     }//GEN-LAST:event_searchComboBoxActionPerformed
     }
@@ -753,7 +762,7 @@ public class Search extends javax.swing.JPanel {
         certificateStatusText.setVisible(true);
         airportTextField.setVisible(true);
         avaiDateTextField.setVisible(true);
-        listForOneColumn.setVisible(true);
+       // listForOneColumn.setVisible(true);
         // set the label feilds as true
         nameLabel.setVisible(true);
         labelForManufacturer.setVisible(true);

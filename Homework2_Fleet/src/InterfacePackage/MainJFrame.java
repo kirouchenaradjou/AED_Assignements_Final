@@ -8,7 +8,9 @@ package InterfacePackage;
 import BusinessPackage.Airplane;
 import BusinessPackage.Fleet;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
+import java.net.URL;
 import java.util.Date;
 import java.text.ParseException;
 import java.util.logging.Level;
@@ -33,13 +35,15 @@ public class MainJFrame extends javax.swing.JFrame {
     }
 
     public void populateFleetCatalogFromCSV() {
-        String fileToParse = "C:\\Users\\ragha\\Documents\\NetBeansProjects\\Homework2_Fleet\\src\\InterfacePackage\\Book1.csv";
+        //Load the CSV 
+        URL url = getClass().getResource("Book1.csv");
+        File file = new File(url.getPath());
         BufferedReader fileReader = null;
         final String DELIMITER = ",";
         try {
             String line = "";
             //Create the file reader
-            fileReader = new BufferedReader(new FileReader(fileToParse));
+            fileReader = new BufferedReader(new FileReader(file));
 
             //Read the file line by line
             while ((line = fileReader.readLine()) != null) {
@@ -59,8 +63,8 @@ public class MainJFrame extends javax.swing.JFrame {
 
                 airplane.setAirplaneModelNum(tokens[4]);
                 String date = tokens[5];
-                Date date1=(Date) new SimpleDateFormat("dd/MM/yyyy").parse(date);
-                  airplane.setAirplaneManufactureDate(date1);
+                Date date1 = (Date) new SimpleDateFormat("dd/MM/yyyy").parse(date);
+                airplane.setAirplaneManufactureDate(date1);
                 //  System.out.println(tokens[7]);
                 if (tokens[6].equalsIgnoreCase("true")) {
                     airplane.setIsAvailable(Boolean.TRUE);
@@ -75,9 +79,9 @@ public class MainJFrame extends javax.swing.JFrame {
 
                 }
                 airplane.setAirportName(tokens[8]);
-                 String date2 = tokens[9];
-                Date date_2=(Date) new SimpleDateFormat("MM/dd/yyyy").parse(date2);
-               
+                String date2 = tokens[9];
+                Date date_2 = (Date) new SimpleDateFormat("MM/dd/yyyy").parse(date2);
+
                 airplane.setAvailabityDate(date_2);
 
             }
@@ -106,13 +110,15 @@ public class MainJFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         createAirplaneButton.setText("Create");
+        createAirplaneButton.setToolTipText("Add Airplane Entry");
         createAirplaneButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 createAirplaneButtonActionPerformed(evt);
             }
         });
 
-        viewAirplaneButton.setText("View");
+        viewAirplaneButton.setText("View/Update");
+        viewAirplaneButton.setToolTipText("Update and View Fleet Catalog");
         viewAirplaneButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 viewAirplaneButtonActionPerformed(evt);
@@ -120,6 +126,7 @@ public class MainJFrame extends javax.swing.JFrame {
         });
 
         searchButton.setText("Search");
+        searchButton.setToolTipText("Search Operation on Fleet Catalog");
         searchButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchButtonActionPerformed(evt);
@@ -135,8 +142,8 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addGroup(leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(createAirplaneButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(viewAirplaneButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(searchButton, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE))
-                .addContainerGap(75, Short.MAX_VALUE))
+                    .addComponent(searchButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
         leftPanelLayout.setVerticalGroup(
             leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
