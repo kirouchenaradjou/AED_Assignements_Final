@@ -40,6 +40,7 @@ public class ViewAirplaneJPanel extends javax.swing.JPanel {
         this.fleet = fleet;
         populateTable();
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -205,6 +206,7 @@ public class ViewAirplaneJPanel extends javax.swing.JPanel {
         add(jDateChooser, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 490, 280, -1));
     }// </editor-fold>//GEN-END:initComponents
 private void populateTable() {
+        //its a kind of refresh
         DefaultTableModel defaultModel = (DefaultTableModel) airplaneTable1.getModel();
         defaultModel.setRowCount(0);
         for (Airplane airplane : fleet.getFleet()) {
@@ -231,11 +233,11 @@ private void populateTable() {
             modelTextField.setText(airplane.getAirplaneModelNum());
             if (airplane.getIsAvailable()) {
                 availableRadioButton.setSelected(true);
-                            jDateChooser.setDate(airplane.getAvailabityDate());
+                jDateChooser.setDate(airplane.getAvailabityDate());
 
             } else {
                 notAvailableRadioButton.setSelected(true);
-                            jDateChooser.setDate(null);
+                jDateChooser.setDate(null);
 
             }
             if (airplane.getIsExpired()) {
@@ -251,7 +253,7 @@ private void populateTable() {
 
     private void updateAirplaneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateAirplaneButtonActionPerformed
         labelForTimestamp.setVisible(true);
-
+//enabling all the text fields to edit and submit it
         enableAlltheTextFields();
 
 
@@ -287,7 +289,7 @@ private void populateTable() {
             fleet.setTimeStamp(new Timestamp(System.currentTimeMillis()));
 
             populateTable();
-
+//clear all after submission
             nameTextField.setText("");
             manufacturerTextField.setText("");
             modelTextField.setText("");
@@ -313,7 +315,6 @@ private void populateTable() {
 
     private void enableAlltheTextFields() {
         nameTextField.setEnabled(true);
-
         manufacturerTextField.setEnabled(true);
         dateForManufactur.setEnabled(true);
         manufacturerTextField.setEnabled(true);

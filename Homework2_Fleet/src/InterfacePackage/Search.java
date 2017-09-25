@@ -35,7 +35,7 @@ public class Search extends javax.swing.JPanel {
      * Creates new form Search
      */
     private Fleet fleet;
-    
+
     public Search(Fleet fleet) {
         initComponents();
         setVisibleFalse();
@@ -349,11 +349,10 @@ public class Search extends javax.swing.JPanel {
         countLabel.setVisible(false);
         labelForTimeStamp.setVisible(false);
         listForOneColumn.setVisible(false);
-        
+
         DefaultTableModel defaultModel = (DefaultTableModel) airplaneTableForSearch.getModel();
         defaultModel.setRowCount(0);
-        if(minSeatTextBox.getText().isEmpty() || maxSeatTextField.getText().isEmpty())
-        {
+        if (minSeatTextBox.getText().isEmpty() || maxSeatTextField.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Enter the Seat number range");
         }
         int minSeats = Integer.parseInt(minSeatTextBox.getText());
@@ -365,7 +364,7 @@ public class Search extends javax.swing.JPanel {
                 row[1] = airplane.getAirplaneModelNum();
                 row[2] = airplane.getAirplaneSerialNum();
                 row[3] = airplane.getAirplaneManufacturer();
-                
+
                 defaultModel.addRow(row);
             }
         }
@@ -388,7 +387,7 @@ public class Search extends javax.swing.JPanel {
                 row[1] = airplane.getAirplaneModelNum();
                 row[2] = airplane.getAirplaneSerialNum();
                 row[3] = airplane.getAirplaneManufacturer();
-                
+
                 defaultModel.addRow(row);
             }
         }
@@ -419,7 +418,7 @@ public class Search extends javax.swing.JPanel {
                     certificateStatusText.setText("Valid");
                 }
                 avaiDateTextField.setText(String.valueOf(airplane.getAvailabityDate()));
-                
+
             }
         }
 
@@ -429,7 +428,7 @@ public class Search extends javax.swing.JPanel {
         // TODO add your handling code here:
         TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(((DefaultTableModel) airplaneTableForSearch.getModel()));
         sorter.setRowFilter(RowFilter.regexFilter(secondaryFilterText.getText()));
-        
+
         airplaneTableForSearch.setRowSorter(sorter);
     }//GEN-LAST:event_secondaryFilterTextActionPerformed
 
@@ -440,7 +439,7 @@ public class Search extends javax.swing.JPanel {
             listForOneColumn.setVisible(false);
             listForOneColumn.clearSelection();;
             searchText.setEditable(true);
-            
+
             DefaultTableModel defaultModel = (DefaultTableModel) airplaneTableForSearch.getModel();
             defaultModel.setRowCount(0);
             String toBeSearched = searchText.getText();
@@ -451,7 +450,7 @@ public class Search extends javax.swing.JPanel {
                     row[1] = airplane.getAirplaneModelNum();
                     row[2] = airplane.getAirplaneSerialNum();
                     row[3] = airplane.getAirplaneManufacturer();
-                    
+
                     defaultModel.addRow(row);
                 }
             }
@@ -462,7 +461,7 @@ public class Search extends javax.swing.JPanel {
             labelForTimeStamp.setVisible(false);
             listForOneColumn.setVisible(false);
             searchText.setEditable(true);
-            
+
             DefaultTableModel defaultModel = (DefaultTableModel) airplaneTableForSearch.getModel();
             defaultModel.setRowCount(0);
             String toBeSearched = searchText.getText();
@@ -474,11 +473,11 @@ public class Search extends javax.swing.JPanel {
                     row[1] = airplane.getAirplaneModelNum();
                     row[2] = airplane.getAirplaneSerialNum();
                     row[3] = airplane.getAirplaneManufacturer();
-                    
+
                     defaultModel.addRow(row);
                 }
             }
-                        searchText.setText("");
+            searchText.setText("");
 
         }
         if (searchComboBox.getSelectedItem().toString().equals("Model Number")) {
@@ -486,7 +485,7 @@ public class Search extends javax.swing.JPanel {
             labelForTimeStamp.setVisible(false);
             listForOneColumn.setVisible(false);
             searchText.setEditable(true);
-            
+
             DefaultTableModel defaultModel = (DefaultTableModel) airplaneTableForSearch.getModel();
             defaultModel.setRowCount(0);
             String toBeSearched = searchText.getText();
@@ -497,7 +496,7 @@ public class Search extends javax.swing.JPanel {
                     row[1] = airplane.getAirplaneModelNum();
                     row[2] = airplane.getAirplaneSerialNum();
                     row[3] = airplane.getAirplaneManufacturer();
-                    
+
                     defaultModel.addRow(row);
                 }
             }
@@ -507,12 +506,12 @@ public class Search extends javax.swing.JPanel {
     }
     private void secondSearchComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_secondSearchComboActionPerformed
         // TODO add your handling code here:
-         if (secondSearchCombo.getSelectedItem().toString().equals("Expired Maintenance Certificate")) {
+        if (secondSearchCombo.getSelectedItem().toString().equals("Expired Maintenance Certificate")) {
             countLabel.setVisible(false);
             labelForTimeStamp.setVisible(false);
             listForOneColumn.setVisible(false);
             searchText.setEditable(false);
-            
+
             DefaultTableModel defaultModel = (DefaultTableModel) airplaneTableForSearch.getModel();
             defaultModel.setRowCount(0);
             for (Airplane airplane : fleet.getFleet()) {
@@ -522,7 +521,7 @@ public class Search extends javax.swing.JPanel {
                     row[1] = airplane.getAirplaneModelNum();
                     row[2] = airplane.getAirplaneSerialNum();
                     row[3] = airplane.getAirplaneManufacturer();
-                    
+
                     defaultModel.addRow(row);
                 }
             }
@@ -531,7 +530,7 @@ public class Search extends javax.swing.JPanel {
             countLabel.setVisible(false);
             labelForTimeStamp.setVisible(false);
             listForOneColumn.setVisible(false);
-            
+
             DefaultTableModel defaultModel = (DefaultTableModel) airplaneTableForSearch.getModel();
             defaultModel.setRowCount(0);
             for (Airplane airplane : fleet.getFleet()) {
@@ -541,7 +540,7 @@ public class Search extends javax.swing.JPanel {
                     row[1] = airplane.getAirplaneModelNum();
                     row[2] = airplane.getAirplaneSerialNum();
                     row[3] = airplane.getAirplaneManufacturer();
-                    
+
                     defaultModel.addRow(row);
                 }
             }
@@ -592,12 +591,12 @@ public class Search extends javax.swing.JPanel {
             listForOneColumn.setModel(dlm);
             countLabel.setVisible(true);
             countLabel.setText("Airplanes Available : " + count);
-            
+
         }
         if (secondSearchCombo.getSelectedItem().toString().equals("First Available Airplane")) {
             listForOneColumn.setVisible(false);
             countLabel.setVisible(false);
-           // DateFormat dateFormat = new SimpleDateFormat("MM/dd/YYYY");
+            // DateFormat dateFormat = new SimpleDateFormat("MM/dd/YYYY");
             Date date = new Date();
             // System.out.println(dateFormat.format(date));
             countLabel.setVisible(false);
@@ -611,10 +610,11 @@ public class Search extends javax.swing.JPanel {
                     currentTime = date.getTime();
             Date minDate = null;
             for (Airplane airplane : fleet.getFleet()) {
-                
+
                 dates[i] = airplane.getAvailabityDate();
                 // System.out.println(date);
                 // System.out.println(dates[i]);
+                //find the min diff in the days with the current System Date 
                 long diff = Math.abs(currentTime - dates[i].getTime());
                 if ((minDiff == -1) || (diff < minDiff)) {
                     minDiff = diff;
@@ -642,11 +642,11 @@ public class Search extends javax.swing.JPanel {
                     row[1] = airplane.getAirplaneModelNum();
                     row[2] = airplane.getAirplaneSerialNum();
                     row[3] = airplane.getAirplaneManufacturer();
-                    
+
                     defaultModel.addRow(row);
                 }
             }
-            
+
         }
         if (secondSearchCombo.getSelectedItem().toString().equals("Manufacturers of the Airline")) {
             listForOneColumn.setVisible(true);
@@ -656,6 +656,7 @@ public class Search extends javax.swing.JPanel {
             for (Airplane airplane : fleet.getFleet()) {
                 airplaneManufacture.add(airplane.getAirplaneManufacturer());
             }
+            //Removing the duplicate and storng in hash set since it wont allow duplicates
             Set<String> hs = new HashSet<>();
             hs.addAll(airplaneManufacture);
             airplaneManufacture.clear();
@@ -667,9 +668,7 @@ public class Search extends javax.swing.JPanel {
             listForOneColumn.setModel(dlm);
         }
     }//GEN-LAST:event_secondSearchComboActionPerformed
-       
-    
-    
+
     private void setVisibleFalse() {
         //set the Text fields false
         nameTextField.setVisible(false);
@@ -695,7 +694,7 @@ public class Search extends javax.swing.JPanel {
         airportLabel.setVisible(false);
         avaiLabel.setVisible(false);
         listForOneColumn.setVisible(false);
-        
+
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable airplaneTableForSearch;
@@ -762,7 +761,7 @@ public class Search extends javax.swing.JPanel {
         certificateStatusText.setVisible(true);
         airportTextField.setVisible(true);
         avaiDateTextField.setVisible(true);
-       // listForOneColumn.setVisible(true);
+        // listForOneColumn.setVisible(true);
         // set the label feilds as true
         nameLabel.setVisible(true);
         labelForManufacturer.setVisible(true);
@@ -775,5 +774,5 @@ public class Search extends javax.swing.JPanel {
         airportLabel.setVisible(true);
         avaiLabel.setVisible(true);
     }
-    
+
 }
