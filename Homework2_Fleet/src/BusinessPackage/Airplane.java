@@ -22,7 +22,6 @@ public class Airplane {
     private String airplaneModelNum;
     private Boolean isAvailable;
     private Boolean isExpired;
-    private Timestamp timestamp;
     private String airportName;
     private Date availabityDate;
 
@@ -40,14 +39,6 @@ public class Airplane {
 
     public void setAirportName(String airportName) {
         this.airportName = airportName;
-    }
-
-    public Timestamp getTimestamp() {
-        return timestamp;
-    }
-
-    public void setTimestamp(Timestamp timestamp) {
-        this.timestamp = timestamp;
     }
 
      public String getAirplaneName() {

@@ -26,23 +26,20 @@ public class ViewAirplaneJPanel extends javax.swing.JPanel {
      * Creates new form ViewAirplaneJPanel
      */
     private Fleet fleet;
-    Timestamp timestamp;
     ViewAirplaneJPanel viewAirplaneJPanel;
 
     public ViewAirplaneJPanel(Fleet fleet) {
         initComponents();
+        //Button Group for Availability Status
+        buttonGroupForAvailability.add(availableRadioButton);
+        buttonGroupForAvailability.add(notAvailableRadioButton);
+        //Button Group for Maintanance Certficate Expiry Status
+        buttonGroupForCertificate.add(expiredRadioButton);
+        buttonGroupForCertificate.add(validRadioButton);
+
         this.fleet = fleet;
         populateTable();
     }
-    
-    public Timestamp getTimestamp() {
-        return timestamp;
-    }
-
-    public void setTimestamp(Timestamp timestamp) {
-        this.timestamp = timestamp;
-    }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -52,6 +49,8 @@ public class ViewAirplaneJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroupForCertificate = new javax.swing.ButtonGroup();
+        buttonGroupForAvailability = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -61,15 +60,12 @@ public class ViewAirplaneJPanel extends javax.swing.JPanel {
         seatsTextField = new javax.swing.JTextField();
         serialNumTextField = new javax.swing.JTextField();
         modelTextField = new javax.swing.JTextField();
-        manufactureDateTxt = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         airplaneTable1 = new javax.swing.JTable();
         viewAirplaneDetailsButton = new javax.swing.JButton();
         updateAirplaneButton = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
-        isAvailableTextField = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        certificateStatusText = new javax.swing.JTextField();
         nameLabel = new javax.swing.JLabel();
         nameTextField = new javax.swing.JTextField();
         submitUpdateButton = new javax.swing.JButton();
@@ -77,39 +73,41 @@ public class ViewAirplaneJPanel extends javax.swing.JPanel {
         jLabel8 = new javax.swing.JLabel();
         airportTextField = new javax.swing.JTextField();
         avaiLabel = new javax.swing.JLabel();
-        avaiDateTextField = new javax.swing.JTextField();
+        availableRadioButton = new javax.swing.JRadioButton();
+        notAvailableRadioButton = new javax.swing.JRadioButton();
+        expiredRadioButton = new javax.swing.JRadioButton();
+        validRadioButton = new javax.swing.JRadioButton();
+        dateForManufactur = new com.toedter.calendar.JDateChooser();
+        jDateChooser = new com.toedter.calendar.JDateChooser();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setText("Manufacturer");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(244, 542, -1, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 510, -1, -1));
 
         jLabel2.setText("No of seats");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(244, 602, -1, -1));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 560, -1, -1));
 
         jLabel3.setText("Serial Number");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(244, 662, -1, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 610, -1, -1));
 
         jLabel4.setText("Model Number");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(244, 722, -1, -1));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 660, -1, -1));
 
         jLabel5.setText("Manufacture Date");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(244, 782, -1, -1));
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 650, -1, -1));
 
         manufacturerTextField.setEnabled(false);
-        add(manufacturerTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(524, 532, 280, -1));
+        add(manufacturerTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 500, 280, -1));
 
         seatsTextField.setEnabled(false);
-        add(seatsTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(524, 592, 280, -1));
+        add(seatsTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 550, 280, -1));
 
         serialNumTextField.setEnabled(false);
-        add(serialNumTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(524, 652, 280, -1));
+        add(serialNumTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 610, 280, -1));
 
         modelTextField.setEnabled(false);
-        add(modelTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(524, 712, 280, -1));
-
-        manufactureDateTxt.setEnabled(false);
-        add(manufactureDateTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(524, 779, 280, -1));
+        add(modelTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 660, 280, -1));
 
         airplaneTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -129,7 +127,7 @@ public class ViewAirplaneJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(airplaneTable1);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(177, 0, 704, 421));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(177, 0, 710, 350));
 
         viewAirplaneDetailsButton.setText("View");
         viewAirplaneDetailsButton.addActionListener(new java.awt.event.ActionListener() {
@@ -137,7 +135,7 @@ public class ViewAirplaneJPanel extends javax.swing.JPanel {
                 viewAirplaneDetailsButtonActionPerformed(evt);
             }
         });
-        add(viewAirplaneDetailsButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(969, 101, 83, -1));
+        add(viewAirplaneDetailsButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 70, 83, -1));
 
         updateAirplaneButton.setText("Update");
         updateAirplaneButton.addActionListener(new java.awt.event.ActionListener() {
@@ -145,27 +143,19 @@ public class ViewAirplaneJPanel extends javax.swing.JPanel {
                 updateAirplaneButtonActionPerformed(evt);
             }
         });
-        add(updateAirplaneButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(969, 172, -1, -1));
+        add(updateAirplaneButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 130, -1, -1));
 
         jLabel6.setText("Availability Status");
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(244, 850, -1, -1));
-
-        isAvailableTextField.setToolTipText("Give the Status as Either \"true\" or \"false\" ");
-        isAvailableTextField.setEnabled(false);
-        add(isAvailableTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(524, 847, 280, -1));
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 450, -1, -1));
 
         jLabel7.setText("Maintenance Certificate");
-        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(244, 908, -1, -1));
-
-        certificateStatusText.setToolTipText("Give the value as either \"Expired\" or \"Valid\"");
-        certificateStatusText.setEnabled(false);
-        add(certificateStatusText, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 910, 280, -1));
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 550, -1, -1));
 
         nameLabel.setText("Name");
-        add(nameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 490, -1, -1));
+        add(nameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 450, -1, -1));
 
         nameTextField.setEnabled(false);
-        add(nameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 480, 280, -1));
+        add(nameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 450, 280, -1));
 
         submitUpdateButton.setText("Submit after Update");
         submitUpdateButton.setEnabled(false);
@@ -174,22 +164,45 @@ public class ViewAirplaneJPanel extends javax.swing.JPanel {
                 submitUpdateButtonActionPerformed(evt);
             }
         });
-        add(submitUpdateButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 640, -1, -1));
-        add(labelForTimestamp, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 560, 360, 30));
+        add(submitUpdateButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 820, -1, -1));
+        add(labelForTimestamp, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 370, 360, 30));
 
         jLabel8.setText("Airport");
-        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 960, -1, -1));
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 600, -1, -1));
 
         airportTextField.setToolTipText("Give the value as either \"Expired\" or \"Valid\"");
         airportTextField.setEnabled(false);
-        add(airportTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 950, 280, -1));
+        add(airportTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 590, 280, -1));
 
         avaiLabel.setText("Availablity Date");
-        add(avaiLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 790, -1, -1));
+        add(avaiLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 500, -1, -1));
 
-        avaiDateTextField.setToolTipText("Give the value as either \"Expired\" or \"Valid\"");
-        avaiDateTextField.setEnabled(false);
-        add(avaiDateTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 850, 280, -1));
+        availableRadioButton.setText("Yes");
+        availableRadioButton.setEnabled(false);
+        availableRadioButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                availableRadioButtonActionPerformed(evt);
+            }
+        });
+        add(availableRadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 440, -1, -1));
+
+        notAvailableRadioButton.setText("No");
+        notAvailableRadioButton.setEnabled(false);
+        add(notAvailableRadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 440, -1, -1));
+
+        expiredRadioButton.setText("Expired");
+        expiredRadioButton.setEnabled(false);
+        add(expiredRadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 540, -1, -1));
+
+        validRadioButton.setText("Valid");
+        validRadioButton.setEnabled(false);
+        add(validRadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 540, -1, -1));
+
+        dateForManufactur.setEnabled(false);
+        add(dateForManufactur, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 640, 280, -1));
+
+        jDateChooser.setEnabled(false);
+        add(jDateChooser, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 490, 280, -1));
     }// </editor-fold>//GEN-END:initComponents
 private void populateTable() {
         DefaultTableModel defaultModel = (DefaultTableModel) airplaneTable1.getModel();
@@ -200,7 +213,7 @@ private void populateTable() {
             row[1] = airplane.getAirplaneModelNum();
             row[2] = airplane.getAirplaneSerialNum();
             row[3] = airplane.getAirplaneManufacturer();
-            
+
             defaultModel.addRow(row);
         }
     }
@@ -210,19 +223,23 @@ private void populateTable() {
         if (selectedRow >= 0) {
             Airplane airplane = (Airplane) airplaneTable1.getValueAt((Integer) selectedRow, 0);
             nameTextField.setText(airplane.getAirplaneName());
-            manufactureDateTxt.setText(String.valueOf(airplane.getAirplaneManufactureDate()));
+            dateForManufactur.setDate(airplane.getAirplaneManufactureDate());
             manufacturerTextField.setText(airplane.getAirplaneManufacturer());
             seatsTextField.setText(Integer.toString(airplane.getAirplaneSeats()));
             serialNumTextField.setText(airplane.getAirplaneSerialNum());
             modelTextField.setText(airplane.getAirplaneModelNum());
-            isAvailableTextField.setText(airplane.getIsAvailable().toString());
-            if ((airplane.getIsExpired().toString()).equalsIgnoreCase("true")) {
-                certificateStatusText.setText("Expired");
+            if (airplane.getIsAvailable()) {
+                availableRadioButton.setSelected(true);
             } else {
-                certificateStatusText.setText("Valid");
+                notAvailableRadioButton.setSelected(true);
+            }
+            if (airplane.getIsExpired()) {
+                expiredRadioButton.setSelected(true);
+            } else {
+                validRadioButton.setSelected(true);
             }
             airportTextField.setText(airplane.getAirportName());
-            avaiDateTextField.setText(airplane.getAvailabityDate().toString());
+            jDateChooser.setDate(airplane.getAvailabityDate());
         } else {
             JOptionPane.showMessageDialog(null, "Please select any row");
         }
@@ -230,83 +247,94 @@ private void populateTable() {
 
     private void updateAirplaneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateAirplaneButtonActionPerformed
         labelForTimestamp.setVisible(true);
-        
+
         enableAlltheTextFields();
-        
+
 
     }//GEN-LAST:event_updateAirplaneButtonActionPerformed
 
     private void submitUpdateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitUpdateButtonActionPerformed
         labelForTimestamp.setVisible(true);
-        
+
         int selectedRow = airplaneTable1.getSelectedRow();
         if (selectedRow >= 0) {
             Airplane airplane = (Airplane) airplaneTable1.getValueAt(selectedRow, 0);
-            DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
-            try {
-                airplane.setAirplaneManufactureDate(df.parse(manufactureDateTxt.getText()));
-                airplane.setAvailabityDate(df.parse(avaiDateTextField.getText()));
+            //  DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
 
-            } catch (ParseException ex) {
-                Logger.getLogger(CreateAirplaneJPanel.class.getName()).log(Level.SEVERE, null, ex);
-                
-            }
+            airplane.setAirplaneManufactureDate(dateForManufactur.getDate());
+            airplane.setAvailabityDate(jDateChooser.getDate());
+
             airplane.setAirplaneName(nameTextField.getText());
             airplane.setAirplaneManufacturer(manufacturerTextField.getText());
             airplane.setAirplaneModelNum(modelTextField.getText());
             airplane.setAirplaneSeats(Integer.parseInt(seatsTextField.getText()));
             airplane.setAirplaneSerialNum(serialNumTextField.getText());
-            airplane.setIsAvailable(Boolean.getBoolean(isAvailableTextField.getText()));
-            airplane.setIsExpired(Boolean.valueOf(certificateStatusText.getText()));
+            if (airplane.getIsAvailable()) {
+                airplane.setIsAvailable(true);
+            } else {
+                airplane.setIsAvailable(false);
+            }
+            if (airplane.getIsExpired()) {
+                airplane.setIsExpired(true);
+            } else {
+                airplane.setIsExpired(false);
+            }
             airplane.setAirportName(airportTextField.getText());
-            airplane.setTimestamp(new Timestamp(System.currentTimeMillis()));
+            fleet.setTimeStamp(new Timestamp(System.currentTimeMillis()));
+
             populateTable();
-            
+
             nameTextField.setText("");
             manufacturerTextField.setText("");
             modelTextField.setText("");
             seatsTextField.setText("");
             serialNumTextField.setText("");
-            manufactureDateTxt.setText("");
-            isAvailableTextField.setText("");
-            certificateStatusText.setText("");
+            dateForManufactur.setDate(null);
             airportTextField.setText("");
-            avaiDateTextField.setText("");
-            ViewAirplaneJPanel viewAirplaneJPanel = new ViewAirplaneJPanel(fleet);
-            viewAirplaneJPanel.setTimestamp(airplane.getTimestamp());
-            labelForTimestamp.setText("Catalog Last Updated on: " + airplane.getTimestamp().toString());
-
+            jDateChooser.setDate(null);
+            buttonGroupForAvailability.clearSelection();
+            buttonGroupForCertificate.clearSelection();
+            labelForTimestamp.setText("Catalog Last Updated on: " + fleet.getTimeStamp().toString());
 
         } else {
             JOptionPane.showMessageDialog(null, "Please select any row");
         }
-        
+
         JOptionPane.showMessageDialog(null, "Airplane Entry Updated");
     }//GEN-LAST:event_submitUpdateButtonActionPerformed
-    
+
+    private void availableRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_availableRadioButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_availableRadioButtonActionPerformed
+
     private void enableAlltheTextFields() {
         nameTextField.setEnabled(true);
-        
+
         manufacturerTextField.setEnabled(true);
-        manufactureDateTxt.setEnabled(true);
+        dateForManufactur.setEnabled(true);
         manufacturerTextField.setEnabled(true);
         seatsTextField.setEnabled(true);
         serialNumTextField.setEnabled(true);
         modelTextField.setEnabled(true);
-        isAvailableTextField.setEnabled(true);
-        certificateStatusText.setEnabled(true);
+        expiredRadioButton.setEnabled(true);
+        validRadioButton.setEnabled(true);
         submitUpdateButton.setEnabled(true);
         airportTextField.setEnabled(true);
-        avaiDateTextField.setEnabled(true);
-        
+        jDateChooser.setEnabled(true);
+        availableRadioButton.setEnabled(true);
+        notAvailableRadioButton.setEnabled(true);
+
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable airplaneTable1;
     private javax.swing.JTextField airportTextField;
-    private javax.swing.JTextField avaiDateTextField;
     private javax.swing.JLabel avaiLabel;
-    private javax.swing.JTextField certificateStatusText;
-    private javax.swing.JTextField isAvailableTextField;
+    private javax.swing.JRadioButton availableRadioButton;
+    private javax.swing.ButtonGroup buttonGroupForAvailability;
+    private javax.swing.ButtonGroup buttonGroupForCertificate;
+    private com.toedter.calendar.JDateChooser dateForManufactur;
+    private javax.swing.JRadioButton expiredRadioButton;
+    private com.toedter.calendar.JDateChooser jDateChooser;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -317,15 +345,16 @@ private void populateTable() {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelForTimestamp;
-    private javax.swing.JTextField manufactureDateTxt;
     private javax.swing.JTextField manufacturerTextField;
     private javax.swing.JTextField modelTextField;
     private javax.swing.JLabel nameLabel;
     private javax.swing.JTextField nameTextField;
+    private javax.swing.JRadioButton notAvailableRadioButton;
     private javax.swing.JTextField seatsTextField;
     private javax.swing.JTextField serialNumTextField;
     private javax.swing.JButton submitUpdateButton;
     private javax.swing.JButton updateAirplaneButton;
+    private javax.swing.JRadioButton validRadioButton;
     private javax.swing.JButton viewAirplaneDetailsButton;
     // End of variables declaration//GEN-END:variables
 

@@ -60,7 +60,6 @@ public class CreateAirplaneJPanel extends javax.swing.JPanel {
         seatsTextField = new javax.swing.JTextField();
         serialNumTextField = new javax.swing.JTextField();
         modelTextField = new javax.swing.JTextField();
-        manufactureDateTxt = new javax.swing.JTextField();
         submitButton = new javax.swing.JButton();
         availableRadioButton = new javax.swing.JRadioButton();
         notAvailableRadioButton = new javax.swing.JRadioButton();
@@ -74,6 +73,7 @@ public class CreateAirplaneJPanel extends javax.swing.JPanel {
         airportComboBox = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
         jDateChooser = new com.toedter.calendar.JDateChooser();
+        dateForManufactur = new com.toedter.calendar.JDateChooser();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -100,7 +100,6 @@ public class CreateAirplaneJPanel extends javax.swing.JPanel {
         add(seatsTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 250, 280, -1));
         add(serialNumTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 310, 280, -1));
         add(modelTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 370, 280, -1));
-        add(manufactureDateTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 420, 280, -1));
 
         submitButton.setText("Submit");
         submitButton.addActionListener(new java.awt.event.ActionListener() {
@@ -108,7 +107,7 @@ public class CreateAirplaneJPanel extends javax.swing.JPanel {
                 submitButtonActionPerformed(evt);
             }
         });
-        add(submitButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 850, -1, -1));
+        add(submitButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 760, -1, -1));
 
         availableRadioButton.setText("Yes");
         availableRadioButton.addActionListener(new java.awt.event.ActionListener() {
@@ -145,18 +144,15 @@ public class CreateAirplaneJPanel extends javax.swing.JPanel {
 
         jLabel10.setText("Date Of Availability");
         add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 640, -1, -1));
-        add(jDateChooser, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 640, -1, -1));
+        add(jDateChooser, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 630, 280, -1));
+        add(dateForManufactur, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 420, 280, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
         // Save it in the ArrayList of type Airplane
          DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
         Airplane airplane = fleet.addAirplane();
-        try {
-            airplane.setAirplaneManufactureDate(df.parse(manufactureDateTxt.getText()));
-        } catch (ParseException ex) {
-            Logger.getLogger(CreateAirplaneJPanel.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        airplane.setAirplaneManufactureDate(dateForManufactur.getDate());
         airplane.setAirplaneName(airplaneName.getText());
         airplane.setAirplaneManufacturer(manufacturerTextField.getText());
         airplane.setAirplaneModelNum(modelTextField.getText());
@@ -192,7 +188,7 @@ public class CreateAirplaneJPanel extends javax.swing.JPanel {
         modelTextField.setText("");
         seatsTextField.setText("");
         serialNumTextField.setText("");
-        manufactureDateTxt.setText("");
+        dateForManufactur.setDate(null);
         buttonGroupForAvailability.clearSelection();
         buttonGroupForCertificate.clearSelection();
         airportComboBox.setSelectedIndex(0);
@@ -211,6 +207,7 @@ public class CreateAirplaneJPanel extends javax.swing.JPanel {
     private javax.swing.ButtonGroup buttonGroupForAvailability;
     private javax.swing.ButtonGroup buttonGroupForCertificate;
     private javax.swing.JLabel createLabel;
+    private com.toedter.calendar.JDateChooser dateForManufactur;
     private javax.swing.JRadioButton expiredRadioButton;
     private com.toedter.calendar.JDateChooser jDateChooser;
     private javax.swing.JLabel jLabel1;
@@ -223,7 +220,6 @@ public class CreateAirplaneJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JTextField manufactureDateTxt;
     private javax.swing.JTextField manufacturerTextField;
     private javax.swing.JTextField modelTextField;
     private javax.swing.JRadioButton notAvailableRadioButton;

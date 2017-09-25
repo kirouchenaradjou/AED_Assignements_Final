@@ -5,6 +5,7 @@
  */
 package BusinessPackage;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
 /**
@@ -14,10 +15,21 @@ import java.util.ArrayList;
 public class Fleet {
 
     private ArrayList<Airplane> fleet;
-
+    private Timestamp timeStamp;
+    
     public Fleet() {
         fleet = new ArrayList<Airplane>();
     }
+
+    public Timestamp getTimeStamp() {
+        return timeStamp;
+    }
+
+    public void setTimeStamp(Timestamp timeStamp) {
+        this.timeStamp = timeStamp;
+    }
+
+    
 
     public ArrayList<Airplane> getFleet() {
         return fleet;
