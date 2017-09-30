@@ -15,10 +15,20 @@ public class Person {
     private String ticketNum;
     private String flightNum;
     private Seat seat;
+    private Flight flight;
     
     public Person()
     {
         this.seat= new Seat();
+        this.flight = new Flight();
+    }
+
+    public Flight getFlight() {
+        return flight;
+    }
+
+    public void setFlight(Flight flight) {
+        this.flight = flight;
     }
    
 

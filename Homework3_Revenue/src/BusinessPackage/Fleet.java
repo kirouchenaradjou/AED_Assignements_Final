@@ -28,5 +28,9 @@ public class Fleet {
         this.fleet = fleet;
     }
 
-
+public Flight addAirplane() {
+        Flight flight = new Flight();
+        fleet.add(flight);
+        return flight;
+    }
 }

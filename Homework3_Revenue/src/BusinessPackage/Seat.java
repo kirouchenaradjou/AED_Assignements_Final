@@ -15,7 +15,23 @@ public class Seat {
     private int numOfWindows;
     private int numOfMiddle;
     private int numOfAisle;
+    private int price;
+private String flightName;
 
+    public String getFlightName() {
+        return flightName;
+    }
+
+    public void setFlightName(String flightName) {
+        this.flightName = flightName;
+    }
+public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
     public int getNumOfWindows() {
         return numOfWindows;
     }

@@ -12,8 +12,24 @@ package BusinessPackage;
 public class Flight {
 
   private String flighName;
-  private int numOfSeats;
 Seat seat;
+private int maxNumOfSeats;
+
+    public Seat getSeat() {
+        return seat;
+    }
+
+    public void setSeat(Seat seat) {
+        this.seat = seat;
+    }
+
+    public int getMaxNumOfSeats() {
+        return maxNumOfSeats;
+    }
+
+    public void setMaxNumOfSeats(int maxNumOfSeats) {
+        this.maxNumOfSeats = maxNumOfSeats;
+    }
     public String getFlighName() {
         return flighName;
     }
@@ -22,16 +38,5 @@ Seat seat;
         this.flighName = flighName;
     }
 
-    public int getNumOfSeats() {
-        return numOfSeats;
-    }
-
-    public void setNumOfSeats(int numOfSeats) {
-        this.numOfSeats = numOfSeats;
-    }
-public Flight(Seat seat)
-{
-    this.seat=seat;
-}
     
 }
