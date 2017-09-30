@@ -52,7 +52,7 @@ public class RevenueCalculation {
                     Flight flight = jetAirways.addAirplane();
                     flight.setFlighName(tokens[1]);
                     flight.setMaxNumOfSeats(150);
-                    Person person = new Person();
+                    Customer person = new Customer();
                     person.setPersonName(tokens[0]);
                     Seat seat = person.getSeat();
                     seat.setNumOfSeats(Integer.parseInt(tokens[2]));
@@ -76,7 +76,7 @@ public class RevenueCalculation {
 
                     flight_ba.setFlighName(tokens[1]);
                     flight_ba.setMaxNumOfSeats(150);
-                    Person person = new Person();
+                    Customer person = new Customer();
                     person.setPersonName(tokens[0]);
                     Seat seat = person.getSeat();
                     seat.setNumOfSeats(Integer.parseInt(tokens[2]));
@@ -111,25 +111,29 @@ public class RevenueCalculation {
             for (Map.Entry m : hash.entrySet()) {
                 System.out.println("Revenue from Flight " + m.getKey() + " is :  " + m.getValue());
                 airlinerPrice = airlinerPrice + Integer.parseInt(m.getValue().toString());
-
             }
             for (Flight f : ba.getFleet()) {
                 String flightName = f.getFlighName();
-
                 int seatNumbers = f.getSeat().getPrice();
-
                 hashForBA.merge(flightName, seatNumbers, Integer::sum);
             }
+            System.out.println("================================================================");
+
             for (Map.Entry m : hashForBA.entrySet()) {
                 System.out.println("Revenue from Flight " + m.getKey() + " is : " + m.getValue());
                 airlinerPrice_ba = airlinerPrice_ba + Integer.parseInt(m.getValue().toString());
 
             }
+            travelAgency.setRevenue_TravelAgency(airlinerPrice + airlinerPrice_ba);
+            System.out.println("================================================================");
+            System.out.println("================================================================");
 
             System.out.println("Revenue by Airliner");
             System.out.println("Total Revenue for Airliner JET AIRWAYS " + airlinerPrice);
 
             System.out.println("Total Revenue for Airliner BRITISH AIRWAYS " + airlinerPrice_ba);
+            System.out.println("================================================================");
+            System.out.println("Total Revenue by the Travel Agency : " + travelAgency.getRevenue_TravelAgency());
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();

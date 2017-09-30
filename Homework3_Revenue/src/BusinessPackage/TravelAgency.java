@@ -13,7 +13,15 @@ import java.util.ArrayList;
  */
 public class TravelAgency {
        private ArrayList<Airline> travelAgency;
+private int revenue_TravelAgency;
 
+    public int getRevenue_TravelAgency() {
+        return revenue_TravelAgency;
+    }
+
+    public void setRevenue_TravelAgency(int revenue_TravelAgency) {
+        this.revenue_TravelAgency = revenue_TravelAgency;
+    }
     
     public ArrayList<Airline> getTravelAgency() {
         return travelAgency;
