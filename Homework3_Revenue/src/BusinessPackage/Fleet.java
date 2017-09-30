@@ -15,7 +15,15 @@ import java.util.ArrayList;
 public class Fleet {
 
     private ArrayList<Flight> fleet;
-    
+    private String airlinerName;
+
+    public String getAirlinerName() {
+        return airlinerName;
+    }
+
+    public void setAirlinerName(String airlinerName) {
+        this.airlinerName = airlinerName;
+    }
     public Fleet() {
         fleet = new ArrayList<Flight>();
     }

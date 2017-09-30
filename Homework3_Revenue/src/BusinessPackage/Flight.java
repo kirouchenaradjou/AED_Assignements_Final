@@ -14,6 +14,15 @@ public class Flight {
   private String flighName;
 Seat seat;
 private int maxNumOfSeats;
+private String airlinerName;
+
+    public String getAirlinerName() {
+        return airlinerName;
+    }
+
+    public void setAirlinerName(String airlinerName) {
+        this.airlinerName = airlinerName;
+    }
 
     public Seat getSeat() {
         return seat;
