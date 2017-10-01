@@ -4,12 +4,13 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/ragha/Documents/NetBeansProjects/Homework3_Revenue/src/BusinessPackage/Fleet.java</file>
+            <file>file:/C:/Users/ragha/Documents/NetBeansProjects/Homework3_Revenue/src/BusinessPackage/MasterSchedule.java</file>
             <file>file:/C:/Users/ragha/Documents/NetBeansProjects/Homework3_Revenue/details.csv</file>
-            <file>file:/C:/Users/ragha/Documents/NetBeansProjects/Homework3_Revenue/src/BusinessPackage/Person.java</file>
+            <file>file:/C:/Users/ragha/Documents/NetBeansProjects/Homework3_Revenue/src/BusinessPackage/Customer.java</file>
             <file>file:/C:/Users/ragha/Documents/NetBeansProjects/Homework3_Revenue/src/BusinessPackage/RevenueCalculation.java</file>
-            <file>file:/C:/Users/ragha/Documents/NetBeansProjects/Homework3_Revenue/src/BusinessPackage/Seat.java</file>
             <file>file:/C:/Users/ragha/Documents/NetBeansProjects/Homework3_Revenue/src/BusinessPackage/TravelAgency.java</file>
             <file>file:/C:/Users/ragha/Documents/NetBeansProjects/Homework3_Revenue/src/BusinessPackage/Flight.java</file>
+            <file>file:/C:/Users/ragha/Documents/NetBeansProjects/Homework3_Revenue/src/BusinessPackage/CustomerDirectory.java</file>
             <file>file:/C:/Users/ragha/Documents/NetBeansProjects/Homework3_Revenue/src/BusinessPackage/Airline.java</file>
         </group>
     </open-files>

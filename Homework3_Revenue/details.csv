@@ -1,8 +1,9 @@
-Deiva,Boeing700-707,4,1,2,1,Jet Airways
-Raghavi,Airbus109-900,8,7,1,0,Jet Airways
-Kavitha,Boeing700-707,2,1,1,0,Jet Airways
-Raju,Airbus109-900,2,1,0,1,Jet Airways
-Chandra,Airbus,6,2,2,2,Jet Airways
-Ramya,British Airways 238,1,1,0,0,British Airways
-Nithin,British Airways 326,8,2,1,3,British Airways
-Nikin,British Airways 328,2,1,0,3,British Airways
+Deiva,Boeing700-707,4,1,2,1,Jet Airways,KA761767,London,Boston,8 hrs
+Raghavi,Airbus109-900,8,7,1,0,Jet Airways,KA761768,Chennai,Atlanta,9 hrs
+Kavitha,Boeing700-707,2,1,1,0,Jet Airways,KA761769,Mumbai,Paris,10 hrs
+Raju,Airbus109-900,2,1,0,1,Jet Airways,KA761770,Pondy,Venice,11 hrs
+Chandra,Airbus,6,2,2,2,Jet Airways,KA761771,Paris,Swiz,12 hrs
+Ramya,British Airways 238,1,1,0,0,British Airways,KA761772,Venice,Dubai,13 hrs
+Nithin,British Airways 326,8,2,1,3,British Airways,KA761773,Swiz,California,14 hrs
+Nikin,British Airways 328,2,1,0,3,British Airways,KA761774,Australia,India,15 hrs
+Uma,Airbus,146,2,2,2,Jet Airways,KA761775,Dubai,Canada,16 hrs

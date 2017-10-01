@@ -14,6 +14,7 @@ import java.util.ArrayList;
 public class Airline {
      private ArrayList<Fleet> airline;
      private int priceTotal_Airliner;
+     
 
     public int getPriceTotal_Airliner() {
         return priceTotal_Airliner;
