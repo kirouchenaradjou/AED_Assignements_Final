@@ -14,7 +14,7 @@ import java.util.Date;
 public class Account {
     
     private int accNum;
-    private int routingNum;
+    private String routingNum;
     private String bankName;
     private int balance;
     private Date createdOn;
@@ -31,11 +31,11 @@ public class Account {
         this.accNum = accNum;
     }
 
-    public int getRoutingNum() {
+    public String getRoutingNum() {
         return routingNum;
     }
 
-    public void setRoutingNum(int routingNum) {
+    public void setRoutingNum(String routingNum) {
         this.routingNum = routingNum;
     }
 
@@ -58,5 +58,9 @@ public class Account {
     public Date getCreatedOn() {
         return createdOn;
     }
-
+    @Override
+public String toString()
+{
+    return this.routingNum;
+}
 }
