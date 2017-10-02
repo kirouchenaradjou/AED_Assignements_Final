@@ -12,9 +12,18 @@ import java.util.ArrayList;
  * @author ragha
  */
 public class Airline {
-     private ArrayList<Fleet> airline;
+     private Fleet fleet;
      private int priceTotal_Airliner;
-     
+     private String airlineName;
+     private int max_seats;
+
+    public String getAirlineName() {
+        return airlineName;
+    }
+
+    public void setAirlineName(String airlineName) {
+        this.airlineName = airlineName;
+    }
 
     public int getPriceTotal_Airliner() {
         return priceTotal_Airliner;
@@ -24,21 +33,19 @@ public class Airline {
         this.priceTotal_Airliner = priceTotal_Airliner;
     }
 
-    public ArrayList<Fleet> getAirline() {
-        return airline;
-    }
-
-    public void setAirline(ArrayList<Fleet> airline) {
-        this.airline = airline;
-    }
-        public Fleet addFleet() {
-        Fleet fleet = new Fleet();
-        airline.add(fleet);
+    public Fleet getFleet() {
         return fleet;
     }
-        public Airline()
-        {
-            airline = new ArrayList<Fleet>();
-        }
+
+    public void setFleet(Fleet airline) {
+        this.fleet = airline;
+    }
+
+    
+        public Fleet addFleet() {
+        Fleet fleet = new Fleet();
+        return fleet;
+    }
+      
    
 }

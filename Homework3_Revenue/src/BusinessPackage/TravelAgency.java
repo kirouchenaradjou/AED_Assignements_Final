@@ -5,6 +5,10 @@
  */
 package BusinessPackage;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -40,5 +44,35 @@ private int revenue_TravelAgency;
         travelAgency.add(airline);
         return airline;
     }
-  
+ /* public void add()
+  {
+              String csvFile = "details.csv";
+
+
+       BufferedReader br = null;
+        String line = "";
+        String DELIMITER = ",";
+  try{
+       br = new BufferedReader(new FileReader(csvFile));
+
+            while ((line = br.readLine()) != null) {
+                                    String[] tokens = line.split(DELIMITER);
+           Airline airliner = ;
+travelAgency.add(airliner);
+  }
+  }
+ catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (br != null) {
+                try {
+                    br.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+  }}*/
 }

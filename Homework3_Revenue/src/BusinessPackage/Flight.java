@@ -13,8 +13,18 @@ public class Flight {
 
   private String flighName;
 Seat seat;
-private int maxNumOfSeats;
+ private int maxNumOfSeats=150;
 private String airlinerName;
+private int flightRevenue;
+
+    public int getFlightRevenue() {
+        return flightRevenue;
+    }
+
+    public void setFlightRevenue(int flightRevenue) {
+        this.flightRevenue = flightRevenue;
+    }
+
 
     public String getAirlinerName() {
         return airlinerName;

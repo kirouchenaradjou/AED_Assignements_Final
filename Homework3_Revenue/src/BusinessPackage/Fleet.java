@@ -16,9 +16,17 @@ public class Fleet {
 
     private ArrayList<Flight> fleet;
     private String airlinerName;
-
+private int fleetRevenue;
     public String getAirlinerName() {
         return airlinerName;
+    }
+
+    public int getFleetRevenue() {
+        return fleetRevenue;
+    }
+
+    public void setFleetRevenue(int fleetRevenue) {
+        this.fleetRevenue = fleetRevenue;
     }
 
     public void setAirlinerName(String airlinerName) {
