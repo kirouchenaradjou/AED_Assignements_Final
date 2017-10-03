@@ -175,7 +175,8 @@ this.userContainer = userContainer;
 
     private void submitAccountDetailsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitAccountDetailsButtonActionPerformed
         // for creation
-        int y;
+        
+        int x,y;
          try {
         x = Integer.parseInt(accNumTextField.getText());
         y = Integer.parseInt(balanceTextField.getText());
@@ -199,7 +200,7 @@ this.userContainer = userContainer;
         JOptionPane.showMessageDialog(null, "Account details added ! " , "Account Creation", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_submitAccountDetailsButtonActionPerformed
-int x;
+
     private void accNumTextFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_accNumTextFieldKeyReleased
         // TODO add your handling code here:
        

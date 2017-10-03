@@ -194,7 +194,7 @@ public class ManageAccountJPanel extends javax.swing.JPanel {
 
         } else {
             Account account = (Account) tableAccount.getValueAt(selectedRows, 0);
-            ViewAccountJPanel viewAccountJPanel = new ViewAccountJPanel(userContainer, account);
+            ViewAccountJPanel viewAccountJPanel = new ViewAccountJPanel(userContainer, account,accountDir);
             userContainer.add("ViewAccountJPanel", viewAccountJPanel);
             CardLayout cardLayout = (CardLayout) userContainer.getLayout();
             cardLayout.next(userContainer);
@@ -218,7 +218,7 @@ public class ManageAccountJPanel extends javax.swing.JPanel {
 
         }
         else {
-             ViewAccountJPanel viewAccountJPanel = new ViewAccountJPanel(userContainer, result);
+             ViewAccountJPanel viewAccountJPanel = new ViewAccountJPanel(userContainer, result,accountDir);
             userContainer.add("ViewAccountJPanel", viewAccountJPanel);
             CardLayout cardLayout = (CardLayout) userContainer.getLayout();
             cardLayout.next(userContainer);

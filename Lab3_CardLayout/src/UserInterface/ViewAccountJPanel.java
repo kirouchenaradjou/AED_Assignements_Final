@@ -6,6 +6,7 @@
 package UserInterface;
 
 import BusinessPackage.Account;
+import BusinessPackage.AccountDirectory;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -21,11 +22,13 @@ public class ViewAccountJPanel extends javax.swing.JPanel {
      */
     private Account account;
         private JPanel userContainer;
+        private AccountDirectory accountDirectory;
 
-    public ViewAccountJPanel (JPanel userContainer,Account account) {
+    public ViewAccountJPanel (JPanel userContainer,Account account,AccountDirectory accountDirectory) {
         initComponents();
          this.userContainer = userContainer;
         this.account = account;
+        this.accountDirectory = accountDirectory;
        
         saveButton.setEnabled(false);
         updateButton.setEnabled(true);
@@ -180,9 +183,15 @@ public class ViewAccountJPanel extends javax.swing.JPanel {
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         // Go to the previous page
+                CardLayout cardLayout = (CardLayout) userContainer.getLayout();
+
+        ManageAccountJPanel manageAccountJPanel = new ManageAccountJPanel(userContainer, accountDirectory);
+        //removing the first page
+        userContainer.remove(1);
         userContainer.remove(this);
-        CardLayout cardLayout = (CardLayout) userContainer.getLayout();
-        cardLayout.previous(userContainer);
+        userContainer.add("ManageAccountJPanel",manageAccountJPanel);
+        cardLayout.next(userContainer);
+        
     }//GEN-LAST:event_backButtonActionPerformed
 
     private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
@@ -196,6 +205,14 @@ public class ViewAccountJPanel extends javax.swing.JPanel {
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
         // Save
+        
+         if(accNumTextField.getText()==null  || bankNameTextField.getText() == null 
+                || routingTextField.getText() ==null  )
+        {
+                    JOptionPane.showMessageDialog(null, "Enter all the details" , "Warning", JOptionPane.WARNING_MESSAGE);
+
+        }
+         else {
         account.setRoutingNum(routingTextField.getText());
         account.setAccNum(Integer.parseInt(accNumTextField.getText()));
         account.setBankName(bankNameTextField.getText());
@@ -207,7 +224,7 @@ public class ViewAccountJPanel extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(null, "Account details updated successfully ! " , "Account Updation", JOptionPane.INFORMATION_MESSAGE);
 
     }//GEN-LAST:event_saveButtonActionPerformed
-
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField accNumTextField;
