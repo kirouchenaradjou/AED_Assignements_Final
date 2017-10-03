@@ -204,6 +204,14 @@ public class ManageAccountJPanel extends javax.swing.JPanel {
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
         // Search
+        if(searchTextField.getText() == null || searchTextField.getText().equals(""))
+        {
+                        JOptionPane.showMessageDialog(null, "Enter a value to search", "Warning", JOptionPane.WARNING_MESSAGE);
+
+        }
+        else
+        {
+
         Account result = accountDir.searchAccount(Integer.parseInt(searchTextField.getText()));
         if (result == null) {
             JOptionPane.showMessageDialog(null, "Account Detail does not exists", "Information", JOptionPane.INFORMATION_MESSAGE);
@@ -216,7 +224,8 @@ public class ManageAccountJPanel extends javax.swing.JPanel {
             cardLayout.next(userContainer);
         }
     }//GEN-LAST:event_searchButtonActionPerformed
-
+            
+        }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backButton;

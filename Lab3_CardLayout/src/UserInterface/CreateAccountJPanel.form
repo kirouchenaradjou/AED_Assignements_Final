@@ -148,6 +148,9 @@
     <Component class="javax.swing.JTextField" name="routingTextField">
     </Component>
     <Component class="javax.swing.JTextField" name="accNumTextField">
+      <Events>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="accNumTextFieldKeyReleased"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="bankNameTextField">
       <Events>

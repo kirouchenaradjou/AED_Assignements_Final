@@ -70,6 +70,12 @@ this.userContainer = userContainer;
         jLabel5.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         jLabel5.setText("Bank Name");
 
+        accNumTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                accNumTextFieldKeyReleased(evt);
+            }
+        });
+
         bankNameTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bankNameTextFieldActionPerformed(evt);
@@ -169,15 +175,35 @@ this.userContainer = userContainer;
 
     private void submitAccountDetailsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitAccountDetailsButtonActionPerformed
         // for creation
-        
+        int y;
+         try {
+        x = Integer.parseInt(accNumTextField.getText());
+        y = Integer.parseInt(balanceTextField.getText());
+    } catch (NumberFormatException nfe) {
+        JOptionPane.showMessageDialog(null, "Account Number and Balance should be numeric");
+        accNumTextField.setText("");
+    }
+        if(accNumTextField.getText()==null || balanceTextField.getText() == null || bankNameTextField.getText() == null 
+                || routingTextField.getText() ==null  )
+        {
+                    JOptionPane.showMessageDialog(null, "Enter all the details" , "Warning", JOptionPane.WARNING_MESSAGE);
+
+        }
+        else
+        {
         Account account = accountDir.addAccount();
         account.setAccNum(Integer.parseInt(accNumTextField.getText()));
         account.setBalance(Integer.parseInt(balanceTextField.getText()));
         account.setBankName(bankNameTextField.getText());
         account.setRoutingNum(routingTextField.getText());
         JOptionPane.showMessageDialog(null, "Account details added ! " , "Account Creation", JOptionPane.INFORMATION_MESSAGE);
-        
+        }
     }//GEN-LAST:event_submitAccountDetailsButtonActionPerformed
+int x;
+    private void accNumTextFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_accNumTextFieldKeyReleased
+        // TODO add your handling code here:
+       
+    }//GEN-LAST:event_accNumTextFieldKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
