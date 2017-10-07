@@ -6,12 +6,11 @@
 package UserInterface;
 
 import UserInterface_ManageAirline.ManageAirlineJPanel;
-import Business.Airline;
 import Business.TravelAgency;
+import UserInterface.ForSearch.SearchFlightsJPanel;
 import UserInterface.ManageFlights.ManageFlightJPanel;
+import UserInterface.ManageTravelAgency.ManageTravelAgencyJPanel;
 import java.awt.CardLayout;
-import javax.swing.JPanel;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -76,6 +75,7 @@ public class TravelAgencyMain extends javax.swing.JFrame {
         searchButton = new javax.swing.JButton();
         manageButton = new javax.swing.JButton();
         manageFlightsButton = new javax.swing.JButton();
+        Search = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -88,8 +88,13 @@ public class TravelAgencyMain extends javax.swing.JFrame {
         leftPanel.setPreferredSize(new java.awt.Dimension(300, 1000));
         leftPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        searchButton.setText("Search");
-        leftPanel.add(searchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 240, 170, 50));
+        searchButton.setText("Manage Travel Agency");
+        searchButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchButtonActionPerformed(evt);
+            }
+        });
+        leftPanel.add(searchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, 210, 50));
 
         manageButton.setText("Manage Airlines");
         manageButton.addActionListener(new java.awt.event.ActionListener() {
@@ -97,7 +102,7 @@ public class TravelAgencyMain extends javax.swing.JFrame {
                 manageButtonActionPerformed(evt);
             }
         });
-        leftPanel.add(manageButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, 170, 50));
+        leftPanel.add(manageButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 210, 50));
 
         manageFlightsButton.setText("Manage Flights");
         manageFlightsButton.addActionListener(new java.awt.event.ActionListener() {
@@ -105,7 +110,15 @@ public class TravelAgencyMain extends javax.swing.JFrame {
                 manageFlightsButtonActionPerformed(evt);
             }
         });
-        leftPanel.add(manageFlightsButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 340, 170, 50));
+        leftPanel.add(manageFlightsButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 430, 210, 50));
+
+        Search.setText("Search");
+        Search.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SearchActionPerformed(evt);
+            }
+        });
+        leftPanel.add(Search, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, 210, 50));
 
         jSplitPane1.setLeftComponent(leftPanel);
 
@@ -142,9 +155,26 @@ public class TravelAgencyMain extends javax.swing.JFrame {
         cardLayout.next(userContainer);
     }//GEN-LAST:event_manageFlightsButtonActionPerformed
 
+    private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
+        // List all the flights of all the airline
+          ManageTravelAgencyJPanel manageTravelAgencyJPanel = new  ManageTravelAgencyJPanel(userContainer,airlineDirectory);
+        userContainer.add("ManageTravelAgencyJPanel",manageTravelAgencyJPanel);
+        CardLayout cardLayout = (CardLayout) userContainer.getLayout();
+        cardLayout.next(userContainer);
+    }//GEN-LAST:event_searchButtonActionPerformed
+
+    private void SearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchActionPerformed
+        // Find the flights
+         SearchFlightsJPanel searchFlights = new  SearchFlightsJPanel(userContainer,airlineDirectory);
+        userContainer.add("SearchFlights",searchFlights);
+        CardLayout cardLayout = (CardLayout) userContainer.getLayout();
+        cardLayout.next(userContainer);
+    }//GEN-LAST:event_SearchActionPerformed
+
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Search;
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JPanel leftPanel;
     private javax.swing.JButton manageButton;

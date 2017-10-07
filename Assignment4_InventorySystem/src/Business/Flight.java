@@ -5,6 +5,8 @@
  */
 package Business;
 
+import java.util.Date;
+
 /**
  *
  * @author ragha
@@ -16,6 +18,15 @@ public class Flight {
     private String airlineName;
     private String source;
     private String destination;
+    private Date departureDate;
+
+    public Date getDepartureDate() {
+        return departureDate;
+    }
+
+    public void setDepartureDate(Date departureDate) {
+        this.departureDate = departureDate;
+    }
 
     public String getSource() {
         return source;
@@ -32,8 +43,7 @@ public class Flight {
     public void setDestination(String destination) {
         this.destination = destination;
     }
-   
-    
+
     public String getAirlineName() {
         return airlineName;
     }

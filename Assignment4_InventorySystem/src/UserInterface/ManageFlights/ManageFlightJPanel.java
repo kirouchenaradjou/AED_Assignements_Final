@@ -47,6 +47,8 @@ public class ManageFlightJPanel extends javax.swing.JPanel {
         viewAirlinerButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         tableFlight.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -65,12 +67,15 @@ public class ManageFlightJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tableFlight);
 
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(146, 60, 670, 250));
+
         newAirlinerButton.setText("New Flight <<");
         newAirlinerButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 newAirlinerButtonActionPerformed(evt);
             }
         });
+        add(newAirlinerButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(695, 339, 180, -1));
 
         viewAirlinerButton.setText("View Flight <<");
         viewAirlinerButton.addActionListener(new java.awt.event.ActionListener() {
@@ -78,39 +83,11 @@ public class ManageFlightJPanel extends javax.swing.JPanel {
                 viewAirlinerButtonActionPerformed(evt);
             }
         });
+        add(viewAirlinerButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(695, 399, 180, -1));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel1.setText("Manage Airlines");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(110, 110, 110)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(viewAirlinerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(newAirlinerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 670, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(214, 214, 214)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(153, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(49, 49, 49)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(74, 74, 74)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
-                .addComponent(newAirlinerButton)
-                .addGap(27, 27, 27)
-                .addComponent(viewAirlinerButton)
-                .addGap(73, 73, 73))
-        );
+        jLabel1.setText("Manage Flights");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(345, 16, 155, 35));
     }// </editor-fold>//GEN-END:initComponents
 
     private void newAirlinerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newAirlinerButtonActionPerformed
@@ -124,18 +101,18 @@ public class ManageFlightJPanel extends javax.swing.JPanel {
 
     private void viewAirlinerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewAirlinerButtonActionPerformed
         // View Airline Directory
-    /*    int selectedRows = tableFlight.getSelectedRow();
+        int selectedRows = tableFlight.getSelectedRow();
         if (selectedRows < 0) {
             JOptionPane.showMessageDialog(null, "Select any row from the table to view the details", "Warning", JOptionPane.WARNING_MESSAGE);
 
         } else {
-            Airline airline = (Airline) tableFlight.getValueAt(selectedRows, 0);
-            ViewFlightJPanel viewFlightJPanel = new ViewFlightJPanel(userContainer, airline);
+            Flight flight = (Flight) tableFlight.getValueAt(selectedRows, 0);
+            ViewFlightJPanel viewFlightJPanel = new ViewFlightJPanel(userContainer, flight);
             userContainer.add("ViewFlightJPanel", viewFlightJPanel);
             CardLayout cardLayout = (CardLayout) userContainer.getLayout();
             cardLayout.next(userContainer);
 
-        }*/
+        }
     }//GEN-LAST:event_viewAirlinerButtonActionPerformed
 
 public void populateTable() {

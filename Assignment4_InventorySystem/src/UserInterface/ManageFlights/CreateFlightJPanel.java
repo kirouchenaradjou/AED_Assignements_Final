@@ -59,6 +59,8 @@ public class CreateFlightJPanel extends javax.swing.JPanel {
         sourceText = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         destText = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -77,13 +79,13 @@ public class CreateFlightJPanel extends javax.swing.JPanel {
                 flightNumTextActionPerformed(evt);
             }
         });
-        add(flightNumText, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 230, 170, -1));
+        add(flightNumText, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 210, 170, -1));
 
         jLabel2.setText("Flight Name");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 180, -1, -1));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 170, -1, -1));
 
         jLabel3.setText("Flight Serial Number");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 230, -1, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 210, -1, -1));
 
         jLabel4.setText("Airline Name");
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 120, -1, -1));
@@ -107,24 +109,28 @@ public class CreateFlightJPanel extends javax.swing.JPanel {
         add(airlineComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 120, 170, -1));
 
         jLabel5.setText("Destination");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 340, 150, -1));
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 300, 150, -1));
 
         sourceText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 sourceTextActionPerformed(evt);
             }
         });
-        add(sourceText, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 290, 170, -1));
+        add(sourceText, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 250, 170, -1));
 
         jLabel6.setText("Source");
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 290, 150, -1));
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 260, 150, -1));
 
         destText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 destTextActionPerformed(evt);
             }
         });
-        add(destText, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 340, 170, -1));
+        add(destText, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 290, 170, -1));
+
+        jLabel7.setText("Departure Date");
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 350, -1, -1));
+        add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 350, 170, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void flightNameTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_flightNameTextActionPerformed
@@ -156,6 +162,7 @@ public class CreateFlightJPanel extends javax.swing.JPanel {
          flight.setAirlineName(airlineComboBox.getSelectedItem().toString());
          flight.setDestination(destText.getText());
          flight.setSource(sourceText.getText());
+         flight.setDepartureDate(jDateChooser1.getDate());
     }//GEN-LAST:event_submitFlightButtonActionPerformed
 
     private void sourceTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sourceTextActionPerformed
@@ -173,12 +180,14 @@ public class CreateFlightJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField destText;
     private javax.swing.JTextField flightNameText;
     private javax.swing.JTextField flightNumText;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JTextField sourceText;
     private javax.swing.JButton submitFlightButton;
     // End of variables declaration//GEN-END:variables

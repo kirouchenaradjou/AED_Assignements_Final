@@ -5,6 +5,14 @@
  */
 package UserInterface.ManageFlights;
 
+import Business.Airline;
+import Business.Flight;
+import UserInterface_ManageAirline.ManageAirlineJPanel;
+import java.awt.CardLayout;
+import java.awt.Component;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
 /**
  *
  * @author ragha
@@ -14,9 +22,22 @@ public class ViewFlightJPanel extends javax.swing.JPanel {
     /**
      * Creates new form ViewFlightJPanel
      */
-    public ViewFlightJPanel() {
+   private JPanel userContainer;
+            private Flight f;
+               
+
+    
+    public ViewFlightJPanel(JPanel userContainer, Flight flight) {
         initComponents();
+        this.userContainer  = userContainer;
+        this.f = flight;
+         saveButton.setEnabled(false);
+        updateButton.setEnabled(true);
+                populateFlightDetails();
+
     }
+
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -27,19 +48,191 @@ public class ViewFlightJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1039, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 753, Short.MAX_VALUE)
-        );
+        jLabel2 = new javax.swing.JLabel();
+        flightNameText = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        flightNumText = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        sourceText = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        destText = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        saveButton = new javax.swing.JButton();
+        updateButton = new javax.swing.JButton();
+        backButton = new javax.swing.JButton();
+
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel2.setText("Flight Name");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 170, -1, -1));
+
+        flightNameText.setEnabled(false);
+        flightNameText.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                flightNameTextActionPerformed(evt);
+            }
+        });
+        add(flightNameText, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 170, 170, -1));
+
+        jLabel3.setText("Flight Serial Number");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 210, -1, -1));
+
+        flightNumText.setEnabled(false);
+        flightNumText.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                flightNumTextActionPerformed(evt);
+            }
+        });
+        add(flightNumText, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 210, 170, -1));
+
+        jLabel6.setText("Source");
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 250, 150, -1));
+
+        sourceText.setEnabled(false);
+        sourceText.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sourceTextActionPerformed(evt);
+            }
+        });
+        add(sourceText, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 250, 170, -1));
+
+        jLabel5.setText("Destination");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 290, 150, -1));
+
+        destText.setEnabled(false);
+        destText.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                destTextActionPerformed(evt);
+            }
+        });
+        add(destText, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 290, 170, -1));
+
+        jLabel7.setText("Departure Date");
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 340, -1, -1));
+
+        jDateChooser1.setEnabled(false);
+        add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 340, 170, -1));
+
+        saveButton.setText("Save");
+        saveButton.setEnabled(false);
+        saveButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveButtonActionPerformed(evt);
+            }
+        });
+        add(saveButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 434, -1, -1));
+
+        updateButton.setText("Update");
+        updateButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateButtonActionPerformed(evt);
+            }
+        });
+        add(updateButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(524, 434, -1, -1));
+
+        backButton.setText("< Back");
+        backButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backButtonActionPerformed(evt);
+            }
+        });
+        add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void flightNameTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_flightNameTextActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_flightNameTextActionPerformed
+
+    private void flightNumTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_flightNumTextActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_flightNumTextActionPerformed
+
+    private void sourceTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sourceTextActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_sourceTextActionPerformed
+
+    private void destTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_destTextActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_destTextActionPerformed
+
+    private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
+        // Save
+
+        if(flightNameText.getText()==null  || flightNumText.getText() == null
+            || sourceText.getText() ==null || destText.getText() ==null || jDateChooser1.getDate()==null  )
+        {
+            JOptionPane.showMessageDialog(null, "Enter all the details" , "Warning", JOptionPane.WARNING_MESSAGE);
+
+        }
+        else {
+ 
+     f.setFlightName(flightNameText.getText());
+     f.setDepartureDate(jDateChooser1.getDate());
+     f.setDestination(destText.getText());
+     f.setSource(sourceText.getText());
+     f.setFlightSerialNum(flightNumText.getText());
+          
+ 
+            saveButton.setEnabled(false);
+            updateButton.setEnabled(true);
+            flightNameText.setEnabled(false);
+            flightNumText.setEnabled(false);
+            sourceText.setEnabled(false);
+            destText.setEnabled(false);
+            jDateChooser1.setEnabled(false);
+            JOptionPane.showMessageDialog(null, "Flight details updated successfully ! " , "Flight Updation", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_saveButtonActionPerformed
+
+    private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
+        // TODO add your handling code here:
+        flightNameText.setEnabled(true);
+            flightNumText.setEnabled(true);
+            sourceText.setEnabled(true);
+            destText.setEnabled(true);
+            jDateChooser1.setEnabled(true);
+           
+        saveButton.setEnabled(true);
+        updateButton.setEnabled(false);
+    }//GEN-LAST:event_updateButtonActionPerformed
+
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
+        // Go to the previous page
+        userContainer.remove(this);
+        Component[] componentArray = userContainer.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        ManageFlightJPanel manageAccountJPanel = (ManageFlightJPanel) component;
+        manageAccountJPanel.populateTable();
+        CardLayout layout = (CardLayout) userContainer.getLayout();
+        layout.previous(userContainer);
+    }//GEN-LAST:event_backButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton backButton;
+    private javax.swing.JTextField destText;
+    private javax.swing.JTextField flightNameText;
+    private javax.swing.JTextField flightNumText;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JButton saveButton;
+    private javax.swing.JTextField sourceText;
+    private javax.swing.JButton updateButton;
     // End of variables declaration//GEN-END:variables
+
+    private void populateFlightDetails() {
+ 
+     flightNameText.setText(f.getFlightName());
+     flightNumText.setText(f.getFlightSerialNum());
+     sourceText.setText(f.getSource());
+     destText.setText(f.getDestination());
+     jDateChooser1.setDate(f.getDepartureDate());
+          
+ 
+    }
 }
