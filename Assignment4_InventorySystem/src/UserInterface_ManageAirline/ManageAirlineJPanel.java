@@ -45,6 +45,10 @@ public class ManageAirlineJPanel extends javax.swing.JPanel {
         viewAirlinerButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(153, 153, 153));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        tableAccount.setBorder(new javax.swing.border.MatteBorder(null));
         tableAccount.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -61,59 +65,38 @@ public class ManageAirlineJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        tableAccount.setSelectionBackground(new java.awt.Color(204, 255, 255));
+        tableAccount.setSelectionForeground(new java.awt.Color(0, 102, 102));
         jScrollPane1.setViewportView(tableAccount);
 
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 670, 420));
+
+        newAirlinerButton.setBackground(new java.awt.Color(204, 255, 204));
+        newAirlinerButton.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        newAirlinerButton.setForeground(new java.awt.Color(0, 51, 51));
         newAirlinerButton.setText("New Airliner <<");
         newAirlinerButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 newAirlinerButtonActionPerformed(evt);
             }
         });
+        add(newAirlinerButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 270, 180, -1));
 
+        viewAirlinerButton.setBackground(new java.awt.Color(153, 255, 204));
+        viewAirlinerButton.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        viewAirlinerButton.setForeground(new java.awt.Color(0, 51, 51));
         viewAirlinerButton.setText("View Airliner <<");
         viewAirlinerButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 viewAirlinerButtonActionPerformed(evt);
             }
         });
+        add(viewAirlinerButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 330, 180, -1));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setBackground(new java.awt.Color(102, 153, 255));
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setText("Manage Airlines");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(441, 441, 441)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 670, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(41, 41, 41)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(newAirlinerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(viewAirlinerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(272, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(90, 90, 90)
-                        .addComponent(newAirlinerButton)
-                        .addGap(30, 30, 30)
-                        .addComponent(viewAirlinerButton))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(89, 89, 89)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(436, Short.MAX_VALUE))
-        );
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 60, 340, 35));
     }// </editor-fold>//GEN-END:initComponents
 
     private void newAirlinerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newAirlinerButtonActionPerformed

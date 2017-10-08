@@ -6,6 +6,7 @@
 package UserInterface.ManageCustomers;
 
 import Business.Customer;
+import java.awt.CardLayout;
 import javax.swing.JPanel;
 
 /**
@@ -28,11 +29,17 @@ public class EticketJPanel extends javax.swing.JPanel {
     }
 
     private void printEticket() {
-  customerNameText.setText(customer.getCustomerFirstName().concat(" ").concat(customer.getCustomerLastName()));
+        customerNameText.setText(customer.getCustomerFirstName().concat(" ").concat(customer.getCustomerLastName()));
         contactNumberText.setText(customer.getMobileNum());
         flightNameText.setText(customer.getFlight().getFlightName());
         airlinerNameText.setText(customer.getFlight().getAirlineName());
         pricePaidText.setText(String.valueOf(customer.getFlight().getPrice()));
+        depatureLocationText.setText(customer.getFlight().getSource());
+        destinationText.setText(customer.getFlight().getDestination());
+        passportNumText.setText(customer.getPassportNum());
+        flightNumtext.setText(customer.getFlight().getFlightSerialNum());
+        arrivalTime.setText(customer.getFlight().getArrivalTime().toString());
+        deptTimeText.setText(customer.getFlight().getDeptTime().toString());
     }
 
     /**
@@ -55,12 +62,31 @@ public class EticketJPanel extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        depatureLocationText = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        deptTimeText = new javax.swing.JTextField();
+        destinationText = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        arrivalTime = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        flightNumtext = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        passportNumText = new javax.swing.JTextField();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jLabel17 = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        jLabel1.setText("E- Ticket");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(362, 33, -1, -1));
+        jLabel1.setText("E- Ticket - Confirmation of the Flight");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 10, -1, -1));
 
         customerNameText.setEditable(false);
         customerNameText.setEnabled(false);
@@ -69,57 +95,167 @@ public class EticketJPanel extends javax.swing.JPanel {
                 customerNameTextActionPerformed(evt);
             }
         });
-        add(customerNameText, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 110, 160, -1));
+        add(customerNameText, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 480, 160, -1));
 
         contactNumberText.setEditable(false);
         contactNumberText.setEnabled(false);
-        add(contactNumberText, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 160, 160, -1));
+        add(contactNumberText, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 540, 160, -1));
 
         pricePaidText.setEditable(false);
         pricePaidText.setEnabled(false);
-        add(pricePaidText, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 210, 160, -1));
+        add(pricePaidText, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 240, 160, -1));
 
         flightNameText.setEditable(false);
         flightNameText.setEnabled(false);
-        add(flightNameText, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 260, 160, -1));
+        add(flightNameText, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 140, 160, -1));
 
         airlinerNameText.setEditable(false);
         airlinerNameText.setEnabled(false);
-        add(airlinerNameText, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 310, 160, -1));
+        add(airlinerNameText, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 70, 160, -1));
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(51, 0, 51));
         jLabel2.setText("Full Name");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 110, -1, -1));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 480, -1, -1));
 
-        jLabel3.setText("Airliner");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 320, -1, -1));
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(51, 0, 51));
+        jLabel3.setText("From (Depature Location)");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 250, -1, -1));
 
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(51, 0, 51));
         jLabel4.setText("Flight Name");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 270, -1, -1));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 140, -1, -1));
 
-        jLabel5.setText("Price Paid");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 220, -1, -1));
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(51, 0, 51));
+        jLabel5.setText("Arrival Time");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 310, -1, -1));
 
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(51, 0, 51));
         jLabel6.setText("Contact Number");
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 170, -1, -1));
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 540, -1, -1));
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(51, 0, 51));
+        jLabel7.setText("Depature Time");
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 190, -1, -1));
+
+        depatureLocationText.setEditable(false);
+        depatureLocationText.setEnabled(false);
+        add(depatureLocationText, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 250, 160, -1));
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(0, 51, 102));
+        jLabel8.setText("Airliner");
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, -1, -1));
+
+        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(51, 0, 51));
+        jLabel9.setText("Destination");
+        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 140, -1, -1));
+
+        deptTimeText.setEditable(false);
+        deptTimeText.setEnabled(false);
+        add(deptTimeText, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 190, 160, -1));
+
+        destinationText.setEditable(false);
+        destinationText.setEnabled(false);
+        add(destinationText, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 140, 160, -1));
+
+        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(0, 153, 153));
+        jLabel10.setText("Confirmed");
+        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 190, 90, -1));
+
+        arrivalTime.setEditable(false);
+        arrivalTime.setEnabled(false);
+        add(arrivalTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 300, 160, -1));
+
+        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(51, 0, 51));
+        jLabel11.setText("Price Paid");
+        add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 240, -1, -1));
+
+        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(51, 0, 51));
+        jLabel12.setText("Flight Number");
+        add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 360, -1, -1));
+
+        jLabel13.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(51, 0, 51));
+        jLabel13.setText("Passport Number");
+        add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 480, -1, -1));
+
+        flightNumtext.setEditable(false);
+        flightNumtext.setEnabled(false);
+        add(flightNumtext, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 350, 160, -1));
+
+        jLabel14.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(51, 0, 51));
+        jLabel14.setText("Yes");
+        add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 290, -1, -1));
+
+        passportNumText.setEditable(false);
+        passportNumText.setEnabled(false);
+        add(passportNumText, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 480, 160, -1));
+
+        jLabel15.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(51, 0, 51));
+        jLabel15.setText("Status");
+        add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 190, -1, -1));
+
+        jLabel16.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(51, 0, 51));
+        jLabel16.setText("Paid by Card");
+        add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 290, -1, -1));
+        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 1010, 30));
+
+        jLabel17.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(0, 0, 102));
+        jLabel17.setText("Customer Details");
+        add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 420, -1, -1));
+        add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 400, 1010, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void customerNameTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_customerNameTextActionPerformed
         // TODO add your handling code here:
-      
+
     }//GEN-LAST:event_customerNameTextActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField airlinerNameText;
+    private javax.swing.JTextField arrivalTime;
     private javax.swing.JTextField contactNumberText;
     private javax.swing.JTextField customerNameText;
+    private javax.swing.JTextField depatureLocationText;
+    private javax.swing.JTextField deptTimeText;
+    private javax.swing.JTextField destinationText;
     private javax.swing.JTextField flightNameText;
+    private javax.swing.JTextField flightNumtext;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JTextField passportNumText;
     private javax.swing.JTextField pricePaidText;
     // End of variables declaration//GEN-END:variables
 }

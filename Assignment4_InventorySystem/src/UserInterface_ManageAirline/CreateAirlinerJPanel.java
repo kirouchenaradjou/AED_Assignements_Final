@@ -52,11 +52,12 @@ public class CreateAirlinerJPanel extends javax.swing.JPanel {
         airlinerSubmitButton = new javax.swing.JButton();
         backButton = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(153, 153, 153));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
         jLabel1.setText("Create Airliner");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 60, -1, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 90, -1, -1));
 
         airlineName.setText("Airline Name");
         add(airlineName, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 180, 130, -1));
@@ -76,6 +77,12 @@ public class CreateAirlinerJPanel extends javax.swing.JPanel {
             }
         });
         add(airlineAddressText, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 330, 180, -1));
+
+        airlinenumFlightsText.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                airlinenumFlightsTextActionPerformed(evt);
+            }
+        });
         add(airlinenumFlightsText, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 280, 180, -1));
         add(airlineSerialText, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 230, 180, -1));
         add(airlineNameText, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 180, 180, -1));
@@ -88,7 +95,7 @@ public class CreateAirlinerJPanel extends javax.swing.JPanel {
                 airlinerSubmitButtonActionPerformed(evt);
             }
         });
-        add(airlinerSubmitButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 420, -1, -1));
+        add(airlinerSubmitButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 410, -1, -1));
 
         backButton.setText("< Back");
         backButton.addActionListener(new java.awt.event.ActionListener() {
@@ -96,7 +103,7 @@ public class CreateAirlinerJPanel extends javax.swing.JPanel {
                 backButtonActionPerformed(evt);
             }
         });
-        add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, -1, -1));
+        add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 230, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void airlineAddressTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_airlineAddressTextActionPerformed
@@ -134,6 +141,10 @@ public class CreateAirlinerJPanel extends javax.swing.JPanel {
                                                              
 
     }//GEN-LAST:event_airlinerSubmitButtonActionPerformed
+
+    private void airlinenumFlightsTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_airlinenumFlightsTextActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_airlinenumFlightsTextActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

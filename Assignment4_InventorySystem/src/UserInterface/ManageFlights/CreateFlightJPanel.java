@@ -8,6 +8,7 @@ package UserInterface.ManageFlights;
 import Business.Airline;
 import Business.Fleet;
 import Business.Flight;
+import Business.Seat;
 import Business.TravelAgency;
 import java.awt.CardLayout;
 import java.awt.Component;
@@ -68,80 +69,113 @@ public class CreateFlightJPanel extends javax.swing.JPanel {
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jLabel8 = new javax.swing.JLabel();
         deptTimeText = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        arrivalTimeText = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        flightPriceText = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        maxSeatsText = new javax.swing.JTextField();
 
+        setBackground(new java.awt.Color(204, 204, 204));
+        setBorder(new javax.swing.border.MatteBorder(null));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         jLabel1.setText("Flight Creation");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 30, -1, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 20, -1, -1));
 
         flightNameText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 flightNameTextActionPerformed(evt);
             }
         });
-        add(flightNameText, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 170, 170, -1));
+        add(flightNameText, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 170, 170, -1));
 
         flightNumText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 flightNumTextActionPerformed(evt);
             }
         });
-        add(flightNumText, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 210, 170, -1));
+        add(flightNumText, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 210, 170, -1));
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel2.setText("Flight Name");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 170, -1, -1));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 170, -1, -1));
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel3.setText("Flight Serial Number");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 210, -1, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 210, -1, -1));
 
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel4.setText("Airline Name");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 120, -1, -1));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 130, -1, -1));
 
+        submitFlightButton.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         submitFlightButton.setText("Submit");
         submitFlightButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 submitFlightButtonActionPerformed(evt);
             }
         });
-        add(submitFlightButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 580, -1, -1));
+        add(submitFlightButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 550, -1, -1));
 
+        backButton.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         backButton.setText("< Back");
         backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backButtonActionPerformed(evt);
             }
         });
-        add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 200, -1, -1));
+        add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 260, -1, -1));
 
-        add(airlineComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 120, 170, -1));
+        add(airlineComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 130, 170, -1));
 
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel5.setText("Destination");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 300, 150, -1));
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 290, 150, -1));
 
         sourceText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 sourceTextActionPerformed(evt);
             }
         });
-        add(sourceText, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 250, 170, -1));
+        add(sourceText, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 250, 170, -1));
 
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel6.setText("Source");
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 260, 150, -1));
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 250, 150, -1));
 
         destText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 destTextActionPerformed(evt);
             }
         });
-        add(destText, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 290, 170, -1));
+        add(destText, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 290, 170, -1));
 
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel7.setText("Departure Date");
-        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 350, -1, -1));
-        add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 350, 170, -1));
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 330, -1, -1));
+        add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 330, 170, -1));
 
-        jLabel8.setText("Departure Time");
-        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 410, -1, -1));
-        add(deptTimeText, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 410, 80, -1));
+        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel8.setText("Maximum Seats");
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 490, -1, -1));
+        add(deptTimeText, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 370, 170, -1));
+
+        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel9.setText("Departure Time");
+        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 370, -1, -1));
+        add(arrivalTimeText, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 410, 170, -1));
+
+        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel10.setText("Arrival Time");
+        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 410, -1, -1));
+        add(flightPriceText, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 450, 170, -1));
+
+        jLabel11.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel11.setText("Price");
+        add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 450, -1, -1));
+        add(maxSeatsText, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 490, 170, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void flightNameTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_flightNameTextActionPerformed
@@ -174,15 +208,17 @@ public class CreateFlightJPanel extends javax.swing.JPanel {
         flight.setDestination(destText.getText());
         flight.setSource(sourceText.getText());
         flight.setDepartureDate(jDateChooser1.getDate());
-        flight.setPrice(setRandomPrice());
+        flight.setPrice(Integer.parseInt(flightPriceText.getText()));
         
         flight.setDeptTime(LocalTime.parse(deptTimeText.getText()));
+        flight.setArrivalTime(LocalTime.parse(arrivalTimeText.getText()));
+        Seat seat = new Seat();
+        seat.setFlightName(flight.getFlightSerialNum());
+        seat.setNumOfSeats(Integer.parseInt(maxSeatsText.getText()));
+        flight.setSeat(seat);
+
     }//GEN-LAST:event_submitFlightButtonActionPerformed
-    private int setRandomPrice() {
-        Random random = new Random();
-int randomNumber = random.nextInt(2000 - 1000) + 1000;
-        return randomNumber;
-    }
+   
     private void sourceTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sourceTextActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_sourceTextActionPerformed
@@ -194,13 +230,17 @@ int randomNumber = random.nextInt(2000 - 1000) + 1000;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> airlineComboBox;
+    private javax.swing.JTextField arrivalTimeText;
     private javax.swing.JButton backButton;
     private javax.swing.JTextField deptTimeText;
     private javax.swing.JTextField destText;
     private javax.swing.JTextField flightNameText;
     private javax.swing.JTextField flightNumText;
+    private javax.swing.JTextField flightPriceText;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -208,6 +248,8 @@ int randomNumber = random.nextInt(2000 - 1000) + 1000;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JTextField maxSeatsText;
     private javax.swing.JTextField sourceText;
     private javax.swing.JButton submitFlightButton;
     // End of variables declaration//GEN-END:variables

@@ -47,8 +47,11 @@ public class ManageFlightJPanel extends javax.swing.JPanel {
         viewAirlinerButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(153, 153, 153));
+        setBorder(new javax.swing.border.MatteBorder(null));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        tableFlight.setAutoCreateRowSorter(true);
         tableFlight.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -69,6 +72,7 @@ public class ManageFlightJPanel extends javax.swing.JPanel {
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(146, 60, 670, 250));
 
+        newAirlinerButton.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         newAirlinerButton.setText("New Flight <<");
         newAirlinerButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -77,6 +81,7 @@ public class ManageFlightJPanel extends javax.swing.JPanel {
         });
         add(newAirlinerButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(695, 339, 180, -1));
 
+        viewAirlinerButton.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         viewAirlinerButton.setText("View Flight <<");
         viewAirlinerButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

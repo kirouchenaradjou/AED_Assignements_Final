@@ -65,12 +65,17 @@ public class ViewAirlinerJPanel extends javax.swing.JPanel {
         saveButton = new javax.swing.JButton();
         updateButton = new javax.swing.JButton();
 
+        setEnabled(false);
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
         jLabel1.setText("View Airliner");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 60, -1, -1));
-        add(airlineName, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 150, 210, 30));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 90, -1, -1));
+
+        airlineName.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        airlineName.setForeground(new java.awt.Color(102, 0, 102));
+        airlineName.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 16))); // NOI18N
+        add(airlineName, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 160, 210, 30));
 
         numFlightsLabel.setText("Number Of Flights");
         add(numFlightsLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 280, 130, -1));
@@ -81,13 +86,18 @@ public class ViewAirlinerJPanel extends javax.swing.JPanel {
         addressLabel.setText("Address");
         add(addressLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 330, 130, -1));
 
+        airlineAddressText.setEnabled(false);
         airlineAddressText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 airlineAddressTextActionPerformed(evt);
             }
         });
         add(airlineAddressText, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 330, 180, -1));
+
+        airlinenumFlightsText.setEnabled(false);
         add(airlinenumFlightsText, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 280, 180, -1));
+
+        airlineSerialText.setEnabled(false);
         add(airlineSerialText, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 230, 180, -1));
 
         backButton.setText("< Back");
@@ -96,7 +106,7 @@ public class ViewAirlinerJPanel extends javax.swing.JPanel {
                 backButtonActionPerformed(evt);
             }
         });
-        add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, -1, -1));
+        add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 270, -1, -1));
 
         saveButton.setText("Save");
         saveButton.setEnabled(false);
@@ -105,7 +115,7 @@ public class ViewAirlinerJPanel extends javax.swing.JPanel {
                 saveButtonActionPerformed(evt);
             }
         });
-        add(saveButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 434, -1, -1));
+        add(saveButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 420, -1, -1));
 
         updateButton.setText("Update");
         updateButton.addActionListener(new java.awt.event.ActionListener() {
@@ -113,7 +123,7 @@ public class ViewAirlinerJPanel extends javax.swing.JPanel {
                 updateButtonActionPerformed(evt);
             }
         });
-        add(updateButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(524, 434, -1, -1));
+        add(updateButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 420, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void airlineAddressTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_airlineAddressTextActionPerformed

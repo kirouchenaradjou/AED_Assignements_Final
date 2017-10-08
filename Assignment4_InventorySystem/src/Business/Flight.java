@@ -25,13 +25,21 @@ public class Flight {
     private ArrayList<Customer> customerList;
     private int price;
     private LocalTime deptTime;
-    private Time arrivalTime;
+    private LocalTime arrivalTime;
+    private Seat seat;
 
-    public Time getArrivalTime() {
+    public Seat getSeat() {
+        return seat;
+    }
+
+    public void setSeat(Seat seat) {
+        this.seat = seat;
+    }
+    public LocalTime getArrivalTime() {
         return arrivalTime;
     }
 
-    public void setArrivalTime(Time arrivalTime) {
+    public void setArrivalTime(LocalTime arrivalTime) {
         this.arrivalTime = arrivalTime;
     }
     

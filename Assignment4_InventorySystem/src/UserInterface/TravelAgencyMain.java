@@ -76,59 +76,60 @@ public class TravelAgencyMain extends javax.swing.JFrame {
         searchButton = new javax.swing.JButton();
         manageButton = new javax.swing.JButton();
         manageFlightsButton = new javax.swing.JButton();
-        Search = new javax.swing.JButton();
         manageCustomerButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jSplitPane1.setMinimumSize(new java.awt.Dimension(7, 3));
 
+        userContainer.setBackground(new java.awt.Color(204, 204, 204));
+        userContainer.setForeground(new java.awt.Color(0, 204, 204));
         userContainer.setLayout(new java.awt.CardLayout());
         jSplitPane1.setRightComponent(userContainer);
 
-        leftPanel.setBackground(new java.awt.Color(255, 255, 255));
+        leftPanel.setBackground(new java.awt.Color(102, 102, 102));
         leftPanel.setPreferredSize(new java.awt.Dimension(300, 1000));
         leftPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        searchButton.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        searchButton.setForeground(new java.awt.Color(51, 0, 51));
         searchButton.setText("Manage Travel Agency");
         searchButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchButtonActionPerformed(evt);
             }
         });
-        leftPanel.add(searchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, 210, 50));
+        leftPanel.add(searchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 450, 230, 50));
 
+        manageButton.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        manageButton.setForeground(new java.awt.Color(51, 0, 51));
         manageButton.setText("Manage Airlines");
         manageButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 manageButtonActionPerformed(evt);
             }
         });
-        leftPanel.add(manageButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 210, 50));
+        leftPanel.add(manageButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 230, 50));
 
+        manageFlightsButton.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        manageFlightsButton.setForeground(new java.awt.Color(51, 0, 51));
         manageFlightsButton.setText("Manage Flights");
         manageFlightsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 manageFlightsButtonActionPerformed(evt);
             }
         });
-        leftPanel.add(manageFlightsButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 530, 210, 50));
+        leftPanel.add(manageFlightsButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 230, 50));
 
-        Search.setText("Search");
-        Search.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SearchActionPerformed(evt);
-            }
-        });
-        leftPanel.add(Search, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, 210, 50));
-
+        manageCustomerButton.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        manageCustomerButton.setForeground(new java.awt.Color(51, 0, 51));
         manageCustomerButton.setText("Manage Customers");
         manageCustomerButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 manageCustomerButtonActionPerformed(evt);
             }
         });
-        leftPanel.add(manageCustomerButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 430, 210, 50));
+        leftPanel.add(manageCustomerButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 550, 230, 50));
 
         jSplitPane1.setLeftComponent(leftPanel);
 
@@ -173,14 +174,6 @@ public class TravelAgencyMain extends javax.swing.JFrame {
         cardLayout.next(userContainer);
     }//GEN-LAST:event_searchButtonActionPerformed
 
-    private void SearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchActionPerformed
-        // Find the flights
-         SearchFlightsJPanel searchFlights = new  SearchFlightsJPanel(userContainer,airlineDirectory);
-        userContainer.add("SearchFlights",searchFlights);
-        CardLayout cardLayout = (CardLayout) userContainer.getLayout();
-        cardLayout.next(userContainer);
-    }//GEN-LAST:event_SearchActionPerformed
-
     private void manageCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageCustomerButtonActionPerformed
         ManageCustomersWorkAreaJPanel manageCustomersWorkAreaJPanel = new  ManageCustomersWorkAreaJPanel(userContainer,airlineDirectory);
         userContainer.add("ManageCustomersWorkAreaJPanel",manageCustomersWorkAreaJPanel);
@@ -191,7 +184,6 @@ public class TravelAgencyMain extends javax.swing.JFrame {
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Search;
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JPanel leftPanel;
     private javax.swing.JButton manageButton;
