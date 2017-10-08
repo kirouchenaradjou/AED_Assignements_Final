@@ -8,6 +8,7 @@ package UserInterface;
 import UserInterface_ManageAirline.ManageAirlineJPanel;
 import Business.TravelAgency;
 import UserInterface.ForSearch.SearchFlightsJPanel;
+import UserInterface.ManageCustomers.ManageCustomersWorkAreaJPanel;
 import UserInterface.ManageFlights.ManageFlightJPanel;
 import UserInterface.ManageTravelAgency.ManageTravelAgencyJPanel;
 import java.awt.CardLayout;
@@ -76,6 +77,7 @@ public class TravelAgencyMain extends javax.swing.JFrame {
         manageButton = new javax.swing.JButton();
         manageFlightsButton = new javax.swing.JButton();
         Search = new javax.swing.JButton();
+        manageCustomerButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -110,7 +112,7 @@ public class TravelAgencyMain extends javax.swing.JFrame {
                 manageFlightsButtonActionPerformed(evt);
             }
         });
-        leftPanel.add(manageFlightsButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 430, 210, 50));
+        leftPanel.add(manageFlightsButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 530, 210, 50));
 
         Search.setText("Search");
         Search.addActionListener(new java.awt.event.ActionListener() {
@@ -119,6 +121,14 @@ public class TravelAgencyMain extends javax.swing.JFrame {
             }
         });
         leftPanel.add(Search, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, 210, 50));
+
+        manageCustomerButton.setText("Manage Customers");
+        manageCustomerButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                manageCustomerButtonActionPerformed(evt);
+            }
+        });
+        leftPanel.add(manageCustomerButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 430, 210, 50));
 
         jSplitPane1.setLeftComponent(leftPanel);
 
@@ -171,6 +181,13 @@ public class TravelAgencyMain extends javax.swing.JFrame {
         cardLayout.next(userContainer);
     }//GEN-LAST:event_SearchActionPerformed
 
+    private void manageCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageCustomerButtonActionPerformed
+        ManageCustomersWorkAreaJPanel manageCustomersWorkAreaJPanel = new  ManageCustomersWorkAreaJPanel(userContainer,airlineDirectory);
+        userContainer.add("ManageCustomersWorkAreaJPanel",manageCustomersWorkAreaJPanel);
+        CardLayout cardLayout = (CardLayout) userContainer.getLayout();
+        cardLayout.next(userContainer);
+    }//GEN-LAST:event_manageCustomerButtonActionPerformed
+
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -178,6 +195,7 @@ public class TravelAgencyMain extends javax.swing.JFrame {
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JPanel leftPanel;
     private javax.swing.JButton manageButton;
+    private javax.swing.JButton manageCustomerButton;
     private javax.swing.JButton manageFlightsButton;
     private javax.swing.JButton searchButton;
     private javax.swing.JPanel userContainer;

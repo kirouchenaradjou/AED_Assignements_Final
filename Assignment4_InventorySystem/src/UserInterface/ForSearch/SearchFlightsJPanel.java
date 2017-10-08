@@ -200,8 +200,6 @@ private JPanel userContainer;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField sourceText;
     private javax.swing.JTable tableForAirliner;
-    private javax.swing.JButton viewButton;
-    private javax.swing.JButton viewButton1;
     private javax.swing.JButton viewButton2;
     // End of variables declaration//GEN-END:variables
 }

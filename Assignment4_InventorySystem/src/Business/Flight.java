@@ -5,6 +5,9 @@
  */
 package Business;
 
+import java.sql.Time;
+import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -19,6 +22,47 @@ public class Flight {
     private String source;
     private String destination;
     private Date departureDate;
+    private ArrayList<Customer> customerList;
+    private int price;
+    private LocalTime deptTime;
+    private Time arrivalTime;
+
+    public Time getArrivalTime() {
+        return arrivalTime;
+    }
+
+    public void setArrivalTime(Time arrivalTime) {
+        this.arrivalTime = arrivalTime;
+    }
+    
+
+    public LocalTime getDeptTime() {
+        return deptTime;
+    }
+
+    public void setDeptTime(LocalTime deptTime) {
+        this.deptTime = deptTime;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public Flight()
+    {
+      customerList = new ArrayList<Customer>();
+    }
+    public ArrayList<Customer> getCustomerList() {
+        return customerList;
+    }
+
+    public void setCustomerList(ArrayList<Customer> customerList) {
+        this.customerList = customerList;
+    }
 
     public Date getDepartureDate() {
         return departureDate;
@@ -67,9 +111,14 @@ public class Flight {
     public void setFlightSerialNum(String flightSerialNum) {
         this.flightSerialNum = flightSerialNum;
     }
-
+  public Customer addCustomer() {
+        Customer customer = new Customer();
+        customerList.add(customer);
+        return customer;
+    }
     @Override
     public String toString() {
         return this.flightName;
     }
+    
 }

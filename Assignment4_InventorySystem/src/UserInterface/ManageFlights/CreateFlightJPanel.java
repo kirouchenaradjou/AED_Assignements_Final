@@ -11,7 +11,11 @@ import Business.Flight;
 import Business.TravelAgency;
 import java.awt.CardLayout;
 import java.awt.Component;
+import java.text.SimpleDateFormat;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Random;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JPanel;
 
@@ -25,18 +29,19 @@ public class CreateFlightJPanel extends javax.swing.JPanel {
      * Creates new form CreateFlightJPanel
      */
     private JPanel userContainer;
-   private TravelAgency airlineDirectory;
-   ArrayList<String> airlineNameList = new ArrayList<String>();
+    private TravelAgency airlineDirectory;
+    ArrayList<String> airlineNameList = new ArrayList<String>();
+
     public CreateFlightJPanel(JPanel userContainer, TravelAgency airlineDirectory) {
         initComponents();
         this.userContainer = userContainer;
         this.airlineDirectory = airlineDirectory;
-        for(Airline airline : airlineDirectory.getTravelAgency())
-        {
-             airlineNameList.add(airline.getName());
+        for (Airline airline : airlineDirectory.getTravelAgency()) {
+            airlineNameList.add(airline.getName());
         }
         airlineComboBox.setModel(new DefaultComboBoxModel(airlineNameList.toArray()));
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -61,6 +66,8 @@ public class CreateFlightJPanel extends javax.swing.JPanel {
         destText = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jLabel8 = new javax.swing.JLabel();
+        deptTimeText = new javax.swing.JTextField();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -96,7 +103,7 @@ public class CreateFlightJPanel extends javax.swing.JPanel {
                 submitFlightButtonActionPerformed(evt);
             }
         });
-        add(submitFlightButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 430, -1, -1));
+        add(submitFlightButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 580, -1, -1));
 
         backButton.setText("< Back");
         backButton.addActionListener(new java.awt.event.ActionListener() {
@@ -131,6 +138,10 @@ public class CreateFlightJPanel extends javax.swing.JPanel {
         jLabel7.setText("Departure Date");
         add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 350, -1, -1));
         add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 350, 170, -1));
+
+        jLabel8.setText("Departure Time");
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 410, -1, -1));
+        add(deptTimeText, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 410, 80, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void flightNameTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_flightNameTextActionPerformed
@@ -154,17 +165,24 @@ public class CreateFlightJPanel extends javax.swing.JPanel {
 
     private void submitFlightButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitFlightButtonActionPerformed
         // TODO add your handling code here:
-         Airline airline = airlineDirectory.searchAirline(airlineComboBox.getSelectedItem().toString());
-         Fleet fleet = airline.getFleet();
-         Flight flight = fleet.addAirplane();
-         flight.setFlightName(flightNameText.getText());
-         flight.setFlightSerialNum(flightNumText.getText());
-         flight.setAirlineName(airlineComboBox.getSelectedItem().toString());
-         flight.setDestination(destText.getText());
-         flight.setSource(sourceText.getText());
-         flight.setDepartureDate(jDateChooser1.getDate());
+        Airline airline = airlineDirectory.searchAirline(airlineComboBox.getSelectedItem().toString());
+        Fleet fleet = airline.getFleet();
+        Flight flight = fleet.addAirplane();
+        flight.setFlightName(flightNameText.getText());
+        flight.setFlightSerialNum(flightNumText.getText());
+        flight.setAirlineName(airlineComboBox.getSelectedItem().toString());
+        flight.setDestination(destText.getText());
+        flight.setSource(sourceText.getText());
+        flight.setDepartureDate(jDateChooser1.getDate());
+        flight.setPrice(setRandomPrice());
+        
+        flight.setDeptTime(LocalTime.parse(deptTimeText.getText()));
     }//GEN-LAST:event_submitFlightButtonActionPerformed
-
+    private int setRandomPrice() {
+        Random random = new Random();
+int randomNumber = random.nextInt(2000 - 1000) + 1000;
+        return randomNumber;
+    }
     private void sourceTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sourceTextActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_sourceTextActionPerformed
@@ -177,6 +195,7 @@ public class CreateFlightJPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> airlineComboBox;
     private javax.swing.JButton backButton;
+    private javax.swing.JTextField deptTimeText;
     private javax.swing.JTextField destText;
     private javax.swing.JTextField flightNameText;
     private javax.swing.JTextField flightNumText;
@@ -188,6 +207,7 @@ public class CreateFlightJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JTextField sourceText;
     private javax.swing.JButton submitFlightButton;
     // End of variables declaration//GEN-END:variables
