@@ -10,11 +10,21 @@ package Business;
  * @author ragha
  */
 public class Customer {
+
     private String customerLastName;
     private String customerFirstName;
     private String passportNum;
     private String mobileNum;
     private Flight flight;
+    private int numberOfSeats;
+
+    public int getNumberOfSeats() {
+        return numberOfSeats;
+    }
+
+    public void setNumberOfSeats(int numberOfSeats) {
+        this.numberOfSeats = numberOfSeats;
+    }
 
     public Flight getFlight() {
         return flight;
@@ -55,5 +65,5 @@ public class Customer {
     public void setMobileNum(String mobileNum) {
         this.mobileNum = mobileNum;
     }
-    
+
 }

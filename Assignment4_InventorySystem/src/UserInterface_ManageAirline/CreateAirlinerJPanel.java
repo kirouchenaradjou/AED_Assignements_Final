@@ -21,14 +21,14 @@ public class CreateAirlinerJPanel extends javax.swing.JPanel {
     /**
      * Creates new form CreateAirlinerJPanel
      */
-   private JPanel userContainer;
-   private TravelAgency airlineDirectory;
-   
+    private JPanel userContainer;
+    private TravelAgency airlineDirectory;
+
     public CreateAirlinerJPanel(JPanel userContainer, TravelAgency airlineDirectory) {
         initComponents();
         this.userContainer = userContainer;
         this.airlineDirectory = airlineDirectory;
-        
+
     }
 
     /**
@@ -122,23 +122,35 @@ public class CreateAirlinerJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_backButtonActionPerformed
 
     private void airlinerSubmitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_airlinerSubmitButtonActionPerformed
-        // TODO add your handling code here:
-                if(airlineAddressText.getText()==null || airlineNameText.getText() == null || airlineSerialText.getText() == null 
-                || airlinenumFlightsText.getText() ==null  )
-        {
-                    JOptionPane.showMessageDialog(null, "Enter all the details" , "Warning", JOptionPane.WARNING_MESSAGE);
+        // Creation of Airline
+        int x;
+        try {
+            x = Integer.parseInt(airlinenumFlightsText.getText());
 
+            if (airlineAddressText.getText() == null || airlineNameText.getText() == null || airlineSerialText.getText() == null
+                    || airlinenumFlightsText.getText() == null) {
+                JOptionPane.showMessageDialog(null, "Enter all the details", "Warning", JOptionPane.WARNING_MESSAGE);
+
+            } else if (Integer.parseInt(airlinenumFlightsText.getText()) <= 0) {
+                JOptionPane.showMessageDialog(null, "Number of flights cannot be negative or 0", "Warning", JOptionPane.WARNING_MESSAGE);
+
+            } else {
+
+                Airline airline = airlineDirectory.addAirline();
+                airline.setName(airlineNameText.getText());
+                airline.setNoOfFlights(Integer.parseInt(airlinenumFlightsText.getText()));
+                airline.setSerialNum(airlineSerialText.getText());
+                airline.setAddress(airlineAddressText.getText());
+                JOptionPane.showMessageDialog(null, "Airline details added ! ", "Airline Creation", JOptionPane.INFORMATION_MESSAGE);
+                airlineAddressText.setText("");
+                airlineNameText.setText("");
+                airlineSerialText.setText("");
+                airlinenumFlightsText.setText("");
+            }
+        } catch (NumberFormatException nfe) {
+            JOptionPane.showMessageDialog(null, "Number of Flights should be numeric");
+            airlinenumFlightsText.setText("");
         }
-        else
-        {
-        Airline airline = airlineDirectory.addAirline();
-        airline.setName(airlineNameText.getText());
-        airline.setNoOfFlights(Integer.parseInt(airlinenumFlightsText.getText()));
-        airline.setSerialNum(airlineSerialText.getText());
-        airline.setAddress(airlineAddressText.getText());
-        JOptionPane.showMessageDialog(null, "Airline details added ! " , "Airline Creation", JOptionPane.INFORMATION_MESSAGE);
-        }
-                                                             
 
     }//GEN-LAST:event_airlinerSubmitButtonActionPerformed
 

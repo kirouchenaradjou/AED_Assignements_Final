@@ -9,6 +9,7 @@ import Business.Airline;
 import Business.Flight;
 import Business.TravelAgency;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -140,6 +141,13 @@ public class ViewBestFlightDealsJPanel extends javax.swing.JPanel {
         userProcessContainer.add("BookCustomersJPanel", panel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
+        }
+        else
+        {
+            
+            JOptionPane.showMessageDialog(null, "Select any row from the table to view the details", "Warning", JOptionPane.WARNING_MESSAGE);
+
+        
         }
     }//GEN-LAST:event_serachAndBookButtonActionPerformed
 

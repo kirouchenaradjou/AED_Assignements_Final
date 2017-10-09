@@ -12,12 +12,12 @@ import Business.Seat;
 import Business.TravelAgency;
 import java.awt.CardLayout;
 import java.awt.Component;
-import java.text.SimpleDateFormat;
+import java.sql.Time;
 import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
-import java.util.Random;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -32,7 +32,7 @@ public class CreateFlightJPanel extends javax.swing.JPanel {
     private JPanel userContainer;
     private TravelAgency airlineDirectory;
     ArrayList<String> airlineNameList = new ArrayList<String>();
-
+    
     public CreateFlightJPanel(JPanel userContainer, TravelAgency airlineDirectory) {
         initComponents();
         this.userContainer = userContainer;
@@ -199,26 +199,61 @@ public class CreateFlightJPanel extends javax.swing.JPanel {
 
     private void submitFlightButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitFlightButtonActionPerformed
         // TODO add your handling code here:
-        Airline airline = airlineDirectory.searchAirline(airlineComboBox.getSelectedItem().toString());
-        Fleet fleet = airline.getFleet();
-        Flight flight = fleet.addAirplane();
-        flight.setFlightName(flightNameText.getText());
-        flight.setFlightSerialNum(flightNumText.getText());
-        flight.setAirlineName(airlineComboBox.getSelectedItem().toString());
-        flight.setDestination(destText.getText());
-        flight.setSource(sourceText.getText());
-        flight.setDepartureDate(jDateChooser1.getDate());
-        flight.setPrice(Integer.parseInt(flightPriceText.getText()));
-        
-        flight.setDeptTime(LocalTime.parse(deptTimeText.getText()));
-        flight.setArrivalTime(LocalTime.parse(arrivalTimeText.getText()));
-        Seat seat = new Seat();
-        seat.setFlightName(flight.getFlightSerialNum());
-        seat.setNumOfSeats(Integer.parseInt(maxSeatsText.getText()));
-        flight.setSeat(seat);
 
+        int x, y;
+        try {
+            x = Integer.parseInt(maxSeatsText.getText());
+            y = Integer.parseInt(flightPriceText.getText());
+            LocalTime test = LocalTime.parse(deptTimeText.getText());
+            LocalTime test2 = LocalTime.parse(arrivalTimeText.getText());
+            if (flightNameText.getText() == null || flightNumText.getText() == null || airlineComboBox.getSelectedItem() == null
+                    || destText.getText() == null || sourceText.getText() == null || jDateChooser1.getDate() == null || flightPriceText.getText() == null
+                    || deptTimeText.getText() == null || arrivalTimeText.getText() == null || maxSeatsText.getText() == null) {
+                JOptionPane.showMessageDialog(null, "Enter all the details", "Warning", JOptionPane.WARNING_MESSAGE);
+                
+            } 
+            else if ((Integer.parseInt(flightPriceText.getText()) <= 0) ||((Integer.parseInt(maxSeatsText.getText()) <= 0))) {
+                JOptionPane.showMessageDialog(null, "Price and maxseats cannot be negative or 0", "Warning", JOptionPane.WARNING_MESSAGE);
+
+            } else {
+                Airline airline = airlineDirectory.searchAirline(airlineComboBox.getSelectedItem().toString());
+                Fleet fleet = airline.getFleet();
+                Flight flight = fleet.addAirplane();
+                flight.setFlightName(flightNameText.getText());
+                flight.setFlightSerialNum(flightNumText.getText());
+                flight.setAirlineName(airlineComboBox.getSelectedItem().toString());
+                flight.setDestination(destText.getText());
+                flight.setSource(sourceText.getText());
+                flight.setDepartureDate(jDateChooser1.getDate());
+                flight.setPrice(Integer.parseInt(flightPriceText.getText()));
+                
+                flight.setDeptTime(LocalTime.parse(deptTimeText.getText()));
+                flight.setArrivalTime(LocalTime.parse(arrivalTimeText.getText()));
+                Seat seat = new Seat();
+                seat.setFlightName(flight.getFlightSerialNum());
+                seat.setNumOfSeats(Integer.parseInt(maxSeatsText.getText()));
+                flight.setSeat(seat);
+                JOptionPane.showMessageDialog(null, "Flight details added ! ", "Flight Creation", JOptionPane.INFORMATION_MESSAGE);
+                flightNameText.setText("");
+                flightNumText.setText("");
+                destText.setText("");
+                sourceText.setText("");
+                jDateChooser1.setDate(null);
+                airlineComboBox.setSelectedIndex(0);
+                flightPriceText.setText("");
+                deptTimeText.setText("");
+                arrivalTimeText.setText("");
+                maxSeatsText.setText("");
+            }
+        } catch (NumberFormatException nfe) {
+            JOptionPane.showMessageDialog(null, "MaxSeats and Flight Price should be numeric");
+            
+        } catch (DateTimeParseException dateTimeParseException) {
+            JOptionPane.showMessageDialog(null, "Time should be given in hh:mm format");
+            
+        }
     }//GEN-LAST:event_submitFlightButtonActionPerformed
-   
+
     private void sourceTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sourceTextActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_sourceTextActionPerformed

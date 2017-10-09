@@ -44,9 +44,14 @@ public class FoundFlightJPanel extends javax.swing.JPanel {
             {
                 for (Flight f : airline.getFleet().getFleet()) {
                     if (flight.getDestination().equalsIgnoreCase(f.getDestination()) || (flight.getFlightSerialNum().equalsIgnoreCase(f.getFlightSerialNum()) || (flight.getDepartureDate().equals(f.getDepartureDate()))) || (flight.getSource().equalsIgnoreCase(f.getSource()))) {
-                        Object[] row = new Object[2];
+                        Object[] row = new Object[7];
                         row[0] = f;
                         row[1] = f.getFlightSerialNum();
+                        row[2] = f.getSource();
+                        row[3] = f.getDestination();
+                        row[4] = f.getArrivalTime();
+                        row[5] = f.getAirlineName();
+                        row[6] = f.getSeat().getNumOfSeats();
                         defaultTableModel.addRow(row);
                     }
 
@@ -73,15 +78,23 @@ public class FoundFlightJPanel extends javax.swing.JPanel {
 
         flightFoundTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Flight Name", "Flight Serial Number"
+                "Flight Name", "Flight Serial Number", "Depature", "Destination", "Arrival Time", "Airliner Name", "Seats Available"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(flightFoundTable);
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(164, 54, -1, 199));

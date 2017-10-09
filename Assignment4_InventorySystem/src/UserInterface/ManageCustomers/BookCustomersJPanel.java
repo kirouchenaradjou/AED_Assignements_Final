@@ -7,6 +7,7 @@ package UserInterface.ManageCustomers;
 
 import Business.Customer;
 import Business.Flight;
+import UserInterface_ManageAirline.ViewAirlinerJPanel;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -22,6 +23,7 @@ public class BookCustomersJPanel extends javax.swing.JPanel {
      */
     JPanel userContainer;
     private Flight flight;
+    private  Customer customer ;
 
     public BookCustomersJPanel(JPanel userProcessContainer, Flight flight) {
         initComponents();
@@ -30,7 +32,7 @@ public class BookCustomersJPanel extends javax.swing.JPanel {
         populatetheBookedFlightDetails();
     }
 
-    private void populatetheBookedFlightDetails() {
+    public void populatetheBookedFlightDetails() {
         airlineNameLabel.setText(flight.getAirlineName());
         sourceLabel.setText(flight.getSource());
         destinationLabel.setText(flight.getDestination());
@@ -75,6 +77,7 @@ public class BookCustomersJPanel extends javax.swing.JPanel {
         seatsTextLabel = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         custSeats = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -152,6 +155,14 @@ public class BookCustomersJPanel extends javax.swing.JPanel {
         jLabel13.setText("Num Of Seats");
         add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 600, -1, -1));
         add(custSeats, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 600, 150, -1));
+
+        jButton1.setText("View Ticket Details");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 670, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
@@ -164,11 +175,25 @@ public class BookCustomersJPanel extends javax.swing.JPanel {
 
     private void bookFlightButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookFlightButtonActionPerformed
         // TODO add your handling code here:
-        Customer customer = flight.addCustomer();
+        try
+        {
+        if (customerFirstName.getText() == null || lastNameText.getText() == null  || customerContactText.getText() == null || passportNum.getText() == null || 
+                     custSeats.getText() == null) {
+                JOptionPane.showMessageDialog(null, "Enter all the details", "Warning", JOptionPane.WARNING_MESSAGE);
+                
+            } 
+            else if ((Integer.parseInt(custSeats.getText()) <= 0) ) {
+                JOptionPane.showMessageDialog(null, "Seat cannot be negative or 0", "Warning", JOptionPane.WARNING_MESSAGE);
+
+            }
+        else
+            {
+         customer = flight.addCustomer();
         customer.setCustomerFirstName(customerFirstName.getText());
         customer.setCustomerLastName(lastNameText.getText());
         customer.setMobileNum(customerContactText.getText());
         customer.setPassportNum(passportNum.getText());
+        customer.setNumberOfSeats(Integer.parseInt(custSeats.getText()));
         int finalSeat = flight.getSeat().getNumOfSeats() - Integer.parseInt(custSeats.getText());
         flight.getSeat().setNumOfSeats(finalSeat);
         customer.setFlight(flight);
@@ -181,7 +206,30 @@ public class BookCustomersJPanel extends javax.swing.JPanel {
             CardLayout layout = (CardLayout) userContainer.getLayout();
             layout.next(userContainer);
         }
+            }
+        }
+        catch (NumberFormatException nfe) {
+            JOptionPane.showMessageDialog(null, "Seat should be numeric");
+            
+        } 
     }//GEN-LAST:event_bookFlightButtonActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        if(customer!=null)
+        {
+        EticketJPanel eticketJPanel= new EticketJPanel(userContainer, customer);
+            userContainer.add("EticketJPanel", eticketJPanel);
+            CardLayout cardLayout = (CardLayout) userContainer.getLayout();
+            cardLayout.next(userContainer);
+        }
+        else
+        {
+                                JOptionPane.showMessageDialog(null, "No Booking under your name" , "Warning", JOptionPane.WARNING_MESSAGE);
+
+        }
+
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -194,6 +242,7 @@ public class BookCustomersJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField customerFirstName;
     private javax.swing.JLabel depTimeLabel;
     private javax.swing.JLabel destinationLabel;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

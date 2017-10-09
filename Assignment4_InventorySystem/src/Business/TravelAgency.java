@@ -17,6 +17,15 @@ import java.util.ArrayList;
  */
 public class TravelAgency {
        private ArrayList<Airline> travelAgency;
+private ArrayList<Customer> customerDirectory;
+
+    public ArrayList<Customer> getCustomerDirectory() {
+        return customerDirectory;
+    }
+
+    public void setCustomerDirectory(ArrayList<Customer> customerDirectory) {
+        this.customerDirectory = customerDirectory;
+    }
 
    
     

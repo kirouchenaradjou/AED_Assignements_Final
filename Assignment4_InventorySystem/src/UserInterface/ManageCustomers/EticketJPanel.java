@@ -6,7 +6,11 @@
 package UserInterface.ManageCustomers;
 
 import Business.Customer;
+import Business.Flight;
+import UserInterface.ManageFlights.ManageFlightJPanel;
 import java.awt.CardLayout;
+import java.awt.Component;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -81,6 +85,8 @@ public class EticketJPanel extends javax.swing.JPanel {
         jSeparator1 = new javax.swing.JSeparator();
         jLabel17 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
+        cancelButton = new javax.swing.JButton();
+        backButton = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -89,7 +95,6 @@ public class EticketJPanel extends javax.swing.JPanel {
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 10, -1, -1));
 
         customerNameText.setEditable(false);
-        customerNameText.setEnabled(false);
         customerNameText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 customerNameTextActionPerformed(evt);
@@ -98,19 +103,15 @@ public class EticketJPanel extends javax.swing.JPanel {
         add(customerNameText, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 480, 160, -1));
 
         contactNumberText.setEditable(false);
-        contactNumberText.setEnabled(false);
         add(contactNumberText, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 540, 160, -1));
 
         pricePaidText.setEditable(false);
-        pricePaidText.setEnabled(false);
         add(pricePaidText, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 240, 160, -1));
 
         flightNameText.setEditable(false);
-        flightNameText.setEnabled(false);
         add(flightNameText, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 140, 160, -1));
 
         airlinerNameText.setEditable(false);
-        airlinerNameText.setEnabled(false);
         add(airlinerNameText, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 70, 160, -1));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
@@ -144,7 +145,6 @@ public class EticketJPanel extends javax.swing.JPanel {
         add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 190, -1, -1));
 
         depatureLocationText.setEditable(false);
-        depatureLocationText.setEnabled(false);
         add(depatureLocationText, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 250, 160, -1));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
@@ -158,11 +158,9 @@ public class EticketJPanel extends javax.swing.JPanel {
         add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 140, -1, -1));
 
         deptTimeText.setEditable(false);
-        deptTimeText.setEnabled(false);
         add(deptTimeText, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 190, 160, -1));
 
         destinationText.setEditable(false);
-        destinationText.setEnabled(false);
         add(destinationText, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 140, 160, -1));
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
@@ -171,7 +169,6 @@ public class EticketJPanel extends javax.swing.JPanel {
         add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 190, 90, -1));
 
         arrivalTime.setEditable(false);
-        arrivalTime.setEnabled(false);
         add(arrivalTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 300, 160, -1));
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
@@ -190,7 +187,6 @@ public class EticketJPanel extends javax.swing.JPanel {
         add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 480, -1, -1));
 
         flightNumtext.setEditable(false);
-        flightNumtext.setEnabled(false);
         add(flightNumtext, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 350, 160, -1));
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
@@ -199,7 +195,6 @@ public class EticketJPanel extends javax.swing.JPanel {
         add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 290, -1, -1));
 
         passportNumText.setEditable(false);
-        passportNumText.setEnabled(false);
         add(passportNumText, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 480, 160, -1));
 
         jLabel15.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
@@ -218,6 +213,25 @@ public class EticketJPanel extends javax.swing.JPanel {
         jLabel17.setText("Customer Details");
         add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 420, -1, -1));
         add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 400, 1010, 30));
+
+        cancelButton.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        cancelButton.setText("Click here to cancel this booking");
+        cancelButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelButtonActionPerformed(evt);
+            }
+        });
+        add(cancelButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 680, -1, -1));
+
+        backButton.setBackground(new java.awt.Color(0, 153, 153));
+        backButton.setForeground(new java.awt.Color(102, 0, 102));
+        backButton.setText("<<Back");
+        backButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backButtonActionPerformed(evt);
+            }
+        });
+        add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 670, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void customerNameTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_customerNameTextActionPerformed
@@ -225,10 +239,52 @@ public class EticketJPanel extends javax.swing.JPanel {
 
     }//GEN-LAST:event_customerNameTextActionPerformed
 
+    private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
+        // Cancelling the flight Ticket
+       
+        Flight flight = customer.getFlight();
+        
+       int seatsToBeSet =  customer.getNumberOfSeats() + flight.getSeat().getNumOfSeats();
+       flight.getSeat().setNumOfSeats(seatsToBeSet);
+       customer.setCustomerFirstName("");
+       customer.setCustomerLastName("");
+       customer.setFlight(null);
+       customer.setNumberOfSeats(0);
+       JOptionPane.showConfirmDialog(null, "Ticket has been cancelled");
+       customerNameText.setText("");
+        contactNumberText.setText("");
+        flightNameText.setText("");
+        airlinerNameText.setText("");
+        pricePaidText.setText("");
+        depatureLocationText.setText("");
+        destinationText.setText("");
+        passportNumText.setText("");
+        flightNumtext.setText("");
+        arrivalTime.setText("");
+        deptTimeText.setText("");
+   
+      
+       
+    }//GEN-LAST:event_cancelButtonActionPerformed
+
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
+        // TODO add your handling code here:
+         userContainer.remove(this);
+        Component[] componentArray = userContainer.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        BookCustomersJPanel bcjp = (BookCustomersJPanel) component;
+        bcjp.populatetheBookedFlightDetails();
+        CardLayout layout = (CardLayout) userContainer.getLayout();
+        layout.previous(userContainer);
+   
+    }//GEN-LAST:event_backButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField airlinerNameText;
     private javax.swing.JTextField arrivalTime;
+    private javax.swing.JButton backButton;
+    private javax.swing.JButton cancelButton;
     private javax.swing.JTextField contactNumberText;
     private javax.swing.JTextField customerNameText;
     private javax.swing.JTextField depatureLocationText;
