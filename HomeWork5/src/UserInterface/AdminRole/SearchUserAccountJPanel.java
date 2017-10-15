@@ -115,20 +115,26 @@ public class SearchUserAccountJPanel extends javax.swing.JPanel {
 
     private void goButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goButtonActionPerformed
         // TODO add your handling code here:
+        UserAccount ua = checkForUser();
+        if (ua != null) {
+            FoundUserAccountJPanel foundUser = new FoundUserAccountJPanel(userContainer, ua);
+            userContainer.add("FoundUserAccountJPanel", foundUser);
+            CardLayout cardLayout = (CardLayout) userContainer.getLayout();
+            cardLayout.next(userContainer);
+        } else {
+            JOptionPane.showMessageDialog(null, "User ID isnt existing in our system", "Information", JOptionPane.INFORMATION_MESSAGE);
+
+        }
+
+    }//GEN-LAST:event_goButtonActionPerformed
+    public UserAccount checkForUser() {
         for (UserAccount ua : b.getUserAccDir().getUserAccountDir()) {
             if (searchTesxt.getText().equals(ua.getUserID())) {
-                FoundUserAccountJPanel foundUser = new FoundUserAccountJPanel(userContainer, ua);
-                userContainer.add("FoundUserAccountJPanel", foundUser);
-                CardLayout cardLayout = (CardLayout) userContainer.getLayout();
-                cardLayout.next(userContainer);
-            } else {
-                JOptionPane.showMessageDialog(null, "User ID isnt existing in our system", "Information", JOptionPane.INFORMATION_MESSAGE);
-
+                return ua;
             }
         }
-    }//GEN-LAST:event_goButtonActionPerformed
-
-
+        return null;
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cancelButton;
     private javax.swing.JButton goButton;

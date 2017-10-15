@@ -10,6 +10,7 @@ import Business.Person;
 import Business.PersonDirectory;
 import Business.UserAccount;
 import Business.UserAccountDirectory;
+import static UserInterface.AdminRole.ManageUserAccountJPanel.generateHash;
 import java.util.Date;
 
 /**
@@ -26,12 +27,14 @@ public class ConfigureABusiness {
         p.setLastName("Dhanasegaran");
         p.setDob(new Date());
         p.setSocialSecurityNum("SSNDEIVA100");
+        p.setAddress("Krishna Nagar");
         // creating a second person object 
         p = personDir.addPerson();
         p.setFirstName("Raghavi");
         p.setLastName("Kirouchenaradjou");
         p.setDob(new Date());
         p.setSocialSecurityNum("SSNRAGZ100");
+        p.setAddress("Mudaliarpet");
 
         UserAccountDirectory uad = b.getUserAccDir(); // preparing to create user accounts
         Person p2 = personDir.findPersonByLastName("Dhanasegaran");
@@ -39,7 +42,8 @@ public class ConfigureABusiness {
             UserAccount ua = uad.addUser();
             ua.setP(p2);
             ua.setUserID("dk");
-            ua.setPassword("dkPassword");
+            String hashedPassword = generateHash("dkPassword");
+            ua.setPassword(hashedPassword);
             ua.setRole("System Admin");
             ua.setStatus(true);
             ua.setAccType("Savings");

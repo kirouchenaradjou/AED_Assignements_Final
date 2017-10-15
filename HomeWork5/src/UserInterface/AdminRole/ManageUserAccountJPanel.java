@@ -8,6 +8,8 @@ package UserInterface.AdminRole;
 import Business.Business;
 import Business.UserAccount;
 import java.awt.CardLayout;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -40,12 +42,35 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
 
                 Object[] row = new Object[3];
                 row[0] = s;
-                row[1] = s.getPassword();
+                String hashedPassword = generateHash(s.getPassword());
+                hashedPassword = hashedPassword.replaceAll("(?s).", "*");
+                row[1] = hashedPassword;
                 row[2] = s.getRole();
                 defaultTableModel.addRow(row);
 
             }
         }
+    }
+
+    public static String generateHash(String input) {
+        StringBuilder hash = new StringBuilder();
+
+        try {
+            MessageDigest sha = MessageDigest.getInstance("SHA-1");
+            byte[] hashedBytes = sha.digest(input.getBytes());
+            char[] digits = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
+                'a', 'b', 'c', 'd', 'e', 'f'};
+            
+            for (int idx = 0; idx < hashedBytes.length; ++idx) {
+                byte b = hashedBytes[idx];
+                hash.append(digits[(b & 0xf0) >> 4]);
+                hash.append(digits[b & 0x0f]);
+            }
+        } catch (NoSuchAlgorithmException e) {
+            // handle error here.
+        }
+
+        return hash.toString();
     }
 
     /**

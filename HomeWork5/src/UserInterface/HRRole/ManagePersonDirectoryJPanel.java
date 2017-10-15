@@ -40,6 +40,15 @@ public class ManagePersonDirectoryJPanel extends javax.swing.JPanel {
 
         for (Person person : b.getPersonDir().getPersonDir()) 
             {
+                if(person.getUserAccount().isEmpty())
+                {
+                    Object[] row = new Object[4];
+                    row[0] = person;
+                    row[1] = person.getFirstName();
+                    row[2] = person.getLastName();
+                    row[3] = "-----";
+                    defaultTableModel.addRow(row);
+                }
                 for (UserAccount ua : person.getUserAccount()) {
                     Object[] row = new Object[4];
                     row[0] = person;

@@ -10,6 +10,7 @@ import Business.Person;
 import Business.PersonDirectory;
 import Business.UserAccount;
 import Business.UserAccountDirectory;
+import static UserInterface.AdminRole.ManageUserAccountJPanel.generateHash;
 import java.awt.CardLayout;
 import java.awt.Component;
 import javax.swing.JOptionPane;
@@ -68,13 +69,17 @@ public class CreateUserAccountJPanel extends javax.swing.JPanel {
         accTypeCombo = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator3 = new javax.swing.JSeparator();
+        jSeparator4 = new javax.swing.JSeparator();
+        jSeparator5 = new javax.swing.JSeparator();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 51, 102));
         jLabel1.setText("New User Account");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 40, -1, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 10, -1, -1));
 
         add(personComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 130, 212, -1));
 
@@ -82,9 +87,11 @@ public class CreateUserAccountJPanel extends javax.swing.JPanel {
         jLabel2.setText("Select Role");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 380, -1, -1));
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel3.setText("User Name");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 180, -1, -1));
 
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel4.setText("Password");
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 230, -1, -1));
 
@@ -97,6 +104,8 @@ public class CreateUserAccountJPanel extends javax.swing.JPanel {
         add(userNameText, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 180, 210, -1));
         add(passwordText, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 230, 210, -1));
 
+        createButton.setBackground(new java.awt.Color(0, 102, 102));
+        createButton.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         createButton.setText("Create");
         createButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -105,6 +114,7 @@ public class CreateUserAccountJPanel extends javax.swing.JPanel {
         });
         add(createButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 500, 110, -1));
 
+        cancelButton.setBackground(new java.awt.Color(102, 0, 51));
         cancelButton.setText("<<Back ");
         cancelButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -113,28 +123,38 @@ public class CreateUserAccountJPanel extends javax.swing.JPanel {
         });
         add(cancelButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 560, -1, -1));
 
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel6.setText("Account Type");
         add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 280, -1, -1));
 
         accTypeCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Checkings", "Savings" }));
         add(accTypeCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 280, 210, -1));
 
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel7.setText("Creation Date");
         add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 330, -1, -1));
         add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 330, 220, -1));
+        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 480, 590, 100));
+
+        jSeparator3.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 70, 50, 410));
+        add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 72, 590, 550));
+
+        jSeparator5.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 70, 590, 410));
     }// </editor-fold>//GEN-END:initComponents
 
     private void createButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createButtonActionPerformed
         // Create a user Account for the person selected
         UserAccountDirectory uad = b.getUserAccDir(); // preparing to create user accounts
-        PersonDirectory personDirectory = b.getPersonDir();
 
         UserAccount ua = uad.addUser();
         Person selectedPerson = (Person) personComboBox.getSelectedItem();
 
         ua.setP(selectedPerson);
         ua.setUserID(userNameText.getText());
-        ua.setPassword(String.valueOf(passwordText.getPassword()));
+        String hashedPassword = generateHash(String.valueOf(passwordText.getPassword()));
+        ua.setPassword(hashedPassword);
         ua.setRole(roleComboCox.getSelectedItem().toString());
         ua.setStatus(true);
         ua.setAccType(accTypeCombo.getSelectedItem().toString());
@@ -173,6 +193,10 @@ public class CreateUserAccountJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JSeparator jSeparator5;
     private javax.swing.JPasswordField passwordText;
     private javax.swing.JComboBox<Object> personComboBox;
     private javax.swing.JComboBox<String> roleComboCox;

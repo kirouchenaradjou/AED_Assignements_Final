@@ -22,7 +22,7 @@ public class SearchPersonJPanel extends javax.swing.JPanel {
     /**
      * Creates new form SearchPersonJPanel
      */
-   private JPanel userContainer;
+    private JPanel userContainer;
     private Business b;
 
     public SearchPersonJPanel(JPanel userContainer, Business b) {
@@ -31,7 +31,8 @@ public class SearchPersonJPanel extends javax.swing.JPanel {
         this.b = b;
         populatePerson();
     }
- public void populatePerson() {
+
+    public void populatePerson() {
         for (Person p : b.getPersonDir().getPersonDir()) {
 
             personComboBox.addItem(p.getLastName());
@@ -39,6 +40,7 @@ public class SearchPersonJPanel extends javax.swing.JPanel {
         }
 
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -116,7 +118,7 @@ public class SearchPersonJPanel extends javax.swing.JPanel {
         userContainer.remove(this);
         Component[] componentArray = userContainer.getComponents();
         Component component = componentArray[componentArray.length - 1];
-       ManagePersonDirectoryJPanel managePersonDirectoryJPanel = (ManagePersonDirectoryJPanel) component;
+        ManagePersonDirectoryJPanel managePersonDirectoryJPanel = (ManagePersonDirectoryJPanel) component;
         managePersonDirectoryJPanel.populateTable();
         CardLayout layout = (CardLayout) userContainer.getLayout();
         layout.previous(userContainer);
@@ -124,17 +126,17 @@ public class SearchPersonJPanel extends javax.swing.JPanel {
 
     private void goButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goButtonActionPerformed
         // TODO add your handling code here:
-            Person person = b.getPersonDir().findPersonByLastName(personComboBox.getSelectedItem().toString());
-            if (person != null) {
-                FoundPersonJPanel foundPersonJPanel = new FoundPersonJPanel(userContainer, person);
-                userContainer.add("FoundPersonJPanel", foundPersonJPanel);
-                CardLayout cardLayout = (CardLayout) userContainer.getLayout();
-                cardLayout.next(userContainer);
-            } else {
-                JOptionPane.showMessageDialog(null, "Person isnt existing in our system", "Information", JOptionPane.INFORMATION_MESSAGE);
+        Person person = b.getPersonDir().findPersonByLastName(personComboBox.getSelectedItem().toString());
+        if (person != null) {
+            FoundPersonJPanel foundPersonJPanel = new FoundPersonJPanel(userContainer, person);
+            userContainer.add("FoundPersonJPanel", foundPersonJPanel);
+            CardLayout cardLayout = (CardLayout) userContainer.getLayout();
+            cardLayout.next(userContainer);
+        } else {
+            JOptionPane.showMessageDialog(null, "Person isnt existing in our system", "Information", JOptionPane.INFORMATION_MESSAGE);
 
-            }
-        
+        }
+
     }//GEN-LAST:event_goButtonActionPerformed
 
 

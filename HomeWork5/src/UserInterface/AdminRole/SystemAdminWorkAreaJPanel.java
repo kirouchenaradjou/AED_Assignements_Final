@@ -59,24 +59,24 @@ private Business b;
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel1.setText("UserID");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(138, 110, -1, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 130, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel2.setText("Name");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(138, 160, 70, -1));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 180, 70, -1));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel3.setText("Role");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(138, 207, 70, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 230, 70, -1));
 
         userIDLabel.setText("jLabel4");
-        add(userIDLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(262, 110, 180, -1));
+        add(userIDLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 130, 180, -1));
 
         nameLabel.setText("jLabel5");
-        add(nameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(262, 160, 180, -1));
+        add(nameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 180, 180, -1));
 
         roleLabel.setText("jLabel6");
-        add(roleLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(262, 207, 180, -1));
+        add(roleLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 230, 180, -1));
 
         manageUserButton.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         manageUserButton.setText("Manage User Accounts <<");
@@ -85,11 +85,11 @@ private Business b;
                 manageUserButtonActionPerformed(evt);
             }
         });
-        add(manageUserButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(373, 338, -1, -1));
+        add(manageUserButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 350, -1, -1));
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel4.setText("System Admin Work Area");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 37, -1, -1));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 30, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void manageUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageUserButtonActionPerformed
