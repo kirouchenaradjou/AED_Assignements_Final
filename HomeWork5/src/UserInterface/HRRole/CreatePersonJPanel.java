@@ -117,6 +117,14 @@ public class CreatePersonJPanel extends javax.swing.JPanel {
 
     private void createButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createButtonActionPerformed
         // TODO add your handling code here:
+        if (addressText.getText() == "" || addressText.getText() == null || jDateChooser1.getDate() == null
+                || firstNameText.getText() == "" || firstNameText.getText() == null || lastNameText.getText() == "" || lastNameText.getText() == null
+                || ssnText.getText() == "" || ssnText.getText() == null) {
+            JOptionPane.showMessageDialog(null, "Enter all the details", "Warning", JOptionPane.WARNING_MESSAGE);
+
+        }
+        else
+        {
         PersonDirectory personDir = b.getPersonDir();
         Person p = personDir.addPerson();
         p.setAddress(addressText.getText());
@@ -126,11 +134,11 @@ public class CreatePersonJPanel extends javax.swing.JPanel {
         p.setSocialSecurityNum(ssnText.getText());
         JOptionPane.showMessageDialog(null, "Person Account Created", "Information", JOptionPane.INFORMATION_MESSAGE);
         addressText.setText("");
-        jDateChooser1.cleanup();
+        jDateChooser1.setDate(null);
         firstNameText.setText("");
         lastNameText.setText("");
         ssnText.setText("");
-
+        }
     }//GEN-LAST:event_createButtonActionPerformed
 
 

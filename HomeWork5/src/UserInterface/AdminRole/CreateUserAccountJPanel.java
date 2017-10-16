@@ -146,29 +146,42 @@ public class CreateUserAccountJPanel extends javax.swing.JPanel {
 
     private void createButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createButtonActionPerformed
         // Create a user Account for the person selected
-        UserAccountDirectory uad = b.getUserAccDir(); // preparing to create user accounts
+        UserAccount isExisting = checkForExistingUserID(userNameText.getText());
+        if (isExisting == null) {
+            UserAccountDirectory uad = b.getUserAccDir(); // preparing to create user accounts
 
-        UserAccount ua = uad.addUser();
-        Person selectedPerson = (Person) personComboBox.getSelectedItem();
+            UserAccount ua = uad.addUser();
+            Person selectedPerson = (Person) personComboBox.getSelectedItem();
 
-        ua.setP(selectedPerson);
-        ua.setUserID(userNameText.getText());
-        String hashedPassword = generateHash(String.valueOf(passwordText.getPassword()));
-        ua.setPassword(hashedPassword);
-        ua.setRole(roleComboCox.getSelectedItem().toString());
-        ua.setStatus(true);
-        ua.setAccType(accTypeCombo.getSelectedItem().toString());
-        ua.setCreationDate(jDateChooser1.getDate());
-        JOptionPane.showMessageDialog(null, "User Account Created", "Information", JOptionPane.INFORMATION_MESSAGE);
-        userNameText.setText("");
-        passwordText.setText("");
-        roleComboCox.setSelectedItem(null);
-        accTypeCombo.setSelectedItem(null);
-        jDateChooser1.cleanup();
-        selectedPerson.getUserAccount().add(ua);
-//        ua.getP().addUser();
+            ua.setP(selectedPerson);
+            ua.setUserID(userNameText.getText());
+            String hashedPassword = generateHash(String.valueOf(passwordText.getPassword()));
+            ua.setPassword(hashedPassword);
+            ua.setRole(roleComboCox.getSelectedItem().toString());
+            ua.setStatus(true);
+            ua.setAccType(accTypeCombo.getSelectedItem().toString());
+            ua.setCreationDate(jDateChooser1.getDate());
+            JOptionPane.showMessageDialog(null, "User Account Created", "Information", JOptionPane.INFORMATION_MESSAGE);
+            userNameText.setText("");
+            passwordText.setText("");
+            roleComboCox.setSelectedItem(null);
+            accTypeCombo.setSelectedItem(null);
+            jDateChooser1.cleanup();
+            selectedPerson.getUserAccount().add(ua);
+        } else {
+            JOptionPane.showMessageDialog(null, "User Name Already Exists", "Error", JOptionPane.ERROR_MESSAGE);
+
+        }
     }//GEN-LAST:event_createButtonActionPerformed
+    public UserAccount checkForExistingUserID(String ID) {
+        for (UserAccount ua : b.getUserAccDir().getUserAccountDir()) {
+            if (ID.equals(ua.getUserID())) {
+                return ua;
+            }
+        }
+        return null;
 
+    }
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
         // TODO add your handling code here:
         userContainer.remove(this);

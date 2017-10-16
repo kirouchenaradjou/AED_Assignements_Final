@@ -2,6 +2,22 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/ragha/Documents/NetBeansProjects/HomeWork5/src/UserInterface/AdminRole/SystemAdminWorkAreaJPanel.java</file>
+            <file>file:/C:/Users/ragha/Documents/NetBeansProjects/HomeWork5/src/UserInterface/AdminRole/ManageUserAccountJPanel.java</file>
+            <file>file:/C:/Users/ragha/Documents/NetBeansProjects/HomeWork5/src/UserInterface/AdminRole/SearchUserAccountJPanel.java</file>
+            <file>file:/C:/Users/ragha/Documents/NetBeansProjects/HomeWork5/src/UserInterface/HRRole/HRRoleWorkAreaJPanel.java</file>
+            <file>file:/C:/Users/ragha/Documents/NetBeansProjects/HomeWork5/src/UserInterface/MainJFrame.java</file>
+            <file>file:/C:/Users/ragha/Documents/NetBeansProjects/HomeWork5/src/Business/Configuration/ConfigureABusiness.java</file>
+            <file>file:/C:/Users/ragha/Documents/NetBeansProjects/HomeWork5/src/UserInterface/AdminRole/FoundUserAccountJPanel.java</file>
+            <file>file:/C:/Users/ragha/Documents/NetBeansProjects/HomeWork5/src/UserInterface/AdminRole/UpdateUserAccountJPanel.java</file>
+            <file>file:/C:/Users/ragha/Documents/NetBeansProjects/HomeWork5/src/Business/UserAccountDirectory.java</file>
+            <file>file:/C:/Users/ragha/Documents/NetBeansProjects/HomeWork5/src/UserInterface/AdminRole/CreateUserAccountJPanel.java</file>
+            <file>file:/C:/Users/ragha/Documents/NetBeansProjects/HomeWork5/src/UserInterface/HRRole/UpdatePersonJPanel.java</file>
+            <file>file:/C:/Users/ragha/Documents/NetBeansProjects/HomeWork5/src/UserInterface/HRRole/FoundPersonJPanel.java</file>
+            <file>file:/C:/Users/ragha/Documents/NetBeansProjects/HomeWork5/src/UserInterface/HRRole/ManagePersonDirectoryJPanel.java</file>
+            <file>file:/C:/Users/ragha/Documents/NetBeansProjects/HomeWork5/src/UserInterface/HRRole/SearchPersonJPanel.java</file>
+            <file>file:/C:/Users/ragha/Documents/NetBeansProjects/HomeWork5/src/UserInterface/HRRole/CreatePersonJPanel.java</file>
+        </group>
     </open-files>
 </project-private>

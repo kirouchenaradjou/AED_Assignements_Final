@@ -7,6 +7,9 @@ package UserInterface.HRRole;
 
 import Business.Person;
 import Business.UserAccount;
+import com.toedter.calendar.JTextFieldDateEditor;
+import java.awt.CardLayout;
+import java.awt.Component;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
@@ -32,21 +35,24 @@ public class FoundPersonJPanel extends javax.swing.JPanel {
     }
 
     private void populateDetails() {
+        //make the dateChooser non editable
+        JTextFieldDateEditor editor = (JTextFieldDateEditor) jDateChooser1.getDateEditor();
+        editor.setEditable(false);
         ssnLabel.setText(person.getSocialSecurityNum());
         fNameLabel.setText(person.getFirstName());
         LnameLabel.setText(person.getLastName());
         addLabel.setText(person.getAddress());
         jDateChooser1.setDate(person.getDob());
         person.getUserAccount().toString();
-          ArrayList<String> userNames = new ArrayList<String>();
-            for (UserAccount ua : person.getUserAccount()) {
-                userNames.add(ua.getUserID());
-            }
+        ArrayList<String> userNames = new ArrayList<String>();
+        for (UserAccount ua : person.getUserAccount()) {
+            userNames.add(ua.getUserID());
+        }
         DefaultListModel<String> dlm = new DefaultListModel<String>();
-            for (int i = 0; i < userNames.size(); i++) {
-                dlm.addElement(userNames.get(i));
-            }
-        
+        for (int i = 0; i < userNames.size(); i++) {
+            dlm.addElement(userNames.get(i));
+        }
+
         JList<String> list = new JList<>(dlm);
         jList1.setModel(dlm);
     }

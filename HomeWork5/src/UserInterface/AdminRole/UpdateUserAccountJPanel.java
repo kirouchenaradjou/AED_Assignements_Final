@@ -131,8 +131,12 @@ public class UpdateUserAccountJPanel extends javax.swing.JPanel {
     private void updateButoonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButoonActionPerformed
         // Create a user Account for the person selected
         ua.setUserID(userNameText.getText());
-         String hashedPassword = generateHash(String.valueOf(passwordText.getPassword()));
+        if(!ua.getPassword().equals(String.valueOf(passwordText.getPassword())))
+        {
+            String hashedPassword = generateHash(String.valueOf(passwordText.getPassword()));
             ua.setPassword(hashedPassword);
+        }
+        
         if (activeRadioButton.isSelected()) {
             ua.setStatus(Boolean.TRUE);
         } else {

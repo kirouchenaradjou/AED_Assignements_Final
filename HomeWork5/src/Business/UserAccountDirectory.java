@@ -31,6 +31,10 @@ public class UserAccountDirectory {
         userAccountDir.add(ua);
         return ua;
     }
+    public void deleteUserAcc(UserAccount ua)
+    {
+        userAccountDir.remove(ua);
+    }
     public UserAccount isValidUser(String userName, String password)
     {
         for(UserAccount ua: userAccountDir)

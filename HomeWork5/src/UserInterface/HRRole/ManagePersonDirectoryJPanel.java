@@ -77,6 +77,9 @@ public class ManagePersonDirectoryJPanel extends javax.swing.JPanel {
         newPersonButton = new javax.swing.JButton();
         updatePersonButton = new javax.swing.JButton();
 
+        personTable.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        personTable.setFont(new java.awt.Font("Tahoma", 2, 14)); // NOI18N
+        personTable.setForeground(new java.awt.Color(0, 204, 153));
         personTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -96,8 +99,11 @@ public class ManagePersonDirectoryJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        personTable.setGridColor(new java.awt.Color(153, 153, 153));
         jScrollPane1.setViewportView(personTable);
 
+        findPerson.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        findPerson.setForeground(new java.awt.Color(0, 153, 204));
         findPerson.setText("Find Person >>");
         findPerson.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -105,6 +111,8 @@ public class ManagePersonDirectoryJPanel extends javax.swing.JPanel {
             }
         });
 
+        newPersonButton.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        newPersonButton.setForeground(new java.awt.Color(0, 102, 102));
         newPersonButton.setText("New Person >>");
         newPersonButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -112,6 +120,8 @@ public class ManagePersonDirectoryJPanel extends javax.swing.JPanel {
             }
         });
 
+        updatePersonButton.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        updatePersonButton.setForeground(new java.awt.Color(153, 153, 0));
         updatePersonButton.setText("Update Person >>");
         updatePersonButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -124,17 +134,17 @@ public class ManagePersonDirectoryJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 661, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(findPerson, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 763, Short.MAX_VALUE)
+                        .addContainerGap(778, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(newPersonButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(updatePersonButton, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE))))
+                            .addComponent(updatePersonButton, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(47, 47, 47)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 661, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(findPerson, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(28, 28, 28))
         );
         layout.setVerticalGroup(
@@ -145,9 +155,9 @@ public class ManagePersonDirectoryJPanel extends javax.swing.JPanel {
                         .addGap(96, 96, 96)
                         .addComponent(findPerson))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(79, 79, 79)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(76, 76, 76)
+                        .addGap(87, 87, 87)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(173, 173, 173)
                 .addComponent(newPersonButton)
                 .addGap(21, 21, 21)
                 .addComponent(updatePersonButton)

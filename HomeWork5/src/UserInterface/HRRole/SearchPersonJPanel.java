@@ -56,6 +56,8 @@ public class SearchPersonJPanel extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         personComboBox = new javax.swing.JComboBox<>();
 
+        cancelButton.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        cancelButton.setForeground(new java.awt.Color(0, 102, 102));
         cancelButton.setText("<<Back ");
         cancelButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -63,8 +65,11 @@ public class SearchPersonJPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         jLabel1.setText("Find the Person");
 
+        goButton.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        goButton.setForeground(new java.awt.Color(0, 102, 102));
         goButton.setText("Go");
         goButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -72,6 +77,7 @@ public class SearchPersonJPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 3, 16)); // NOI18N
         jLabel2.setText("Person Last Name");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -81,35 +87,35 @@ public class SearchPersonJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(431, 431, 431)
+                        .addGap(371, 371, 371)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(210, 210, 210)
+                        .addGap(60, 60, 60)
                         .addComponent(cancelButton))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(207, 207, 207)
+                        .addGap(309, 309, 309)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(personComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(104, 104, 104)
                                 .addComponent(goButton))
                             .addComponent(jLabel2))))
-                .addContainerGap(432, Short.MAX_VALUE))
+                .addContainerGap(328, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(128, 128, 128)
+                .addGap(48, 48, 48)
                 .addComponent(jLabel1)
-                .addGap(43, 43, 43)
+                .addGap(133, 133, 133)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(goButton)
                     .addComponent(personComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(224, 224, 224)
+                .addGap(208, 208, 208)
                 .addComponent(cancelButton)
-                .addContainerGap(280, Short.MAX_VALUE))
+                .addContainerGap(262, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

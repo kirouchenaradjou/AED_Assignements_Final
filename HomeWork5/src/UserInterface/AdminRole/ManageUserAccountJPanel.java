@@ -60,7 +60,7 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
             byte[] hashedBytes = sha.digest(input.getBytes());
             char[] digits = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
                 'a', 'b', 'c', 'd', 'e', 'f'};
-            
+
             for (int idx = 0; idx < hashedBytes.length; ++idx) {
                 byte b = hashedBytes[idx];
                 hash.append(digits[(b & 0xf0) >> 4]);
@@ -88,6 +88,7 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
         findUserButton = new javax.swing.JButton();
         newUserButton = new javax.swing.JButton();
         updateUserButton = new javax.swing.JButton();
+        deleteUserButton = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -124,7 +125,7 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
                 findUserButtonActionPerformed(evt);
             }
         });
-        add(findUserButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 90, 210, -1));
+        add(findUserButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 90, 210, -1));
 
         newUserButton.setText("New User Account >>");
         newUserButton.addActionListener(new java.awt.event.ActionListener() {
@@ -132,7 +133,7 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
                 newUserButtonActionPerformed(evt);
             }
         });
-        add(newUserButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 390, 210, -1));
+        add(newUserButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 380, 210, -1));
 
         updateUserButton.setText("Update User Account >>");
         updateUserButton.addActionListener(new java.awt.event.ActionListener() {
@@ -141,6 +142,14 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
             }
         });
         add(updateUserButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 440, -1, -1));
+
+        deleteUserButton.setText("Delete User Account >>");
+        deleteUserButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteUserButtonActionPerformed(evt);
+            }
+        });
+        add(deleteUserButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 500, 210, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void newUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newUserButtonActionPerformed
@@ -176,8 +185,26 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
         cardLayout.next(userContainer);
     }//GEN-LAST:event_findUserButtonActionPerformed
 
+    private void deleteUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteUserButtonActionPerformed
+        // delete User Account
+        int selectedRows = userAccountTable.getSelectedRow();
+        if (selectedRows < 0) {
+            JOptionPane.showMessageDialog(null, "Select any row from the table to detele the details", "Warning", JOptionPane.WARNING_MESSAGE);
+
+        } else {
+            UserAccount userAcc = (UserAccount) userAccountTable.getValueAt(selectedRows, 0);
+                        userAcc.getP().getUserAccount().remove(userAcc);
+
+            b.getUserAccDir().getUserAccountDir().remove(userAcc);
+            JOptionPane.showMessageDialog(null, "User Account Deleted", "Error", JOptionPane.ERROR_MESSAGE);
+            populateTable();
+            
+        }
+    }//GEN-LAST:event_deleteUserButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton deleteUserButton;
     private javax.swing.JButton findUserButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
