@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class CDC extends Enterprise{
 
     public CDC(String name) {
-        super(name, EnterpriseType.Hospital);
+        super(name, EnterpriseType.CDC);
     }
 
     @Override

@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import javax.swing.JPanel;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
+import userinterface.SystemAdminWorkArea.ManageDiseaseCatalog;
 
 /**
  *
@@ -36,11 +37,9 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
     }
 
     public void populateTree() {
-        
+
         DefaultTreeModel model = (DefaultTreeModel) JTree.getModel();
 
-        
-        
         ArrayList<Network> networkList = system.getNetworkList();
         ArrayList<Enterprise> enterpriseList;
         ArrayList<Organization> organizationList;
@@ -95,6 +94,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         manageEnterpriseJButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         selectedNodeJLabel = new javax.swing.JLabel();
+        manageDisease = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         JTree = new javax.swing.JTree();
@@ -128,6 +128,13 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
 
         selectedNodeJLabel.setText("<view_selected_node>");
 
+        manageDisease.setText("Manage Disease Catalog");
+        manageDisease.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                manageDiseaseActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -135,15 +142,16 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(69, 69, 69)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(manageAdminJButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(manageNetworkJButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(manageEnterpriseJButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(18, 18, 18)
-                        .addComponent(selectedNodeJLabel)))
-                .addContainerGap(119, Short.MAX_VALUE))
+                        .addComponent(selectedNodeJLabel))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(manageDisease, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(manageAdminJButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(manageNetworkJButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(manageEnterpriseJButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap(68, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -154,11 +162,13 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                     .addComponent(selectedNodeJLabel))
                 .addGap(50, 50, 50)
                 .addComponent(manageNetworkJButton)
-                .addGap(71, 71, 71)
+                .addGap(53, 53, 53)
                 .addComponent(manageEnterpriseJButton)
-                .addGap(67, 67, 67)
+                .addGap(44, 44, 44)
                 .addComponent(manageAdminJButton)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                .addComponent(manageDisease)
+                .addGap(122, 122, 122))
         );
 
         jSplitPane1.setRightComponent(jPanel1);
@@ -212,6 +222,15 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         }
 
     }//GEN-LAST:event_valueChangedAction
+
+    private void manageDiseaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageDiseaseActionPerformed
+        // TODO add your handling code here:
+        ManageDiseaseCatalog manageDiseaseandVaccine = new ManageDiseaseCatalog(userProcessContainer, system);
+        userProcessContainer.add("ManageDiseaseCatalog", manageDiseaseandVaccine);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_manageDiseaseActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTree JTree;
     private javax.swing.JLabel jLabel1;
@@ -220,6 +239,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JButton manageAdminJButton;
+    private javax.swing.JButton manageDisease;
     private javax.swing.JButton manageEnterpriseJButton;
     private javax.swing.JButton manageNetworkJButton;
     private javax.swing.JLabel selectedNodeJLabel;

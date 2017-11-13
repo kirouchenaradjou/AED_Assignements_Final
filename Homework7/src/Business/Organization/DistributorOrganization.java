@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class DistributorOrganization extends Organization{
 
     public DistributorOrganization() {
-        super(Organization.Type.Lab.getValue());
+        super(Organization.Type.DistributorRole.getValue());
     }
 
     @Override

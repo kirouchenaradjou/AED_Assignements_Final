@@ -41,18 +41,19 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="manageAdminJButton" alignment="0" max="32767" attributes="0"/>
-                              <Component id="manageNetworkJButton" alignment="0" max="32767" attributes="0"/>
-                              <Component id="manageEnterpriseJButton" alignment="0" max="32767" attributes="0"/>
-                          </Group>
                           <Group type="102" attributes="0">
                               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="selectedNodeJLabel" min="-2" max="-2" attributes="0"/>
                           </Group>
+                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                              <Component id="manageDisease" alignment="0" max="32767" attributes="0"/>
+                              <Component id="manageAdminJButton" alignment="0" max="32767" attributes="0"/>
+                              <Component id="manageNetworkJButton" alignment="0" max="32767" attributes="0"/>
+                              <Component id="manageEnterpriseJButton" alignment="0" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace pref="119" max="32767" attributes="0"/>
+                      <EmptySpace pref="68" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -66,11 +67,13 @@
                       </Group>
                       <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                       <Component id="manageNetworkJButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
                       <Component id="manageEnterpriseJButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
                       <Component id="manageAdminJButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace pref="60" max="32767" attributes="0"/>
+                      <Component id="manageDisease" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="122" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -109,6 +112,14 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="&lt;view_selected_node&gt;"/>
               </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="manageDisease">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Manage Disease Catalog"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="manageDiseaseActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
