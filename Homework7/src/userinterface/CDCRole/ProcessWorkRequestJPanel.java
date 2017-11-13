@@ -4,6 +4,10 @@
  */
 package userinterface.CDCRole;
 
+import Business.Enterprise.Enterprise;
+import Business.Organization.CDCOrganization;
+import Business.Organization.DistributorOrganization;
+import Business.Organization.Organization;
 import Business.WorkQueue.LabTestWorkRequest;
 import java.awt.CardLayout;
 import java.awt.Component;
@@ -17,13 +21,16 @@ public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
 
     JPanel userProcessContainer;
     LabTestWorkRequest request;
+     Enterprise enterprise;
+
     /**
      * Creates new form ProcessWorkRequestJPanel
      */
-    public ProcessWorkRequestJPanel(JPanel userProcessContainer, LabTestWorkRequest request) {
+    public ProcessWorkRequestJPanel(JPanel userProcessContainer, LabTestWorkRequest request,Enterprise enterprise) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.request = request;
+        this.enterprise=enterprise;
     }
 
     /**
@@ -104,6 +111,23 @@ public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
     private void submitJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitJButtonActionPerformed
         request.setTestResult(resultJTextField.getText());
         request.setStatus("Sent to Distributor");
+        
+        LabTestWorkRequest request = new LabTestWorkRequest();
+        request.setMessage("");
+        request.setSender(request.getReceiver());
+        request.setStatus("Sent");
+        
+        Organization org = null;
+        for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()){
+            if (organization instanceof DistributorOrganization){
+                org = organization;
+                break;
+            }
+        }
+        if (org!=null){
+            org.getWorkQueue().getWorkRequestList().add(request);
+            request.getReceiver().getWorkQueue().getWorkRequestList().add(request);
+        }
     }//GEN-LAST:event_submitJButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

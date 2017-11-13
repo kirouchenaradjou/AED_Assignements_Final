@@ -5,6 +5,7 @@
 package userinterface.CDCRole;
 
 import Business.EcoSystem;
+import Business.Enterprise.Enterprise;
 import Business.Organization.CDCOrganization;
 import Business.Organization.DistributorOrganization;
 import Business.Organization.Organization;
@@ -25,16 +26,18 @@ public class CDCRoleWorkAreaJPanel extends javax.swing.JPanel {
     private EcoSystem business;
     private UserAccount userAccount;
     private CDCOrganization labOrganization;
-    
+        private Enterprise enterprise;
+
     /**
      * Creates new form LabAssistantWorkAreaJPanel
      */
-    public CDCRoleWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, Organization organization, EcoSystem business) {
+    public CDCRoleWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, Organization organization, EcoSystem business,Enterprise enterprise) {
         initComponents();
         
         this.userProcessContainer = userProcessContainer;
         this.userAccount = account;
         this.business = business;
+         this.enterprise = enterprise;
         this.labOrganization = (CDCOrganization)organization;
         
         populateTable();
@@ -164,7 +167,7 @@ public class CDCRoleWorkAreaJPanel extends javax.swing.JPanel {
      
         request.setStatus("Processing");
         
-        ProcessWorkRequestJPanel processWorkRequestJPanel = new ProcessWorkRequestJPanel(userProcessContainer, request);
+        ProcessWorkRequestJPanel processWorkRequestJPanel = new ProcessWorkRequestJPanel(userProcessContainer, request,enterprise);
         userProcessContainer.add("processWorkRequestJPanel", processWorkRequestJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);

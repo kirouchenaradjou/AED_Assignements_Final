@@ -19,7 +19,7 @@ public class CDCRole extends Role {
 
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business) {
-        return new CDCRoleWorkAreaJPanel(userProcessContainer, account, organization, business);
+        return new CDCRoleWorkAreaJPanel(userProcessContainer, account, organization, business,enterprise);
     }
     
 }
