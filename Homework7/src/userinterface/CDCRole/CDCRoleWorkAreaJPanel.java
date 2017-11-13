@@ -5,6 +5,7 @@
 package userinterface.CDCRole;
 
 import Business.EcoSystem;
+import Business.Organization.CDCOrganization;
 import Business.Organization.DistributorOrganization;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
@@ -23,7 +24,7 @@ public class CDCRoleWorkAreaJPanel extends javax.swing.JPanel {
     private JPanel userProcessContainer;
     private EcoSystem business;
     private UserAccount userAccount;
-    private DistributorOrganization labOrganization;
+    private CDCOrganization labOrganization;
     
     /**
      * Creates new form LabAssistantWorkAreaJPanel
@@ -34,7 +35,7 @@ public class CDCRoleWorkAreaJPanel extends javax.swing.JPanel {
         this.userProcessContainer = userProcessContainer;
         this.userAccount = account;
         this.business = business;
-        this.labOrganization = (DistributorOrganization)organization;
+        this.labOrganization = (CDCOrganization)organization;
         
         populateTable();
     }
@@ -45,11 +46,13 @@ public class CDCRoleWorkAreaJPanel extends javax.swing.JPanel {
         model.setRowCount(0);
         
         for(WorkRequest request : labOrganization.getWorkQueue().getWorkRequestList()){
-            Object[] row = new Object[4];
-            row[0] = request.getMessage();
+            Object[] row = new Object[5];
+            row[0] = request;
+                        row[2]=request.getMessage();
+
             row[1] = request.getSender().getEmployee().getName();
-            row[2] = request.getReceiver() == null ? null : request.getReceiver().getEmployee().getName();
-            row[3] = request.getStatus();
+            row[3] = request.getReceiver() == null ? null : request.getReceiver().getEmployee().getName();
+            row[4] = request.getStatus();
             
             model.addRow(row);
         }
@@ -74,20 +77,20 @@ public class CDCRoleWorkAreaJPanel extends javax.swing.JPanel {
 
         workRequestJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Vaccine Asked", "Sender", "Receiver", "Status"
+                "Message", "Vaccine Asked", "Sender", "Receiver", "Status"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, true, true, false
+                false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -104,9 +107,10 @@ public class CDCRoleWorkAreaJPanel extends javax.swing.JPanel {
             workRequestJTable.getColumnModel().getColumn(1).setResizable(false);
             workRequestJTable.getColumnModel().getColumn(2).setResizable(false);
             workRequestJTable.getColumnModel().getColumn(3).setResizable(false);
+            workRequestJTable.getColumnModel().getColumn(4).setResizable(false);
         }
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(63, 58, 420, 96));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 58, 630, 96));
 
         assignJButton.setText("Assign to me");
         assignJButton.addActionListener(new java.awt.event.ActionListener() {

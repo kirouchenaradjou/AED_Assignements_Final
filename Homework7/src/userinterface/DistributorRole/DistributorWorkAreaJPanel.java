@@ -2,11 +2,13 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package userinterface.ClinicalRole;
+package userinterface.DistributorRole;
 
+import userinterface.ClinicalRole.*;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Organization.ClinicOrganization;
+import Business.Organization.DistributorOrganization;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.LabTestWorkRequest;
 import Business.WorkQueue.WorkRequest;
@@ -18,17 +20,17 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author raunak
  */
-public class ClinicalWorkAreaJPanel extends javax.swing.JPanel {
+public class DistributorWorkAreaJPanel extends javax.swing.JPanel {
 
     private JPanel userProcessContainer;
-    private ClinicOrganization organization;
+    private DistributorOrganization organization;
     private Enterprise enterprise;
     private UserAccount userAccount;
 
     /**
      * Creates new form DoctorWorkAreaJPanel
      */
-    public ClinicalWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, ClinicOrganization organization, Enterprise enterprise) {
+    public DistributorWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, DistributorOrganization organization, Enterprise enterprise) {
         initComponents();
 
         this.userProcessContainer = userProcessContainer;
@@ -79,7 +81,7 @@ public class ClinicalWorkAreaJPanel extends javax.swing.JPanel {
                 {null, null, null, null}
             },
             new String [] {
-                "Vaccine Name", "Receiver", "Status", "Result"
+                "Vaccine Requested from CDC", "Receiver", "Status", "Result"
             }
         ) {
             Class[] types = new Class [] {
@@ -165,7 +167,7 @@ public class ClinicalWorkAreaJPanel extends javax.swing.JPanel {
     private void requestTestJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_requestTestJButtonActionPerformed
 
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        userProcessContainer.add("RequestLabTestJPanel", new RequestLabTestJPanel(userProcessContainer, userAccount, enterprise));
+        userProcessContainer.add("RequestLabTestJPanel", new DistributorRequestJPanel(userProcessContainer, userAccount, enterprise));
         layout.next(userProcessContainer);
 
     }//GEN-LAST:event_requestTestJButtonActionPerformed

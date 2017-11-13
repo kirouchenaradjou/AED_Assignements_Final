@@ -2,8 +2,9 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package userinterface.ClinicalRole;
+package userinterface.DistributorRole;
 
+import userinterface.ClinicalRole.*;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Organization.CDCOrganization;
@@ -21,7 +22,7 @@ import javax.swing.JPanel;
  *
  * @author raunak
  */
-public class RequestLabTestJPanel extends javax.swing.JPanel {
+public class DistributorRequestJPanel extends javax.swing.JPanel {
 
     private JPanel userProcessContainer;
     private Enterprise enterprise;
@@ -29,7 +30,7 @@ public class RequestLabTestJPanel extends javax.swing.JPanel {
     /**
      * Creates new form RequestLabTestJPanel
      */
-    public RequestLabTestJPanel(JPanel userProcessContainer, UserAccount account, Enterprise enterprise) {
+    public DistributorRequestJPanel(JPanel userProcessContainer, UserAccount account, Enterprise enterprise) {
         initComponents();
         
         this.userProcessContainer = userProcessContainer;
@@ -112,7 +113,7 @@ public class RequestLabTestJPanel extends javax.swing.JPanel {
         userProcessContainer.remove(this);
         Component[] componentArray = userProcessContainer.getComponents();
         Component component = componentArray[componentArray.length - 1];
-        ClinicalWorkAreaJPanel dwjp = (ClinicalWorkAreaJPanel) component;
+        DistributorWorkAreaJPanel dwjp = (DistributorWorkAreaJPanel) component;
         dwjp.populateRequestTable();
         CardLayout layout = (CardLayout)userProcessContainer.getLayout();
         layout.previous(userProcessContainer);

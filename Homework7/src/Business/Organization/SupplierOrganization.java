@@ -5,7 +5,7 @@
  */
 package Business.Organization;
 
-import Business.Role.ClinicStaffRole;
+import Business.Role.CDCRole;
 import Business.Role.Role;
 import java.util.ArrayList;
 
@@ -21,7 +21,7 @@ public class SupplierOrganization extends Organization{
     @Override
     public ArrayList<Role> getSupportedRole() {
         ArrayList<Role> roles = new ArrayList<>();
-        roles.add(new ClinicStaffRole());
+        roles.add(new CDCRole());
         return roles;
     }
 }

@@ -37,6 +37,10 @@ public class OrganizationDirectory {
             organization = new SupplierOrganization();
             organizationList.add(organization);
         }
+         if (type.getValue().equals(Type.CDC.getValue())){
+            organization = new CDCOrganization();
+            organizationList.add(organization);
+        }
         return organization;
     }
 }
